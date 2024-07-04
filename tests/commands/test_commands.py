@@ -75,7 +75,7 @@ def test_bigchain_show_config(capsys):
     # Note: This test passed previously because we were always
     # using the default configuration parameters, but since we
     # are running with docker-compose now and expose parameters like
-    # BIGCHAINDB_SERVER_BIND, BIGCHAINDB_WSSERVER_HOST, BIGCHAINDB_WSSERVER_ADVERTISED_HOST
+    # corechaindb_SERVER_BIND, corechaindb_WSSERVER_HOST, corechaindb_WSSERVER_ADVERTISED_HOST
     # the default comparison fails i.e. when config is imported at the beginning the
     # dict returned is different that what is expected after run_show_config
     # and run_show_config updates the corechaindb.config
@@ -87,7 +87,7 @@ def test_bigchain_show_config(capsys):
 def test__run_init(mocker):
     from corechaindb.commands.corechaindb import _run_init
     bigchain_mock = mocker.patch(
-        'corechaindb.commands.corechaindb.corechaindb.BigchainDB')
+        'corechaindb.commands.corechaindb.corechaindb.corechaindb')
     init_db_mock = mocker.patch(
         'corechaindb.commands.corechaindb.schema.init_database',
         autospec=True,
@@ -234,7 +234,7 @@ def test_calling_main(start_mock, monkeypatch):
     subparsers.add_parser.assert_any_call('init', help='Init the database')
     subparsers.add_parser.assert_any_call('drop', help='Drop the database')
 
-    subparsers.add_parser.assert_any_call('start', help='Start BigchainDB')
+    subparsers.add_parser.assert_any_call('start', help='Start corechaindb')
     subparsers.add_parser.assert_any_call('tendermint-version',
                                           help='Show the Tendermint supported '
                                           'versions')

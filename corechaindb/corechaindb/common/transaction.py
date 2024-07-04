@@ -644,7 +644,7 @@ class Transaction(object):
                     - Ed25519
                     - ThresholdSha256
 
-                Additionally, it provides support for the following BigchainDB
+                Additionally, it provides support for the following corechaindb
                 use cases:
                     - Multiple inputs and outputs.
 
@@ -1217,8 +1217,8 @@ class Transaction(object):
         asset from the asset table and reconstructs the transaction.
 
         Args:
-            bigchain (:class:`~corechaindb.tendermint.BigchainDB`): An instance
-                of BigchainDB used to perform database queries.
+            bigchain (:class:`~corechaindb.tendermint.corechaindb`): An instance
+                of corechaindb used to perform database queries.
             tx_dict_list (:list:`dict` or :obj:`dict`): The transaction dict or
                 list of transaction dict as returned from the database.
 

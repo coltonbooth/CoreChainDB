@@ -121,8 +121,8 @@ def test_update_types():
 
 
 def test_env_config(monkeypatch):
-    monkeypatch.setattr('os.environ', {'BIGCHAINDB_DATABASE_HOST': 'test-host',
-                                       'BIGCHAINDB_DATABASE_PORT': 'test-port'})
+    monkeypatch.setattr('os.environ', {'corechaindb_DATABASE_HOST': 'test-host',
+                                       'corechaindb_DATABASE_PORT': 'test-port'})
 
     from corechaindb import config_utils
 
@@ -160,23 +160,23 @@ def test_autoconfigure_read_both_from_file_and_env(monkeypatch, request):
                         lambda *args, **kwargs: file_config)
 
     monkeypatch.setattr('os.environ', {
-        'BIGCHAINDB_DATABASE_NAME': DATABASE_NAME,
-        'BIGCHAINDB_DATABASE_PORT': str(DATABASE_PORT),
-        'BIGCHAINDB_DATABASE_BACKEND': DATABASE_BACKEND,
-        'BIGCHAINDB_SERVER_BIND': SERVER_BIND,
-        'BIGCHAINDB_WSSERVER_SCHEME': WSSERVER_SCHEME,
-        'BIGCHAINDB_WSSERVER_HOST': WSSERVER_HOST,
-        'BIGCHAINDB_WSSERVER_PORT': WSSERVER_PORT,
-        'BIGCHAINDB_WSSERVER_ADVERTISED_SCHEME': WSSERVER_ADVERTISED_SCHEME,
-        'BIGCHAINDB_WSSERVER_ADVERTISED_HOST': WSSERVER_ADVERTISED_HOST,
-        'BIGCHAINDB_WSSERVER_ADVERTISED_PORT': WSSERVER_ADVERTISED_PORT,
-        'BIGCHAINDB_LOG_FILE': LOG_FILE,
-        'BIGCHAINDB_LOG_FILE': LOG_FILE,
-        'BIGCHAINDB_DATABASE_CA_CERT': 'ca_cert',
-        'BIGCHAINDB_DATABASE_CRLFILE': 'crlfile',
-        'BIGCHAINDB_DATABASE_CERTFILE': 'certfile',
-        'BIGCHAINDB_DATABASE_KEYFILE': 'keyfile',
-        'BIGCHAINDB_DATABASE_KEYFILE_PASSPHRASE': 'passphrase',
+        'corechaindb_DATABASE_NAME': DATABASE_NAME,
+        'corechaindb_DATABASE_PORT': str(DATABASE_PORT),
+        'corechaindb_DATABASE_BACKEND': DATABASE_BACKEND,
+        'corechaindb_SERVER_BIND': SERVER_BIND,
+        'corechaindb_WSSERVER_SCHEME': WSSERVER_SCHEME,
+        'corechaindb_WSSERVER_HOST': WSSERVER_HOST,
+        'corechaindb_WSSERVER_PORT': WSSERVER_PORT,
+        'corechaindb_WSSERVER_ADVERTISED_SCHEME': WSSERVER_ADVERTISED_SCHEME,
+        'corechaindb_WSSERVER_ADVERTISED_HOST': WSSERVER_ADVERTISED_HOST,
+        'corechaindb_WSSERVER_ADVERTISED_PORT': WSSERVER_ADVERTISED_PORT,
+        'corechaindb_LOG_FILE': LOG_FILE,
+        'corechaindb_LOG_FILE': LOG_FILE,
+        'corechaindb_DATABASE_CA_CERT': 'ca_cert',
+        'corechaindb_DATABASE_CRLFILE': 'crlfile',
+        'corechaindb_DATABASE_CERTFILE': 'certfile',
+        'corechaindb_DATABASE_KEYFILE': 'keyfile',
+        'corechaindb_DATABASE_KEYFILE_PASSPHRASE': 'passphrase',
     })
 
     import corechaindb
@@ -243,9 +243,9 @@ def test_autoconfigure_env_precedence(monkeypatch):
         'database': {'host': 'test-host', 'name': 'corechaindb', 'port': 28015}
     }
     monkeypatch.setattr('corechaindb.config_utils.file_config', lambda *args, **kwargs: file_config)
-    monkeypatch.setattr('os.environ', {'BIGCHAINDB_DATABASE_NAME': 'test-dbname',
-                                       'BIGCHAINDB_DATABASE_PORT': '4242',
-                                       'BIGCHAINDB_SERVER_BIND': 'localhost:9985'})
+    monkeypatch.setattr('os.environ', {'corechaindb_DATABASE_NAME': 'test-dbname',
+                                       'corechaindb_DATABASE_PORT': '4242',
+                                       'corechaindb_SERVER_BIND': 'localhost:9985'})
 
     import corechaindb
     from corechaindb import config_utils
@@ -315,10 +315,10 @@ def test_write_config():
 
 
 @pytest.mark.parametrize('env_name,env_value,config_key', (
-    ('BIGCHAINDB_DATABASE_BACKEND', 'test-backend', 'backend'),
-    ('BIGCHAINDB_DATABASE_HOST', 'test-host', 'host'),
-    ('BIGCHAINDB_DATABASE_PORT', 4242, 'port'),
-    ('BIGCHAINDB_DATABASE_NAME', 'test-db', 'name'),
+    ('corechaindb_DATABASE_BACKEND', 'test-backend', 'backend'),
+    ('corechaindb_DATABASE_HOST', 'test-host', 'host'),
+    ('corechaindb_DATABASE_PORT', 4242, 'port'),
+    ('corechaindb_DATABASE_NAME', 'test-db', 'name'),
 ))
 def test_database_envs(env_name, env_value, config_key, monkeypatch):
     import corechaindb

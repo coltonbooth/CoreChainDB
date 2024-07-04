@@ -4,7 +4,7 @@
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
 """Implementation of the `corechaindb` command,
-the command-line interface (CLI) for BigchainDB Server.
+the command-line interface (CLI) for corechaindb Server.
 """
 
 import os
@@ -23,7 +23,7 @@ from corechaindb.common.exceptions import (DatabaseDoesNotExist,
 from corechaindb.elections.vote import Vote
 import corechaindb
 from corechaindb import (backend, ValidatorElection,
-                        BigchainDB)
+                        corechaindb)
 from corechaindb.backend import schema
 from corechaindb.commands import utils
 from corechaindb.commands.utils import (configure_corechaindb,
@@ -107,7 +107,7 @@ def run_configure(args):
 def run_election(args):
     """Initiate and manage elections"""
 
-    b = BigchainDB()
+    b = corechaindb()
 
     # Call the function specified by args.action, as defined above
     globals()[f'run_election_{args.action}'](args, b)
@@ -143,7 +143,7 @@ def create_new_election(sk, bigchain, election_class, data):
 
 
 def run_election_new_upsert_validator(args, bigchain):
-    """Initiates an election to add/update/remove a validator to an existing BigchainDB network
+    """Initiates an election to add/update/remove a validator to an existing corechaindb network
 
     :param args: dict
         args = {
@@ -152,7 +152,7 @@ def run_election_new_upsert_validator(args, bigchain):
         'node_id': the node_id of the new peer (str)
         'sk': the path to the private key of the node calling the election (str)
         }
-    :param bigchain: an instance of BigchainDB
+    :param bigchain: an instance of corechaindb
     :return: election_id or `False` in case of failure
     """
 
@@ -173,7 +173,7 @@ def run_election_new_chain_migration(args, bigchain):
         args = {
         'sk': the path to the private key of the node calling the election (str)
         }
-    :param bigchain: an instance of BigchainDB
+    :param bigchain: an instance of corechaindb
     :return: election_id or `False` in case of failure
     """
 
@@ -188,7 +188,7 @@ def run_election_approve(args, bigchain):
         'election_id': the election_id of the election (str)
         'sk': the path to the private key of the signer (str)
         }
-    :param bigchain: an instance of BigchainDB
+    :param bigchain: an instance of corechaindb
     :return: success log message or `False` in case of error
     """
 
@@ -225,7 +225,7 @@ def run_election_show(args, bigchain):
         args = {
         'election_id': the transaction_id for an election (str)
         }
-    :param bigchain: an instance of BigchainDB
+    :param bigchain: an instance of corechaindb
     """
 
     election = bigchain.get_transaction(args.election_id)
@@ -241,7 +241,7 @@ def run_election_show(args, bigchain):
 
 
 def _run_init():
-    bdb = corechaindb.BigchainDB()
+    bdb = corechaindb.corechaindb()
 
     schema.init_database(connection=bdb.connection)
 
@@ -280,14 +280,14 @@ def run_start(args):
     # Configure Logging
     setup_logging()
 
-    logger.info('BigchainDB Version %s', corechaindb.__version__)
-    run_recover(corechaindb.lib.BigchainDB())
+    logger.info('corechaindb Version %s', corechaindb.__version__)
+    run_recover(corechaindb.lib.corechaindb())
 
     if not args.skip_initialize_database:
         logger.info('Initializing database')
         _run_init()
 
-    logger.info('Starting BigchainDB main process.')
+    logger.info('Starting corechaindb main process.')
     from corechaindb.start import start
     start(args)
 
@@ -295,7 +295,7 @@ def run_start(args):
 def run_tendermint_version(args):
     """Show the supported Tendermint version(s)"""
     supported_tm_ver = {
-        'description': 'BigchainDB supports the following Tendermint version(s)',
+        'description': 'corechaindb supports the following Tendermint version(s)',
         'tendermint': __tm_supported_versions__,
     }
     print(json.dumps(supported_tm_ver, indent=4, sort_keys=True))
@@ -303,7 +303,7 @@ def run_tendermint_version(args):
 
 def create_parser():
     parser = argparse.ArgumentParser(
-        description='Control your BigchainDB node.',
+        description='Control your corechaindb node.',
         parents=[utils.base_parser])
 
     # all the commands are contained in the subparsers object,
@@ -372,9 +372,9 @@ def create_parser():
     subparsers.add_parser('drop',
                           help='Drop the database')
 
-    # parser for starting BigchainDB
+    # parser for starting corechaindb
     start_parser = subparsers.add_parser('start',
-                                         help='Start BigchainDB')
+                                         help='Start corechaindb')
 
     start_parser.add_argument('--no-init',
                               dest='skip_initialize_database',

@@ -1,17 +1,17 @@
 ﻿
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
-BigchainDB 문서
+corechaindb 문서
 ========================
 
-블록체인 데이터베이스인 BigchainDB를 만나보세요.
+블록체인 데이터베이스인 corechaindb를 만나보세요.
 
 `분산형 <https://github.com/corechaindb/corechaindb/blob/master/docs/root/source/korean/decentralized_kor.md>`_, `불변성 <https://github.com/corechaindb/corechaindb/blob/master/docs/root/source/korean/immutable-ko.md>`_ 및 `자산에 대한 네이티브 지원 <https://github.com/corechaindb/corechaindb/blob/master/docs/root/source/korean/assets_ko.md>`_ 을 포함한 일부 데이터베이스 특성들과 블록체인 특성을 가지고 있습니다.
 
-높은 수준에서, 사용자는 BigchainDB HTTP API를 사용하는 BigchainDB 네트워크(노드 집합) 또는 BigchainDB 파이썬 드라이버와 같은 API용 래퍼로 통신할 수 있습니다. 각 BigchainDB 노드는 BigchainDB Server 및 다양한 다른 소프트웨어를 실행합니다. 더 자세한 사항은 용어 페이지에서 이러한 용어 중 일부를 설명합니다.
+높은 수준에서, 사용자는 corechaindb HTTP API를 사용하는 corechaindb 네트워크(노드 집합) 또는 corechaindb 파이썬 드라이버와 같은 API용 래퍼로 통신할 수 있습니다. 각 corechaindb 노드는 corechaindb Server 및 다양한 다른 소프트웨어를 실행합니다. 더 자세한 사항은 용어 페이지에서 이러한 용어 중 일부를 설명합니다.
 
 .. raw:: html
 
@@ -59,7 +59,7 @@ BigchainDB 문서
      <a class="button" href="http://corechaindb.com/http-api">HTTP API 문서</a>
    </div>
    <div class="buttondiv">
-     <a class="button" href="http://docs.corechaindb.com/projects/contributing/en/latest/index.html">BigchainDB에 기여하는 법</a>
+     <a class="button" href="http://docs.corechaindb.com/projects/contributing/en/latest/index.html">corechaindb에 기여하는 법</a>
    </div>
    <div class="buttondiv">
      <a class="button" href="http://docs.corechaindb.com/projects/py-driver/en/latest/index.html">파이썬 드라이버 문서</a>
@@ -75,13 +75,13 @@ BigchainDB 문서
    </div>
 
 
-BigchainDB에 대한 추가 정보
+corechaindb에 대한 추가 정보
 -------------------------------------------------------
 
 .. toctree::
    :maxdepth: 1
 
-   BigchainDB Docs Home <self>
+   corechaindb Docs Home <self>
    production-ready_kor
    terminology_kor
    decentralized_kor

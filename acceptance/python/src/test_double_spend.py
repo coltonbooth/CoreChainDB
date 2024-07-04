@@ -12,12 +12,12 @@ from threading import Thread
 import queue
 
 import corechaindb_driver.exceptions
-from corechaindb_driver import BigchainDB
+from corechaindb_driver import corechaindb
 from corechaindb_driver.crypto import generate_keypair
 
 
 def test_double_create():
-    bdb = BigchainDB(os.environ.get('BIGCHAINDB_ENDPOINT'))
+    bdb = corechaindb(os.environ.get('corechaindb_ENDPOINT'))
     alice = generate_keypair()
 
     results = queue.Queue()

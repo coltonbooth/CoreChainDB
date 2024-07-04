@@ -24,7 +24,7 @@ class RootIndex(Resource):
                 'v1': get_api_v1_info('/api/v1/')
             },
             'docs': ''.join(docs_url),
-            'software': 'BigchainDB',
+            'software': 'corechaindb',
             'version': version.__version__,
         })
 

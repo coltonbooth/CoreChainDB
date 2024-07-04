@@ -31,14 +31,14 @@ services:
       - ./pytest.ini:/usr/src/app/pytest.ini
       - ./tox.ini:/usr/src/app/tox.ini
     environment:
-      BIGCHAINDB_DATABASE_BACKEND: localmongodb
-      BIGCHAINDB_DATABASE_HOST: mongodb
-      BIGCHAINDB_DATABASE_PORT: 27017
-      BIGCHAINDB_SERVER_BIND: 0.0.0.0:9984
-      BIGCHAINDB_WSSERVER_HOST: 0.0.0.0
-      BIGCHAINDB_WSSERVER_ADVERTISED_HOST: corechaindb
-      BIGCHAINDB_TENDERMINT_HOST: tendermint
-      BIGCHAINDB_TENDERMINT_PORT: 26657
+      corechaindb_DATABASE_BACKEND: localmongodb
+      corechaindb_DATABASE_HOST: mongodb
+      corechaindb_DATABASE_PORT: 27017
+      corechaindb_SERVER_BIND: 0.0.0.0:9984
+      corechaindb_WSSERVER_HOST: 0.0.0.0
+      corechaindb_WSSERVER_ADVERTISED_HOST: corechaindb
+      corechaindb_TENDERMINT_HOST: tendermint
+      corechaindb_TENDERMINT_PORT: 26657
     ports:
       - "9984:9984"
       - "9985:9985"
@@ -72,7 +72,7 @@ services:
     image: appropriate/curl
     command: /bin/sh -c "curl -s http://corechaindb:9984/ > /dev/null && curl -s http://tendermint:26657/ > /dev/null"
 
-  # BigchainDB setup to do acceptance testing with Python
+  # corechaindb setup to do acceptance testing with Python
   python-acceptance:
     build:
       context: .
@@ -81,7 +81,7 @@ services:
       - ./acceptance/python/docs:/docs
       - ./acceptance/python/src:/src
     environment:
-      - BIGCHAINDB_ENDPOINT=corechaindb
+      - corechaindb_ENDPOINT=corechaindb
 
   # Build docs only
   # docker-compose build bdocs

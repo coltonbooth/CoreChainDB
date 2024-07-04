@@ -1,17 +1,17 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Introduction
 
-This directory contains the schemas for the different JSON documents BigchainDB uses.
+This directory contains the schemas for the different JSON documents corechaindb uses.
 
 The aim is to provide:
 
-- a strict definition of the data structures used in BigchainDB,
+- a strict definition of the data structures used in corechaindb,
 - a language-independent tool to validate the structure of incoming/outcoming
   data. (There are several ready to use
   [implementations](http://json-schema.org/implementations.html) written in
@@ -20,7 +20,7 @@ The aim is to provide:
 ## Sources
 
 The files defining the JSON Schema for transactions (`transaction_*.yaml`)
-are based on the [BigchainDB Transactions Specs](https://github.com/corechaindb/BEPs/tree/master/tx-specs).
+are based on the [corechaindb Transactions Specs](https://github.com/corechaindb/BEPs/tree/master/tx-specs).
 If you want to add a new transaction version,
 you must write a spec for it first.
 (You can't change the JSON Schema files for old versions.
@@ -28,7 +28,7 @@ Those were used to validate old transactions
 and are needed to re-check those transactions.)
 
 There used to be a file defining the JSON Schema for votes, named `vote.yaml`.
-It was used by BigchainDB version 1.3.0 and earlier.
+It was used by corechaindb version 1.3.0 and earlier.
 If you want a copy of the latest `vote.yaml` file,
 then you can get it from the version 1.3.0 release on GitHub, at
 [https://github.com/corechaindb/corechaindb/blob/v1.3.0/corechaindb/common/schema/vote.yaml](https://github.com/corechaindb/corechaindb/blob/v1.3.0/corechaindb/common/schema/vote.yaml).

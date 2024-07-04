@@ -1,32 +1,32 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
 .. _kubernetes-template-deploy-corechaindb-network:
 
-Kubernetes Template: Deploying a BigchainDB network
+Kubernetes Template: Deploying a corechaindb network
 ===================================================
 
 .. note::
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
    and your organization has people who know Kubernetes,
    then this Kubernetes deployment template might be helpful.
 
-This page describes how to deploy a static BigchainDB + Tendermint network.
+This page describes how to deploy a static corechaindb + Tendermint network.
 
-If you want to deploy a stand-alone BigchainDB node in a BigchainDB cluster,
-or a stand-alone BigchainDB node,
+If you want to deploy a stand-alone corechaindb node in a corechaindb cluster,
+or a stand-alone corechaindb node,
 then see :doc:`the page about that <node-on-kubernetes>`.
 
-We can use this guide to deploy a BigchainDB network in the following scenarios:
+We can use this guide to deploy a corechaindb network in the following scenarios:
 
 *  Single Azure Kubernetes Site.
 *  Multiple Azure Kubernetes Sites (Geographically dispersed).
@@ -35,11 +35,11 @@ We can use this guide to deploy a BigchainDB network in the following scenarios:
 Terminology Used
 ----------------
 
-``BigchainDB node`` is a set of Kubernetes components that join together to
-form a BigchainDB single node. Please refer to the :doc:`architecture diagram <architecture>`
+``corechaindb node`` is a set of Kubernetes components that join together to
+form a corechaindb single node. Please refer to the :doc:`architecture diagram <architecture>`
 for more details.
 
-``BigchainDB network`` will refer to a collection of nodes working together
+``corechaindb network`` will refer to a collection of nodes working together
 to form a network.
 
 
@@ -48,7 +48,7 @@ such as ``corechaindb/corechaindb-ext-conn-svc.yaml``. Those files are located i
 `corechaindb/corechaindb repository on GitHub
 <https://github.com/corechaindb/corechaindb/>`_ in the ``k8s/`` directory.
 Make sure you're getting those files from the appropriate Git branch on
-GitHub, i.e. the branch for the version of BigchainDB that your BigchainDB
+GitHub, i.e. the branch for the version of corechaindb that your corechaindb
 cluster is using.
 
 .. note::
@@ -59,7 +59,7 @@ cluster is using.
 .. note::
 
   Currently, we only support a static set of participants in the network.
-  Once a BigchainDB network is started with a certain number of validators
+  Once a corechaindb network is started with a certain number of validators
   and a genesis file. Users cannot add new validator nodes dynamically.
   You can track the progress of this funtionality on our
   `github repository <https://github.com/corechaindb/corechaindb/milestones>`_.
@@ -87,7 +87,7 @@ Lets assume we are deploying a 4 node cluster, your naming conventions could loo
       "mdb-instance-3",
       "mdb-instance-4"
     ],
-    "BigchainDB": [
+    "corechaindb": [
       "bdb-instance-1",
       "bdb-instance-2",
       "bdb-instance-3",
@@ -224,11 +224,11 @@ Deploy all your configuration maps and secrets.
 Single Site: Single Azure Kubernetes Cluster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the deployment of a BigchainDB network under a single cluster, we need to replicate
+For the deployment of a corechaindb network under a single cluster, we need to replicate
 the :doc:`deployment steps for each node <node-on-kubernetes>` N number of times, N being
 the number of participants in the network.
 
-In our Kubernetes deployment template for a single BigchainDB node, we covered the basic configurations
+In our Kubernetes deployment template for a single corechaindb node, we covered the basic configurations
 settings :ref:`here <how-to-configure-a-corechaindb-node>`.
 
 Since, we index the ConfigMap and Secret Keys for the single site deployment, we need to update
@@ -352,7 +352,7 @@ the ``mongo-node-1-ss.yaml`` and update the corresponding ConfigMapKeyRef.name o
             secretName: ca-auth-1 # Changed from ``ca-auth``
             defaultMode: 0400
 
-The above example is meant to be repeated for all the Kubernetes components of a BigchainDB node.
+The above example is meant to be repeated for all the Kubernetes components of a corechaindb node.
 
 * ``nginx-http/nginx-http-node-X-svc.yaml`` or ``nginx-https/nginx-https-node-X-svc.yaml``
 
@@ -382,7 +382,7 @@ The above example is meant to be repeated for all the Kubernetes components of a
 Multi Site: Multiple Azure Kubernetes Clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the multi site deployment of a BigchainDB network with geographically dispersed
+For the multi site deployment of a corechaindb network with geographically dispersed
 nodes, we need to replicate the :doc:`deployment steps for each node <node-on-kubernetes>` N number of times,
 N being the number of participants in the network.
 
@@ -408,7 +408,7 @@ described :ref:`above <pre-reqs-bdb-network>`:
 
 * :ref:`Start the MongoDB Kubernetes Service <start-the-mongodb-kubernetes-service>`.
 
-* :ref:`Start the BigchainDB Kubernetes Service <start-the-corechaindb-kubernetes-service>`.
+* :ref:`Start the corechaindb Kubernetes Service <start-the-corechaindb-kubernetes-service>`.
 
 * :ref:`Start the OpenResty Kubernetes Service <start-the-openresty-kubernetes-service>`.
 
@@ -418,15 +418,15 @@ Only for multi site deployments
 
 We need to make sure that clusters are able
 to talk to each other i.e. specifically the communication between the
-BigchainDB peers. Set up networking between the clusters using
+corechaindb peers. Set up networking between the clusters using
 `Kubernetes Services <https://kubernetes.io/docs/concepts/services-networking/service/>`_.
 
-Assuming we have a BigchainDB instance ``corechaindb-instance-1`` residing in Azure data center location ``westeurope`` and we
+Assuming we have a corechaindb instance ``corechaindb-instance-1`` residing in Azure data center location ``westeurope`` and we
 want to connect to ``corechaindb-instance-2``, ``corechaindb-instance-3``, and ``corechaindb-instance-4`` located in Azure data centers
 ``eastus``, ``centralus`` and ``westus``, respectively. Unless you already have explicitly set up networking for
 ``corechaindb-instance-1`` to communicate with ``corechaindb-instance-2/3/4`` and
 vice versa, we will have to add a Kubernetes Service in each cluster to accomplish this goal in order to set up a
-BigchainDB P2P network.
+corechaindb P2P network.
 It is similar to ensuring that there is a ``CNAME`` record in the DNS
 infrastructure to resolve ``corechaindb-instance-X`` to the host where it is actually available.
 We can do this in Kubernetes using a Kubernetes Service of ``type``
@@ -434,7 +434,7 @@ We can do this in Kubernetes using a Kubernetes Service of ``type``
 
 * This configuration is located in the file ``corechaindb/corechaindb-ext-conn-svc.yaml``.
 
-* Set the name of the ``metadata.name`` to the host name of the BigchainDB instance you are trying to connect to.
+* Set the name of the ``metadata.name`` to the host name of the corechaindb instance you are trying to connect to.
   For instance if you are configuring this service on cluster with ``corechaindb-instance-1`` then the ``metadata.name`` will
   be ``corechaindb-instance-2`` and vice versa.
 
@@ -466,7 +466,7 @@ naming convention described :ref:`above <pre-reqs-bdb-network>` and referring to
 * :ref:`Start the NGINX Kubernetes Deployment <start-the-nginx-deployment>`.
 
 
-Deploy Kubernetes StorageClasses for MongoDB and BigchainDB
+Deploy Kubernetes StorageClasses for MongoDB and corechaindb
 ------------------------------------------------------------
 
 Deploy the following StorageClasses for each node by following the naming convention
@@ -474,10 +474,10 @@ described :ref:`above <pre-reqs-bdb-network>`:
 
 * :ref:`Create Kubernetes Storage Classes for MongoDB <create-kubernetes-storage-class-mdb>`.
 
-* :ref:`Create Kubernetes Storage Classes for BigchainDB <create-kubernetes-storage-class>`.
+* :ref:`Create Kubernetes Storage Classes for corechaindb <create-kubernetes-storage-class>`.
 
 
-Deploy Kubernetes PersistentVolumeClaims for MongoDB and BigchainDB
+Deploy Kubernetes PersistentVolumeClaims for MongoDB and corechaindb
 --------------------------------------------------------------------
 
 Deploy the following services for each node by following the naming convention
@@ -485,7 +485,7 @@ described :ref:`above <pre-reqs-bdb-network>`:
 
 * :ref:`Create Kubernetes Persistent Volume Claims for MongoDB <create-kubernetes-persistent-volume-claim-mdb>`.
 
-* :ref:`Create Kubernetes Persistent Volume Claims for BigchainDB <create-kubernetes-persistent-volume-claim>`
+* :ref:`Create Kubernetes Persistent Volume Claims for corechaindb <create-kubernetes-persistent-volume-claim>`
 
 
 Deploy MongoDB Kubernetes StatefulSet
@@ -506,13 +506,13 @@ in the network by referring to the following section:
 * :ref:`Configure Users and Access Control for MongoDB <configure-users-and-access-control-mongodb>`.
 
 
-Start Kubernetes StatefulSet for BigchainDB
+Start Kubernetes StatefulSet for corechaindb
 -------------------------------------------
 
-Start the BigchainDB Kubernetes StatefulSet for each node by following the
+Start the corechaindb Kubernetes StatefulSet for each node by following the
 naming convention described :ref:`above <pre-reqs-bdb-network>` and referring to the following instructions:
 
-* :ref:`Start a Kubernetes Deployment for BigchainDB <start-kubernetes-stateful-set-bdb>`.
+* :ref:`Start a Kubernetes Deployment for corechaindb <start-kubernetes-stateful-set-bdb>`.
 
 
 Start Kubernetes Deployment for MongoDB Monitoring Agent
@@ -538,5 +538,5 @@ Verify and Test
 
 Verify and test your setup by referring to the following instructions:
 
-* :ref:`Verify the BigchainDB Node Setup <verify-and-test-bdb>`.
+* :ref:`Verify the corechaindb Node Setup <verify-and-test-bdb>`.
 

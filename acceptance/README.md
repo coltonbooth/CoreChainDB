@@ -1,14 +1,14 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Acceptance test suite
-This directory contains the acceptance test suite for BigchainDB.
+This directory contains the acceptance test suite for corechaindb.
 
-The suite uses Docker Compose to set up a single BigchainDB node, run all tests, and finally stop the node. In the future we will add support for a four node network setup.
+The suite uses Docker Compose to set up a single corechaindb node, run all tests, and finally stop the node. In the future we will add support for a four node network setup.
 
 ## Running the tests
 It should be as easy as `make test-acceptance`.

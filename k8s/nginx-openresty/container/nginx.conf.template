@@ -31,7 +31,7 @@ http {
   resolver DNS_SERVER valid=30s ipv6=off;
 
   map $remote_addr $bdb_backend {
-    default BIGCHAINDB_BACKEND_HOST;
+    default corechaindb_BACKEND_HOST;
   }
 
   upstream backend_SERVICE_ID {
@@ -107,7 +107,7 @@ http {
       # We do not need the GET handling here as it's done in the other NGINX
       # module
       #if ($request_method = GET ) {
-      #  proxy_pass http://$bdb_backend:BIGCHAINDB_API_PORT;
+      #  proxy_pass http://$bdb_backend:corechaindb_API_PORT;
       #}
 
       if ($request_method = POST ) {
@@ -181,7 +181,7 @@ http {
       # we don't want nginx trying to do something clever with
       # redirects, we set the Host: header above already.
       proxy_redirect off;
-      proxy_pass http://$bdb_backend:BIGCHAINDB_API_PORT;
+      proxy_pass http://$bdb_backend:corechaindb_API_PORT;
 
       # limit requests from the same client, allow `burst` to 20 r/s on avg,
       # `nodelay` or drop connection immediately in case it exceeds this

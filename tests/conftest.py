@@ -48,7 +48,7 @@ def pytest_addoption(parser):
     parser.addoption(
         '--database-backend',
         action='store',
-        default=os.environ.get('BIGCHAINDB_DATABASE_BACKEND', 'localmongodb'),
+        default=os.environ.get('corechaindb_DATABASE_BACKEND', 'localmongodb'),
         help='Defines the backend to use (available: {})'.format(backends),
     )
 
@@ -56,8 +56,8 @@ def pytest_addoption(parser):
 def pytest_configure(config):
     config.addinivalue_line(
         'markers',
-        'bdb(): Mark the test as needing BigchainDB.'
-        'BigchainDB will be configured such that the database and tables are available for an '
+        'bdb(): Mark the test as needing corechaindb.'
+        'corechaindb will be configured such that the database and tables are available for an '
         'entire test session.'
         'You need to run a backend (e.g. MongoDB) '
         'prior to running tests with this marker. You should not need to restart the backend '
@@ -242,8 +242,8 @@ def a():
 
 @pytest.fixture
 def b():
-    from corechaindb import BigchainDB
-    return BigchainDB()
+    from corechaindb import corechaindb
+    return corechaindb()
 
 
 @pytest.fixture
@@ -392,12 +392,12 @@ def db_context(db_config, db_host, db_port, db_name, db_conn):
 
 @pytest.fixture
 def tendermint_host():
-    return os.getenv('BIGCHAINDB_TENDERMINT_HOST', 'localhost')
+    return os.getenv('corechaindb_TENDERMINT_HOST', 'localhost')
 
 
 @pytest.fixture
 def tendermint_port():
-    return int(os.getenv('BIGCHAINDB_TENDERMINT_PORT', 26657))
+    return int(os.getenv('corechaindb_TENDERMINT_PORT', 26657))
 
 
 @pytest.fixture

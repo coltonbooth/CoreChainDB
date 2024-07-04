@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -14,9 +14,9 @@ The WebSocket Event Stream API
     default port for the Web API is `9984`, while the one for the Event Stream
     is `9985`.
 
-BigchainDB provides real-time event streams over the WebSocket protocol with
+corechaindb provides real-time event streams over the WebSocket protocol with
 the Event Stream API.
-Connecting to an event stream from your application enables a BigchainDB node
+Connecting to an event stream from your application enables a corechaindb node
 to notify you as events occur, such as new `valid transactions <#valid-transactions>`_.
 
 
@@ -61,21 +61,21 @@ Streams
 -------
 
 Each stream is meant as a unidirectional communication channel, where the
-BigchainDB node is the only party sending messages. Any messages sent to the
-BigchainDB node will be ignored.
+corechaindb node is the only party sending messages. Any messages sent to the
+corechaindb node will be ignored.
 
 Streams will always be under the WebSocket protocol (so ``ws://`` or
 ``wss://``) and accessible as extensions to the ``/api/v<version>/streams/``
 API root URL (for example, valid transactions
 would be accessible under ``/api/v1/streams/valid_transactions``). If you're
-running your own BigchainDB instance and need help determining its root URL,
+running your own corechaindb instance and need help determining its root URL,
 then see the page titled :ref:`determining-the-api-root-url`.
 
 All messages sent in a stream are in the JSON format.
 
 .. note::
 
-    For simplicity, BigchainDB initially only provides a stream for all
+    For simplicity, corechaindb initially only provides a stream for all
     committed transactions. In the future, we may provide streams for other
     information. We may
     also provide the ability to filter the stream for specific qualities, such
@@ -106,5 +106,5 @@ Example message:
 
 .. note::
 
-    Transactions in BigchainDB are committed in batches ("blocks") and will,
+    Transactions in corechaindb are committed in batches ("blocks") and will,
     therefore, be streamed in batches.

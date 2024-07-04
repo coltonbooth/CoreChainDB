@@ -13,7 +13,7 @@ POISON_PILL = 'POISON_PILL'
 
 class EventTypes:
     """Container class that holds all the possible
-    events BigchainDB manages.
+    events corechaindb manages.
     """
 
     # If you add a new Event Type, make sure to add it

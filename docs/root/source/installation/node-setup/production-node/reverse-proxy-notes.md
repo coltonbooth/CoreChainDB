@@ -1,6 +1,6 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
@@ -14,18 +14,18 @@ You may want to:
 * block requests with an HTTP request body that's too large, or
 * enable HTTPS (TLS) between your users and your node.
 
-While we could have built all that into BigchainDB Server,
+While we could have built all that into corechaindb Server,
 we didn't, because you can do all that (and more)
 using a reverse proxy such as NGINX or HAProxy.
-(You would put it in front of your BigchainDB Server,
+(You would put it in front of your corechaindb Server,
 so that all inbound HTTP requests would arrive
 at the reverse proxy before *maybe* being proxied
-onwards to your BigchainDB Server.)
+onwards to your corechaindb Server.)
 For detailed instructions, see the documentation
 for your reverse proxy.
 
 Below, we note how a reverse proxy can be used
-to do some BigchainDB-specific things.
+to do some corechaindb-specific things.
 
 You may also be interested in
 [our NGINX configuration file template](https://github.com/corechaindb/nginx_3scale/blob/master/nginx.conf.template)
@@ -34,7 +34,7 @@ You may also be interested in
 
 ## Enforcing a Max Transaction Size
 
-The BigchainDB HTTP API has several endpoints,
+The corechaindb HTTP API has several endpoints,
 but only one of them, the `POST /transactions` endpoint,
 expects a non-empty HTTP request body:
 the transaction being submitted by the user.

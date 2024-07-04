@@ -1,11 +1,11 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-## Deploying the BigchainDB Web Proxy on a Kubernetes Cluster
+## Deploying the corechaindb Web Proxy on a Kubernetes Cluster
 
 
 ### Configure the Web Proxy
@@ -19,7 +19,7 @@ kubectl apply -f nginx-https-web-proxy-conf.yaml
 ```
 
 
-### Start the Kubernetes Service for BigchainDB Web Proxy
+### Start the Kubernetes Service for corechaindb Web Proxy
 
 * Use the command below to start the Kubernetes Service:
 ```
@@ -32,7 +32,7 @@ kubectl apply -f nginx-https-web-proxy-svc.yaml
   any other DNS service provider!)
 
 
-### Start the Kubernetes Deployment for BigchainDB Web Proxy
+### Start the Kubernetes Deployment for corechaindb Web Proxy
 
 * Use the command below to start the Kubernetes Deployment:
 ```

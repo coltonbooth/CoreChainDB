@@ -5,7 +5,7 @@
 
 """Utils for reading and setting configuration settings.
 
-The value of each BigchainDB Server configuration setting is
+The value of each corechaindb Server configuration setting is
 determined according to the following rules:
 
 * If it's set by an environment variable, then use that value
@@ -36,11 +36,11 @@ logging.getLogger('requests').setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 CONFIG_DEFAULT_PATH = os.environ.setdefault(
-    'BIGCHAINDB_CONFIG_PATH',
+    'corechaindb_CONFIG_PATH',
     os.path.join(os.path.expanduser('~'), '.corechaindb'),
 )
 
-CONFIG_PREFIX = 'BIGCHAINDB'
+CONFIG_PREFIX = 'corechaindb'
 CONFIG_SEP = '_'
 
 
@@ -125,10 +125,10 @@ def env_config(config):
     a matching env variable. If an env variable is found, the func updates
     the configuration with that value.
 
-    The name of the env variable is built combining a prefix (``BIGCHAINDB``)
+    The name of the env variable is built combining a prefix (``corechaindb``)
     with the path to the value. If the ``config`` in input is:
     ``{'database': {'host': 'localhost'}}``
-    this function will try to read the env variable ``BIGCHAINDB_DATABASE_HOST``.
+    this function will try to read the env variable ``corechaindb_DATABASE_HOST``.
     """
 
     def load_from_env(value, path):

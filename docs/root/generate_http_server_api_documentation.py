@@ -132,7 +132,7 @@ def main():
     # tx create
     privkey = 'CfdqtD7sS7FgkMoGPXw55MVGGFwQLAoHYTcBhZDtF99Z'
     pubkey = '4K9sWUMFwTgaDGPfdynrbxWqWS6sWmKbZoTjxLtVUibD'
-    asset = {'msg': 'Hello BigchainDB!'}
+    asset = {'msg': 'Hello corechaindb!'}
     tx = Transaction.create([pubkey], [([pubkey], 1)], asset=asset, metadata={'sequence': 0})
     tx = tx.sign([privkey])
     ctx['tx'] = pretty_json(tx.to_dict())

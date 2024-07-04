@@ -31,7 +31,7 @@ ASSET_DEFINITION = {
 }
 
 DATA = {
-    'msg': 'Hello BigchainDB!'
+    'msg': 'Hello corechaindb!'
 }
 
 
@@ -198,7 +198,7 @@ def unfulfilled_transaction():
     return {
         'asset': {
             'data': {
-                'msg': 'Hello BigchainDB!',
+                'msg': 'Hello corechaindb!',
             }
         },
         'id': None,
@@ -233,7 +233,7 @@ def fulfilled_transaction():
     return {
         'asset': {
             'data': {
-                'msg': 'Hello BigchainDB!',
+                'msg': 'Hello corechaindb!',
             }
         },
         'id': None,
@@ -279,7 +279,7 @@ def tri_state_transaction(request):
     tx = {
         'asset': {
             'data': {
-                'msg': 'Hello BigchainDB!',
+                'msg': 'Hello corechaindb!',
             }
         },
         'id': None,

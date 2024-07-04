@@ -1,32 +1,32 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Basic usage
 
-## Transactions in BigchainDB
+## Transactions in corechaindb
 
-In BigchainDB, _transactions_ are used to register, issue, create or transfer
+In corechaindb, _transactions_ are used to register, issue, create or transfer
 things (e.g. assets).
 
-Transactions are the most basic kind of record stored by BigchainDB. There are
+Transactions are the most basic kind of record stored by corechaindb. There are
 two kinds: CREATE transactions and TRANSFER transactions.
 
 You can view the transaction specifications in Github, which describe transaction components and the conditions they have to fulfill in order to be valid. 
 
-[BigchainDB Transactions Specs](https://github.com/corechaindb/BEPs/tree/master/13/)
+[corechaindb Transactions Specs](https://github.com/corechaindb/BEPs/tree/master/13/)
 
 ### CREATE Transactions
 
 A CREATE transaction can be used to register, issue, create or otherwise
-initiate the history of a single thing (or asset) in BigchainDB. For example,
+initiate the history of a single thing (or asset) in corechaindb. For example,
 one might register an identity or a creative work. The things are often called
 "assets" but they might not be literal assets.
 
-BigchainDB supports divisible assets as of BigchainDB Server v0.8.0.
+corechaindb supports divisible assets as of corechaindb Server v0.8.0.
 That means you can create/register an asset with an initial number of "shares."
 For example, A CREATE transaction could register a truckload of 50 oak trees.
 Each share of a divisible asset must be interchangeable with each other share;
@@ -40,15 +40,15 @@ and the other output might have 15 oak trees for another set of owners.
 
 Each output also has an associated condition: the condition that must be met
 (by a TRANSFER transaction) to transfer/spend the output.
-BigchainDB supports a variety of conditions.
+corechaindb supports a variety of conditions.
 For details, see
 the section titled **Transaction Components: Conditions**
 in the relevant
-[BigchainDB Transactions Spec](https://github.com/corechaindb/BEPs/tree/master/13/).
+[corechaindb Transactions Spec](https://github.com/corechaindb/BEPs/tree/master/13/).
 
-![Example BigchainDB CREATE transaction](./_static/CREATE_example.png)
+![Example corechaindb CREATE transaction](./_static/CREATE_example.png)
 
-Above we see a diagram of an example BigchainDB CREATE transaction.
+Above we see a diagram of an example corechaindb CREATE transaction.
 It has one output: Pam owns/controls three shares of the asset
 and there are no other shares (because there are no other outputs).
 
@@ -58,7 +58,7 @@ Loosely speaking, that list might be interpreted as the list of "owners."
 A more accurate word might be fulfillers, signers, controllers,
 or transfer-enablers.
 See the section titled **A Note about Owners**
-in the relevant [BigchainDB Transactions Spec](https://github.com/corechaindb/BEPs/tree/master/13/).
+in the relevant [corechaindb Transactions Spec](https://github.com/corechaindb/BEPs/tree/master/13/).
 
 A CREATE transaction must be signed by all the owners.
 (If you're looking for that signature,
@@ -81,9 +81,9 @@ just like a CREATE transaction (described above).
 The total number of shares coming in on the inputs must equal
 the total number of shares going out on the outputs.
 
-![Example BigchainDB transactions](./_static/CREATE_and_TRANSFER_example.png)
+![Example corechaindb transactions](./_static/CREATE_and_TRANSFER_example.png)
 
-Above we see a diagram of two example BigchainDB transactions,
+Above we see a diagram of two example corechaindb transactions,
 a CREATE transaction and a TRANSFER transaction.
 The CREATE transaction is the same as in the earlier diagram.
 The TRANSFER transaction spends Pam's output,
@@ -119,13 +119,13 @@ of the outgoing paperclips (100).
 ### Transaction Validity
 
 When a node is asked to check if a transaction is valid, it checks several
-things. We documented those things in a post on *The BigchainDB Blog*:
-["What is a Valid Transaction in BigchainDB?"](https://blog.corechaindb.com/what-is-a-valid-transaction-in-corechaindb-9a1a075a9598)
-(Note: That post was about BigchainDB Server v1.0.0.)
+things. We documented those things in a post on *The corechaindb Blog*:
+["What is a Valid Transaction in corechaindb?"](https://blog.corechaindb.com/what-is-a-valid-transaction-in-corechaindb-9a1a075a9598)
+(Note: That post was about corechaindb Server v1.0.0.)
 
 ### Example Transactions
 
-There are example BigchainDB transactions in
+There are example corechaindb transactions in
 [the HTTP API documentation](./installation/api/http-client-server-api)
 and
 [the Python Driver documentation](./drivers/index).

@@ -3,12 +3,12 @@
 # SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
-"""Generic backend database interfaces expected by BigchainDB.
+"""Generic backend database interfaces expected by corechaindb.
 
-The interfaces in this module allow BigchainDB to be agnostic about its
-database backend. One can configure BigchainDB to use different databases as
+The interfaces in this module allow corechaindb to be agnostic about its
+database backend. One can configure corechaindb to use different databases as
 its data store by setting the ``database.backend`` property in the
-configuration or the ``BIGCHAINDB_DATABASE_BACKEND`` environment variable.
+configuration or the ``corechaindb_DATABASE_BACKEND`` environment variable.
 """
 
 # Include the backend interfaces

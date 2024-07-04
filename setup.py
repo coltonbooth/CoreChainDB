@@ -4,7 +4,7 @@
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
 """
-BigchainDB: The Blockchain Database
+corechaindb: The Blockchain Database
 
 For full docs visit https://docs.corechaindb.com
 
@@ -96,21 +96,21 @@ if sys.version_info < (3, 6):
     install_requires.append('pysha3~=1.0.2')
 
 setup(
-    name='BigchainDB',
+    name='corechaindb',
     version=version['__version__'],
-    description='BigchainDB: The Blockchain Database',
+    description='corechaindb: The Blockchain Database',
     long_description=(
-        "BigchainDB allows developers and enterprises to deploy blockchain "
+        "corechaindb allows developers and enterprises to deploy blockchain "
         "proof-of-concepts, platforms and applications with a blockchain "
-        "database. BigchainDB supports a wide range of industries and use cases "
+        "database. corechaindb supports a wide range of industries and use cases "
         "from identity and intellectual property to supply chains, energy, IoT "
         "and financial ecosystems. With high throughput, low latency, powerful "
         "query functionality, decentralized control, immutable data storage and "
-        "built-in asset support, BigchainDB is like a database with blockchain "
+        "built-in asset support, corechaindb is like a database with blockchain "
         "characteristics."
         ),
-    url='https://github.com/BigchainDB/corechaindb/',
-    author='BigchainDB Contributors',
+    url='https://github.com/corechaindb/corechaindb/',
+    author='corechaindb Contributors',
     author_email='contact@ipdb.global',
     license='Apache Software License 2.0',
     zip_safe=False,

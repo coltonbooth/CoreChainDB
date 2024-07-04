@@ -76,7 +76,7 @@ def connect(backend=None, host=None, port=None, name=None, max_tries=None,
         Class = getattr(import_module(module_name), class_name)
     except KeyError:
         raise ConfigurationError('Backend `{}` is not supported. '
-                                 'BigchainDB currently supports {}'.format(backend, BACKENDS.keys()))
+                                 'corechaindb currently supports {}'.format(backend, BACKENDS.keys()))
     except (ImportError, AttributeError) as exc:
         raise ConfigurationError('Error loading backend `{}`'.format(backend)) from exc
 

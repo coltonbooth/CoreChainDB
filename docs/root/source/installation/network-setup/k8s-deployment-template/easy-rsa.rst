@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -73,13 +73,13 @@ The comments in the file explain what each of the variables mean.
    echo 'set_var EASYRSA_REQ_COUNTRY "DE"' >> vars
    echo 'set_var EASYRSA_REQ_PROVINCE "Berlin"' >> vars
    echo 'set_var EASYRSA_REQ_CITY "Berlin"' >> vars
-   echo 'set_var EASYRSA_REQ_ORG "BigchainDB GmbH"' >> vars
+   echo 'set_var EASYRSA_REQ_ORG "corechaindb GmbH"' >> vars
    echo 'set_var EASYRSA_REQ_OU "IT"' >> vars
    echo 'set_var EASYRSA_REQ_EMAIL "contact@ipdb.global"' >> vars
 
 Note: Later, when building a CA or generating a certificate signing request, you will be prompted to enter a value for the OU (or to accept the default). You should change the default OU from ``IT`` to one of the following, as appropriate:
 ``ROOT-CA``,
-``MongoDB-Instance``, ``BigchainDB-Instance``, ``MongoDB-Mon-Instance`` or
+``MongoDB-Instance``, ``corechaindb-Instance``, ``MongoDB-Mon-Instance`` or
 ``MongoDB-Backup-Instance``.
 To understand why, see `the MongoDB Manual <https://docs.mongodb.com/manual/tutorial/configure-x509-client-authentication/>`_.
 There are reminders to do this in the relevant docs.

@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -13,7 +13,7 @@ Overview
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
@@ -21,15 +21,15 @@ Overview
    then this Kubernetes deployment template might be helpful.
 
 This page summarizes some steps to go through
-to set up a BigchainDB network.
+to set up a corechaindb network.
 You can modify them to suit your needs.
 
 .. _generate-the-blockchain-id-and-genesis-time:
 
-Generate All Shared BigchainDB Setup Parameters
+Generate All Shared corechaindb Setup Parameters
 -----------------------------------------------
 
-There are some shared BigchainDB setup paramters that every node operator
+There are some shared corechaindb setup paramters that every node operator
 in the consortium shares
 because they are properties of the Tendermint network.
 They look like this:
@@ -82,7 +82,7 @@ You should see something that looks like:
 The value with ``"genesis_time"`` is ``BDB_GENESIS_TIME`` and
 the value with ``"chain_id"`` is ``BDB_CHAIN_ID``.
 
-Now you have all the BigchainDB setup parameters and can share them
+Now you have all the corechaindb setup parameters and can share them
 with all of the node operators. (They will put them in their ``vars`` file.
 We'll say more about that file below.)
 
@@ -93,11 +93,11 @@ Things Each Node Operator Must Do
 ---------------------------------
 
 1. Make up an `FQDN <https://en.wikipedia.org/wiki/Fully_qualified_domain_name>`_
-for your BigchainDB node (e.g. ``mynode.mycorp.com``).
-This is where external users will access the BigchainDB HTTP API, for example.
+for your corechaindb node (e.g. ``mynode.mycorp.com``).
+This is where external users will access the corechaindb HTTP API, for example.
 Make sure you've registered the associated domain name (e.g. ``mycorp.com``).
 
-Get an SSL certificate for your BigchainDB node's FQDN.
+Get an SSL certificate for your corechaindb node's FQDN.
 Also get the root CA certificate and all intermediate certificates.
 They should all be provided by your SSL certificate provider.
 Put all those certificates together in one certificate chain file in the following order:
@@ -111,41 +111,41 @@ DigiCert has `a web page explaining certificate chains <https://www.digicert.com
 You will put the path to that certificate chain file in the ``vars`` file,
 when you configure your node later.
 
-2a. If your BigchainDB node will use 3scale for API authentication, monitoring and billing,
+2a. If your corechaindb node will use 3scale for API authentication, monitoring and billing,
 you will need all relevant 3scale settings and credentials.
 
-2b. If your BigchainDB node will not use 3scale, then write authorization will be granted
+2b. If your corechaindb node will not use 3scale, then write authorization will be granted
 to all POST requests with a secret token in the HTTP headers.
 (All GET requests are allowed to pass.)
 You can make up that ``SECRET_TOKEN`` now.
 For example, ``superSECRET_token4-POST*requests``.
 You will put it in the ``vars`` file later.
-Every BigchainDB node in a BigchainDB network can have a different secret token.
-To make an HTTP POST request to your BigchainDB node,
+Every corechaindb node in a corechaindb network can have a different secret token.
+To make an HTTP POST request to your corechaindb node,
 you must include an HTTP header named ``X-Secret-Access-Token``
 and set it equal to your secret token, e.g.
 
 ``X-Secret-Access-Token: superSECRET_token4-POST*requests``
 
 
-3. Deploy a Kubernetes cluster for your BigchainDB node. We have some instructions for how to
+3. Deploy a Kubernetes cluster for your corechaindb node. We have some instructions for how to
 :doc:`Deploy a Kubernetes cluster on Azure <../k8s-deployment-template/template-kubernetes-azure>`.
 
 .. warning::
 
-   In theory, you can deploy your BigchainDB node to any Kubernetes cluster, but there can be differences
+   In theory, you can deploy your corechaindb node to any Kubernetes cluster, but there can be differences
    between different Kubernetes clusters, especially if they are running different versions of Kubernetes.
    We tested this Kubernetes Deployment Template on Azure ACS in February 2018 and at that time
    ACS was deploying a **Kubernetes 1.7.7** cluster. If you can force your cluster to have that version of Kubernetes,
    then you'll increase the likelihood that everything will work.
 
-4. Deploy your BigchainDB node inside your new Kubernetes cluster.
+4. Deploy your corechaindb node inside your new Kubernetes cluster.
 You will fill up the ``vars`` file,
 then you will run a script which reads that file to generate some Kubernetes config files,
 you will send those config files to your Kubernetes cluster,
-and then you will deploy all the stuff that you need to have a BigchainDB node.
+and then you will deploy all the stuff that you need to have a corechaindb node.
 
-⟶ Proceed to :ref:`deploy your BigchainDB node <kubernetes-template-deploy-a-single-corechaindb-node>`.
+⟶ Proceed to :ref:`deploy your corechaindb node <kubernetes-template-deploy-a-single-corechaindb-node>`.
 
 .. raw:: html
 

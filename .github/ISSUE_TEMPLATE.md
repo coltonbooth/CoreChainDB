@@ -2,14 +2,14 @@
 
 - make a bug report? Then read below about what should go in a bug report.
 - make a feature request or proposal? Then read [the page about how to make a feature request or proposal](https://docs.corechaindb.com/projects/contributing/en/latest/ways-can-contribute/make-a-feature-request-or-proposal.html).
-- ask a question about BigchainDB? Then [go to Gitter](https://gitter.im/corechaindb/corechaindb) (our chat room) and ask it there.
+- ask a question about corechaindb? Then [go to Gitter](https://gitter.im/corechaindb/corechaindb) (our chat room) and ask it there.
 - share your neat idea or realization? Then [go to Gitter](https://gitter.im/corechaindb/corechaindb) (our chat room) and share it there.
 
 # What Should Go in a Bug Report
 
 - What computer are you on (hardware)?
 - What operating system are you using, including version. e.g. Ubuntu 14.04? Fedora 23?
-- What version of BigchainDB software were you using? Is that the latest version?
+- What version of corechaindb software were you using? Is that the latest version?
 - What, exactly, did you do to get to the point where you got stuck? Describe all the steps so we can get there too. Show screenshots or copy-and-paste text to GitHub.
 - Show what actually happened.
 - Say what you tried to do to resolve the problem.

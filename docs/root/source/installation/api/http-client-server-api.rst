@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -10,20 +10,20 @@ The HTTP Client-Server API
 ==========================
 
 This page assumes you already know an API Root URL
-for a BigchainDB node or reverse proxy.
+for a corechaindb node or reverse proxy.
 It should be something like ``https://example.com:9984``
 or ``https://12.34.56.78:9984``.
 
-If you set up a BigchainDB node or reverse proxy yourself,
+If you set up a corechaindb node or reverse proxy yourself,
 and you're not sure what the API Root URL is,
 then see the last section of this page for help.
 
 .. _corechaindb-root-url:
 
-BigchainDB Root URL
+corechaindb Root URL
 -------------------
 
-If you send an HTTP GET request to the BigchainDB Root URL
+If you send an HTTP GET request to the corechaindb Root URL
 e.g. ``http://localhost:9984``
 or ``https://example.com:9984``
 (with no ``/api/v1/`` on the end),
@@ -43,7 +43,7 @@ If you send an HTTP GET request to the API Root Endpoint
 e.g. ``http://localhost:9984/api/v1/``
 or ``https://example.com:9984/api/v1/``,
 then you should get an HTTP response
-that allows you to discover the BigchainDB API endpoints:
+that allows you to discover the corechaindb API endpoints:
 
 .. literalinclude:: http-samples/api-index-response.http
     :language: http
@@ -55,11 +55,11 @@ Transactions Endpoint
 .. note::
 
    If you want to do more sophisticated queries
-   than those provided by the BigchainDB HTTP API,
+   than those provided by the corechaindb HTTP API,
    then one option is to connect to MongoDB directly (if possible)
    and do whatever queries MongoDB allows.
    For more about that option, see
-   `the page about querying BigchainDB <https://docs.corechaindb.com/en/latest/query.html>`_.
+   `the page about querying corechaindb <https://docs.corechaindb.com/en/latest/query.html>`_.
 
 .. http:get:: /api/v1/transactions/{transaction_id}
 
@@ -137,12 +137,12 @@ Transactions Endpoint
 
 .. http:post:: /api/v1/transactions?mode={mode}
 
-   This endpoint is used to send a transaction to a BigchainDB network.
+   This endpoint is used to send a transaction to a corechaindb network.
    The transaction is put in the body of the request.
 
    :query string mode: (Optional) One of the three supported modes to send a transaction: ``async``, ``sync``, ``commit``. The default is ``async``.
 
-   Once the posted transaction arrives at a BigchainDB node,
+   Once the posted transaction arrives at a corechaindb node,
    that node will check to see if the transaction is valid.
    If it's invalid, the node will return an HTTP 400 (error).
    Otherwise, the node will send the transaction to Tendermint (in the same node) using the
@@ -153,9 +153,9 @@ Transactions Endpoint
    `Tendermint's broadcast API
    <https://tendermint.com/docs/tendermint-core/using-tendermint.html#broadcast-api>`_.
    ``mode=async`` means the HTTP response will come back immediately,
-   before Tendermint asks BigchainDB Server to check the validity of the transaction (a second time).
+   before Tendermint asks corechaindb Server to check the validity of the transaction (a second time).
    ``mode=sync`` means the HTTP response will come back
-   after Tendermint gets a response from BigchainDB Server
+   after Tendermint gets a response from corechaindb Server
    regarding the validity of the transaction.
    ``mode=commit`` means the HTTP response will come back once the transaction
    is in a committed block.
@@ -163,19 +163,19 @@ Transactions Endpoint
    .. note::
        In the async and sync modes, after a successful HTTP response is returned, the transaction may still be rejected later on. All the transactions are recorded internally by Tendermint in WAL (Write-Ahead Log) before the HTTP response is returned. Nevertheless, the following should be noted:
 
-       - Transactions in WAL including the failed ones are not exposed in any of the BigchainDB or Tendermint APIs.
+       - Transactions in WAL including the failed ones are not exposed in any of the corechaindb or Tendermint APIs.
        - Transactions are never fetched from WAL. WAL is never replayed.
        - A critical failure (e.g. the system is out of disk space) may occur preventing transactions from being stored in WAL, even when the HTTP response indicates a success.
-       - If a transaction fails the validation because it conflicts with the other transactions of the same block, Tendermint includes it into its block, but BigchainDB does not store these transactions and does not offer any information about them in the APIs.
+       - If a transaction fails the validation because it conflicts with the other transactions of the same block, Tendermint includes it into its block, but corechaindb does not store these transactions and does not offer any information about them in the APIs.
 
    .. note::
 
        The posted transaction should be valid.
        The relevant
-       `BigchainDB Transactions Spec <https://github.com/corechaindb/BEPs/tree/master/tx-specs/>`_
+       `corechaindb Transactions Spec <https://github.com/corechaindb/BEPs/tree/master/tx-specs/>`_
        explains how to build a valid transaction
        and how to check if a transaction is valid.
-       One would normally use a driver such as the `BigchainDB Python Driver
+       One would normally use a driver such as the `corechaindb Python Driver
        <https://docs.corechaindb.com/projects/py-driver/en/latest/index.html>`_
        to build a valid transaction.
 
@@ -219,11 +219,11 @@ unspent outputs.
 .. note::
 
    If you want to do more sophisticated queries
-   than those provided by the BigchainDB HTTP API,
+   than those provided by the corechaindb HTTP API,
    then one option is to connect to MongoDB directly (if possible)
    and do whatever queries MongoDB allows.
    For more about that option, see
-   `the page about querying BigchainDB <https://docs.corechaindb.com/en/latest/query.html>`_.
+   `the page about querying corechaindb <https://docs.corechaindb.com/en/latest/query.html>`_.
 
 .. http:get:: /api/v1/outputs
 
@@ -337,11 +337,11 @@ Assets
 .. note::
 
    If you want to do more sophisticated queries
-   than those provided by the BigchainDB HTTP API,
+   than those provided by the corechaindb HTTP API,
    then one option is to connect to MongoDB directly (if possible)
    and do whatever queries MongoDB allows.
    For more about that option, see
-   `the page about querying BigchainDB <https://docs.corechaindb.com/en/latest/query.html>`_.
+   `the page about querying corechaindb <https://docs.corechaindb.com/en/latest/query.html>`_.
 
 .. http:get:: /api/v1/assets
 
@@ -389,15 +389,15 @@ Assets
 
         [
             {
-                "data": {"msg": "Hello BigchainDB 1!"},
+                "data": {"msg": "Hello corechaindb 1!"},
                 "id": "51ce82a14ca274d43e4992bbce41f6fdeb755f846e48e710a3bbb3b0cf8e4204"
             },
             {
-                "data": {"msg": "Hello BigchainDB 2!"},
+                "data": {"msg": "Hello corechaindb 2!"},
                 "id": "b4e9005fa494d20e503d916fa87b74fe61c079afccd6e084260674159795ee31"
             },
             {
-                "data": {"msg": "Hello BigchainDB 3!"},
+                "data": {"msg": "Hello corechaindb 3!"},
                 "id": "fa6bcb6a8fdea3dc2a860fcdc0e0c63c9cf5b25da8b02a4db4fb6a2d36d27791"
             }
         ]
@@ -438,11 +438,11 @@ Assets
 
     [
         {
-            "data": {"msg": "Hello BigchainDB 1!"},
+            "data": {"msg": "Hello corechaindb 1!"},
             "id": "51ce82a14ca274d43e4992bbce41f6fdeb755f846e48e710a3bbb3b0cf8e4204"
         },
         {
-            "data": {"msg": "Hello BigchainDB 2!"},
+            "data": {"msg": "Hello corechaindb 2!"},
             "id": "b4e9005fa494d20e503d916fa87b74fe61c079afccd6e084260674159795ee31"
         },
     ]
@@ -461,11 +461,11 @@ Transaction Metadata
 .. note::
 
    If you want to do more sophisticated queries
-   than those provided by the BigchainDB HTTP API,
+   than those provided by the corechaindb HTTP API,
    then one option is to connect to MongoDB directly (if possible)
    and do whatever queries MongoDB allows.
    For more about that option, see
-   `the page about querying BigchainDB <https://docs.corechaindb.com/en/latest/query.html>`_.
+   `the page about querying corechaindb <https://docs.corechaindb.com/en/latest/query.html>`_.
 
 .. http:get:: /api/v1/metadata
 
@@ -513,15 +513,15 @@ Transaction Metadata
 
         [
             {
-                "metadata": {"metakey1": "Hello BigchainDB 1!"},
+                "metadata": {"metakey1": "Hello corechaindb 1!"},
                 "id": "51ce82a14ca274d43e4992bbce41f6fdeb755f846e48e710a3bbb3b0cf8e4204"
             },
             {
-                "metadata": {"metakey2": "Hello BigchainDB 2!"},
+                "metadata": {"metakey2": "Hello corechaindb 2!"},
                 "id": "b4e9005fa494d20e503d916fa87b74fe61c079afccd6e084260674159795ee31"
             },
             {
-                "metadata": {"metakey3": "Hello BigchainDB 3!"},
+                "metadata": {"metakey3": "Hello corechaindb 3!"},
                 "id": "fa6bcb6a8fdea3dc2a860fcdc0e0c63c9cf5b25da8b02a4db4fb6a2d36d27791"
             }
         ]
@@ -562,11 +562,11 @@ Transaction Metadata
 
     [
         {
-            "metadata": {"msg": "Hello BigchainDB 1!"},
+            "metadata": {"msg": "Hello corechaindb 1!"},
             "id": "51ce82a14ca274d43e4992bbce41f6fdeb755f846e48e710a3bbb3b0cf8e4204"
         },
         {
-            "metadata": {"msg": "Hello BigchainDB 2!"},
+            "metadata": {"msg": "Hello corechaindb 2!"},
             "id": "b4e9005fa494d20e503d916fa87b74fe61c079afccd6e084260674159795ee31"
         },
     ]
@@ -703,7 +703,7 @@ Blocks
 Determining the API Root URL
 ----------------------------
 
-When you start BigchainDB Server using ``corechaindb start``,
+When you start corechaindb Server using ``corechaindb start``,
 an HTTP API is exposed at some address. The default is:
 
 ``http://localhost:9984/api/v1/``
@@ -713,7 +713,7 @@ so you can access it from the same machine,
 but it won't be directly accessible from the outside world.
 (The outside world could connect via a SOCKS proxy or whatnot.)
 
-The documentation about BigchainDB Server :doc:`Configuration Settings <../../installation/node-setup/configuration>`
+The documentation about corechaindb Server :doc:`Configuration Settings <../../installation/node-setup/configuration>`
 has a section about how to set ``server.bind`` so as to make
 the HTTP API publicly accessible.
 

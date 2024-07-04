@@ -9,9 +9,9 @@ set -e -x
 
 if [[ -n ${TOXENV} ]]; then
   tox -e ${TOXENV}
-elif [[ ${BIGCHAINDB_CI_ABCI} == 'enable' ]]; then
+elif [[ ${corechaindb_CI_ABCI} == 'enable' ]]; then
   docker-compose exec corechaindb pytest -v -m abci
-elif [[ ${BIGCHAINDB_ACCEPTANCE_TEST} == 'enable' ]]; then
+elif [[ ${corechaindb_ACCEPTANCE_TEST} == 'enable' ]]; then
     ./run-acceptance-test.sh
 else
   docker-compose exec corechaindb pytest -v --cov=corechaindb --cov-report xml:htmlcov/coverage.xml

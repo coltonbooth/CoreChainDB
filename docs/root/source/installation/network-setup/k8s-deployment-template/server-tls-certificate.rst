@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -69,7 +69,7 @@ Step 3: Get the Server Certificate Signed
 The CSR file created in the last step
 should be located in ``pki/reqs/mdb-instance-0.req``
 (where the integer ``0`` may be different for you).
-You need to send it to the organization managing the BigchainDB network
+You need to send it to the organization managing the corechaindb network
 so that they can use their CA
 to sign the request.
 (The managing organization should already have a self-signed CA.)

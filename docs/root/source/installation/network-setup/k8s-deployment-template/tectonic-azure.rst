@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -11,14 +11,14 @@ Walkthrough: Deploy a Kubernetes Cluster on Azure using Tectonic by CoreOS
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
    and your organization has people who know Kubernetes,
    then this Kubernetes deployment template might be helpful.
 
-A BigchainDB node can be run inside a `Kubernetes <https://kubernetes.io/>`_
+A corechaindb node can be run inside a `Kubernetes <https://kubernetes.io/>`_
 cluster.
 This page describes one way to deploy a Kubernetes cluster on Azure using Tectonic.
 Tectonic helps in easier cluster management of Kubernetes clusters.
@@ -55,7 +55,7 @@ Step 3: Deploy the cluster on Azure
 The latest instructions for deployment can be found
 `here <https://coreos.com/tectonic/docs/latest/tutorials/azure/install.html>`__.
 
-The following points suggests some customizations for a BigchainDB deployment
+The following points suggests some customizations for a corechaindb deployment
 when following the steps above:
 
 

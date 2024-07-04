@@ -17,7 +17,7 @@ function usage() {
 
     Usage: ${0##*/} [-h]
 
-    Configure Monit for BigchainDB and Tendermint process management.
+    Configure Monit for corechaindb and Tendermint process management.
 
     ENV[MONIT_PID_PATH] || --monit-pid-path PATH
 
@@ -195,5 +195,5 @@ EOF
 # Setting permissions for control file
 chmod 0700 ${monitrc_path}
 
-echo -e "BigchainDB process manager configured!"
+echo -e "corechaindb process manager configured!"
 set -o errexit

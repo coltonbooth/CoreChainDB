@@ -7,13 +7,13 @@ import copy
 import logging
 
 from corechaindb.log import DEFAULT_LOGGING_CONFIG as log_config
-from corechaindb.lib import BigchainDB  # noqa
+from corechaindb.lib import corechaindb  # noqa
 from corechaindb.migrations.chain_migration_election import ChainMigrationElection
 from corechaindb.version import __version__  # noqa
 from corechaindb.core import App  # noqa
 
 # from functools import reduce
-# PORT_NUMBER = reduce(lambda x, y: x * y, map(ord, 'BigchainDB')) % 2**16
+# PORT_NUMBER = reduce(lambda x, y: x * y, map(ord, 'corechaindb')) % 2**16
 # basically, the port number is 9984
 
 # The following variable is used by `corechaindb configure` to

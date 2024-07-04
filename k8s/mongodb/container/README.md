@@ -1,11 +1,11 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-## Custom MongoDB container for BigchainDB Backend
+## Custom MongoDB container for corechaindb Backend
 
 ### Step 1: Build and Push the Latest Container
 Use the `docker_build_and_push.bash` script to build the latest docker image

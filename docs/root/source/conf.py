@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
-# BigchainDB documentation build configuration file, created by
+# corechaindb documentation build configuration file, created by
 # sphinx-quickstart on Thu Sep 29 11:13:27 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -117,10 +117,10 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = 'BigchainDB'
+project = 'corechaindb'
 now = datetime.datetime.now()
-copyright = str(now.year) + ', BigchainDB Contributors'
-author = 'BigchainDB Contributors'
+copyright = str(now.year) + ', corechaindb Contributors'
+author = 'corechaindb Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -204,7 +204,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = 'BigchainDB v0.1'
+# html_title = 'corechaindb v0.1'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -304,7 +304,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'BigchainDBdoc'
+htmlhelp_basename = 'corechaindbdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -330,8 +330,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'BigchainDB.tex', 'BigchainDB Documentation',
-     'BigchainDB Contributors', 'manual'),
+    (master_doc, 'corechaindb.tex', 'corechaindb Documentation',
+     'corechaindb Contributors', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -372,7 +372,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'corechaindb', 'BigchainDB Documentation',
+    (master_doc, 'corechaindb', 'corechaindb Documentation',
      [author], 1)
 ]
 
@@ -387,8 +387,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'BigchainDB', 'BigchainDB Documentation',
-     author, 'BigchainDB', 'One line description of project.',
+    (master_doc, 'corechaindb', 'corechaindb Documentation',
+     author, 'corechaindb', 'One line description of project.',
      'Miscellaneous'),
 ]
 

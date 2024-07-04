@@ -6,7 +6,7 @@
 import multiprocessing as mp
 from collections import defaultdict
 
-from corechaindb import App, BigchainDB
+from corechaindb import App, corechaindb
 from corechaindb.tendermint_utils import decode_transaction
 from abci import CodeTypeOk
 
@@ -88,7 +88,7 @@ class ValidationWorker:
     def __init__(self, in_queue, results_queue):
         self.in_queue = in_queue
         self.results_queue = results_queue
-        self.corechaindb = BigchainDB()
+        self.corechaindb = corechaindb()
         self.reset()
 
     def reset(self):

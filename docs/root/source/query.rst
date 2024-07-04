@@ -1,10 +1,10 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
-Queries in BigchainDB
+Queries in corechaindb
 =====================
 
 A node operator can use the full power of MongoDB's query engine to search and query all stored data, including all transactions, assets and metadata.
@@ -13,8 +13,8 @@ The node operator can decide for themselves how much of that query power they ex
 Blog Post with Example Queries
 ------------------------------
 
-We wrote a blog post in The BigchainDB Blog to show
-how to use some MongoDB tools to query a BigchainDB node's MongoDB database.
+We wrote a blog post in The corechaindb Blog to show
+how to use some MongoDB tools to query a corechaindb node's MongoDB database.
 It includes some specific example queries for data
 about custom cars and their ownership histories.
 `Check it out <https://blog.corechaindb.com/using-mongodb-to-query-corechaindb-data-3fc651e0861b>`_.
@@ -24,14 +24,14 @@ How to Connect to MongoDB
 
 Before you can query a MongoDB database, you must connect to it, and to do that, you need to know its hostname and port.
 
-If you're running a BigchainDB node on your local machine (e.g. for dev and test), then the hostname should be ``localhost`` and the port should be ``27017``, unless you did something to change those values. If you're running a BigchainDB node on a remote machine and you can SSH to that machine, then the same is true.
+If you're running a corechaindb node on your local machine (e.g. for dev and test), then the hostname should be ``localhost`` and the port should be ``27017``, unless you did something to change those values. If you're running a corechaindb node on a remote machine and you can SSH to that machine, then the same is true.
 
-If you're running a BigchainDB node on a remote machine and you configured its MongoDB to use auth and to be publicly-accessible (to people with authorization), then you can probably figure out its hostname and port.
+If you're running a corechaindb node on a remote machine and you configured its MongoDB to use auth and to be publicly-accessible (to people with authorization), then you can probably figure out its hostname and port.
 
 How to Query
 ------------
 
-A BigchainDB node operator has full access to their local MongoDB instance, so they can use any of MongoDB's APIs for running queries, including:
+A corechaindb node operator has full access to their local MongoDB instance, so they can use any of MongoDB's APIs for running queries, including:
 
 - `the Mongo Shell <https://docs.mongodb.com/manual/mongo/>`_,
 - `MongoDB Compass <https://www.mongodb.com/products/compass>`_,
@@ -45,7 +45,7 @@ A BigchainDB node operator has full access to their local MongoDB instance, so t
    * Studio 3T: "`How to Query MongoDB with SQL <https://studio3t.com/whats-new/how-to-query-mongodb-with-sql/>`_"
    * NoSQLBooster for MongoDB: "`How to Query MongoDB with SQL SELECT <https://mongobooster.com/blog/query-mongodb-with-sql/>`_"
 
-For example, if you're on a machine that's running a default BigchainDB node, then you can connect to it using the Mongo Shell (``mongo``) and look around like so:
+For example, if you're on a machine that's running a default corechaindb node, then you can connect to it using the Mongo Shell (``mongo``) and look around like so:
 
 .. code::
 
@@ -75,7 +75,7 @@ For example, if you're on a machine that's running a default BigchainDB node, th
 The above example illustrates several things:
 
 * When you don't specify the hostname or port, the Mongo Shell assumes they are ``localhost`` and ``27017``, respectively. (``localhost`` had IP address 127.0.0.1 on the machine in question, an Ubuntu machine.)
-* BigchainDB stores its data in a database named ``bigchain``.
+* corechaindb stores its data in a database named ``bigchain``.
 * The ``bigchain`` database contains several `collections <https://docs.mongodb.com/manual/core/databases-and-collections/>`_.
 * Votes aren't stored in any collection, currently. They are all handled and stored by Tendermint in its own (LevelDB) database.
 
@@ -174,7 +174,7 @@ What a Node Operator Can Expose to External Users
 Each node operator can decide how they let external users get information from their local MongoDB database. They could expose:
 
 - their local MonogoDB database itself to queries from external users, maybe as a MongoDB user with a role that has limited privileges, e.g. read-only.
-- a limited HTTP API, allowing a restricted set of predefined queries, such as `the HTTP API provided by BigchainDB Server <http://corechaindb.com/http-api>`_, or a custom HTTP API implemented using Django, Express, Ruby on Rails, or ASP.NET.
+- a limited HTTP API, allowing a restricted set of predefined queries, such as `the HTTP API provided by corechaindb Server <http://corechaindb.com/http-api>`_, or a custom HTTP API implemented using Django, Express, Ruby on Rails, or ASP.NET.
 - some other API, such as a GraphQL API. They could do that using custom code or code from a third party.
 
 Each node operator can expose a different level or type of access to their local MongoDB database.
@@ -183,18 +183,18 @@ For example, one node operator might decide to specialize in offering optimized 
 Security Considerations
 -----------------------
 
-In BigchainDB version 1.3.0 and earlier, there was one logical MongoDB database, so exposing that database to external users was very risky, and was not recommended.
+In corechaindb version 1.3.0 and earlier, there was one logical MongoDB database, so exposing that database to external users was very risky, and was not recommended.
 "Drop database" would delete that one shared MongoDB database.
 
-In BigchainDB version 2.0.0 and later, each node has its own isolated local MongoDB database.
+In corechaindb version 2.0.0 and later, each node has its own isolated local MongoDB database.
 Inter-node communications are done using Tendermint protocols, not MongoDB protocols, as illustrated in Figure 1 below.
 If a node's local MongoDB database gets compromised, none of the other MongoDB databases (in the other nodes) will be affected.
 
 .. figure:: _static/schemaDB.png
-   :alt: Diagram of a four-node BigchainDB 2.0 network
+   :alt: Diagram of a four-node corechaindb 2.0 network
    :align: center
    
-   Figure 1: A Four-Node BigchainDB 2.0 Network
+   Figure 1: A Four-Node corechaindb 2.0 Network
 
 .. raw:: html
 
@@ -205,7 +205,7 @@ If a node's local MongoDB database gets compromised, none of the other MongoDB d
 Performance and Cost Considerations
 -----------------------------------
 
-Query processing can be quite resource-intensive, so it's a good idea to have MongoDB running in a separate machine from those running BigchainDB Server and Tendermint Core.
+Query processing can be quite resource-intensive, so it's a good idea to have MongoDB running in a separate machine from those running corechaindb Server and Tendermint Core.
 
 A node operator might want to measure the resources used by a query, so they can charge whoever requested the query accordingly.
 
@@ -222,8 +222,8 @@ One can connect to a node's MongoDB database using any
 of the MongoDB drivers, such as `the MongoDB Node.js driver 
 <https://mongodb.github.io/node-mongodb-native/?jmp=docs>`_.
 Here are some links to example JavaScript code that queries a
-BigchainDB node's MongoDB database:
+corechaindb node's MongoDB database:
 
-- `The BigchainDB JavaScript/Node.js driver source code <https://github.com/corechaindb/js-corechaindb-driver>`_
+- `The corechaindb JavaScript/Node.js driver source code <https://github.com/corechaindb/js-corechaindb-driver>`_
 - `Example code by @manolodewiner <https://github.com/manolodewiner/query-mongodb-corechaindb/blob/master/queryMongo.js>`_
 - `More example code by @manolodewiner <https://github.com/corechaindb/corechaindb/issues/2315#issuecomment-392724279>`_

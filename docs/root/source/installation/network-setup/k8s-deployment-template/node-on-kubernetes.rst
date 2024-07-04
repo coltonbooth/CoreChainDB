@@ -1,26 +1,26 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
 .. _kubernetes-template-deploy-a-single-corechaindb-node:
 
-Kubernetes Template: Deploy a Single BigchainDB Node
+Kubernetes Template: Deploy a Single corechaindb Node
 ====================================================
 
 .. note::
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
    and your organization has people who know Kubernetes,
    then this Kubernetes deployment template might be helpful.
 
-This page describes how to deploy a BigchainDB node
+This page describes how to deploy a corechaindb node
 using `Kubernetes <https://kubernetes.io/>`_.
 It assumes you already have a running Kubernetes cluster.
 
@@ -29,7 +29,7 @@ such as ``configuration/config-map.yaml``. Those files are files in the
 `corechaindb/corechaindb repository on GitHub <https://github.com/corechaindb/corechaindb/>`_
 in the ``k8s/`` directory.
 Make sure you're getting those files from the appropriate Git branch on
-GitHub, i.e. the branch for the version of BigchainDB that your BigchainDB
+GitHub, i.e. the branch for the version of corechaindb that your corechaindb
 cluster is using.
 
 
@@ -129,7 +129,7 @@ That means you can visit the dashboard in your web browser at
     <http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/>`_
 
 
-Step 3: Configure Your BigchainDB Node
+Step 3: Configure Your corechaindb Node
 --------------------------------------
 
 See the page titled :ref:`how-to-configure-a-corechaindb-node`.
@@ -165,7 +165,7 @@ Step 5: Assign DNS Name to the NGINX Public IP
 ----------------------------------------------
 
   * This step is required only if you are planning to set up multiple
-    `BigchainDB nodes
+    `corechaindb nodes
     <https://docs.corechaindb.com/en/latest/terminology.html>`_ or are using
     HTTPS certificates tied to a domain.
 
@@ -216,7 +216,7 @@ Step 6: Start the MongoDB Kubernetes Service
 
 .. _start-the-corechaindb-kubernetes-service:
 
-Step 7: Start the BigchainDB Kubernetes Service
+Step 7: Start the corechaindb Kubernetes Service
 -----------------------------------------------
 
   * Start the Kubernetes Service:
@@ -243,9 +243,9 @@ Step 8(Optional): Start the OpenResty Kubernetes Service
 Step 9: Start the NGINX Kubernetes Deployment
 ----------------------------------------------
 
-  * NGINX is used as a proxy to the BigchainDB, Tendermint and MongoDB instances in
+  * NGINX is used as a proxy to the corechaindb, Tendermint and MongoDB instances in
     the node. It proxies HTTP/HTTPS requests on the ``node-frontend-port``
-    to the corresponding OpenResty(if 3scale enabled) or BigchainDB backend, TCP connections
+    to the corresponding OpenResty(if 3scale enabled) or corechaindb backend, TCP connections
     on ``mongodb-frontend-port``, ``tm-p2p-port`` and ``tm-pub-key-access``
     to MongoDB and Tendermint respectively.
 
@@ -421,7 +421,7 @@ Step 13: Configure Users and Access Control for MongoDB
 
   * In this step, you will create a user on MongoDB with authorization
     to create more users and assign roles to it. We will also create
-    MongoDB client users for BigchainDB and MongoDB Monitoring agent(Optional).
+    MongoDB client users for corechaindb and MongoDB Monitoring agent(Optional).
 
     .. code:: bash
 
@@ -430,10 +430,10 @@ Step 13: Configure Users and Access Control for MongoDB
 
 .. _create-kubernetes-storage-class:
 
-Step 14: Create Kubernetes Storage Classes for BigchainDB
+Step 14: Create Kubernetes Storage Classes for corechaindb
 ----------------------------------------------------------
 
-BigchainDB needs somewhere to store Tendermint data persistently, Tendermint uses
+corechaindb needs somewhere to store Tendermint data persistently, Tendermint uses
 LevelDB as the persistent storage layer.
 
 The Kubernetes template for configuration of Storage Class is located in the
@@ -453,7 +453,7 @@ You can check if it worked using ``kubectl get storageclasses``.
 
 .. _create-kubernetes-persistent-volume-claim:
 
-Step 15: Create Kubernetes Persistent Volume Claims for BigchainDB
+Step 15: Create Kubernetes Persistent Volume Claims for corechaindb
 ------------------------------------------------------------------
 
 Next, you will create two PersistentVolumeClaim objects ``tendermint-db-claim`` and
@@ -480,7 +480,7 @@ You can check its status using:
 
 .. _start-kubernetes-stateful-set-bdb:
 
-Step 16: Start a Kubernetes StatefulSet for BigchainDB
+Step 16: Start a Kubernetes StatefulSet for corechaindb
 ------------------------------------------------------
 
   * This configuration is located in the file ``corechaindb/corechaindb-ss.yaml``.
@@ -501,7 +501,7 @@ Step 16: Start a Kubernetes StatefulSet for BigchainDB
   * As we gain more experience running Tendermint in testing and production, we
     will tweak the ``resources.limits.cpu`` and ``resources.limits.memory``.
 
-  * Create the BigchainDB StatefulSet using:
+  * Create the corechaindb StatefulSet using:
 
     .. code:: bash
 
@@ -599,7 +599,7 @@ to talk to each other i.e. specifically the communication between the
 Tendermint peers. Set up networking between the clusters using
 `Kubernetes Services <https://kubernetes.io/docs/concepts/services-networking/service/>`_.
 
-Assuming we have a BigchainDB instance ``bdb-instance-1`` residing in Azure data center location ``westeurope`` and we
+Assuming we have a corechaindb instance ``bdb-instance-1`` residing in Azure data center location ``westeurope`` and we
 want to connect to ``bdb-instance-2``, ``bdb-instance-3``, and ``bdb-instance-4`` located in Azure data centers
 ``eastus``, ``centralus`` and ``westus``, respectively. Unless you already have explicitly set up networking for
 ``bdb-instance-1`` to communicate with ``bdb-instance-2/3/4`` and
@@ -612,7 +612,7 @@ We can do this in Kubernetes using a Kubernetes Service of ``type``
 
 * This configuration is located in the file ``corechaindb/corechaindb-ext-conn-svc.yaml``.
 
-* Set the name of the ``metadata.name`` to the host name of the BigchainDB instance you are trying to connect to.
+* Set the name of the ``metadata.name`` to the host name of the corechaindb instance you are trying to connect to.
   For instance if you are configuring this service on cluster with ``bdb-instance-1`` then the ``metadata.name`` will
   be ``bdb-instance-2`` and vice versa.
 
@@ -637,13 +637,13 @@ We can do this in Kubernetes using a Kubernetes Service of ``type``
 
 .. _verify-and-test-bdb:
 
-Step 21: Verify the BigchainDB Node Setup
+Step 21: Verify the corechaindb Node Setup
 -----------------------------------------
 
 Step 21.1: Testing Internally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To test the setup of your BigchainDB node, you could use a Docker container
+To test the setup of your corechaindb node, you could use a Docker container
 that provides utilities like ``nslookup``, ``curl`` and ``dig``.
 For example, you could use a container based on our
 `corechaindb/toolbox <https://hub.docker.com/r/corechaindb/toolbox/>`_ image.
@@ -677,7 +677,7 @@ The ``nslookup`` command should output the configured IP address of the service
 The ``dig`` command should return the configured port numbers.
 The ``curl`` command tests the availability of the service.
 
-To test the BigchainDB instance:
+To test the corechaindb instance:
 
 .. code:: bash
 
@@ -706,7 +706,7 @@ To test the OpenResty instance:
 
 To verify if OpenResty instance forwards the requests properly, send a ``POST``
 transaction to OpenResty at post ``80`` and check the response from the backend
-BigchainDB instance.
+corechaindb instance.
 
 
 To test the vanilla NGINX instance:
@@ -755,13 +755,13 @@ Check the MongoDB monitoring agent on the MongoDB Cloud Manager
 portal to verify they are working fine.
 
 If you are using the NGINX with HTTP support, accessing the URL
-``http://<DNS/IP of your exposed BigchainDB service endpoint>:node-frontend-port``
-on your browser should result in a JSON response that shows the BigchainDB
+``http://<DNS/IP of your exposed corechaindb service endpoint>:node-frontend-port``
+on your browser should result in a JSON response that shows the corechaindb
 server version, among other things.
 If you are using the NGINX with HTTPS support, use ``https`` instead of
 ``http`` above.
 
-Use the Python Driver to send some transactions to the BigchainDB node and
+Use the Python Driver to send some transactions to the corechaindb node and
 verify that your node or cluster works as expected.
 
 Next, you can set up log analytics and monitoring, by following our templates:

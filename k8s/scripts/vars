@@ -23,7 +23,7 @@ HTTPS_CERT_CHAIN_FILE_NAME="/path/to/https.crt"
 MDB_ADMIN_USER="adminUser"
 MDB_ADMIN_PASSWORD="superstrongpassword"
 
-# BigchainDB instance name. This name should be unique
+# corechaindb instance name. This name should be unique
 BDB_INSTANCE_NAME="bdb-instance-0"
 
 # Comma separated list of initial peers in the

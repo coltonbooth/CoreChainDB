@@ -9,7 +9,7 @@ import setproctitle
 from abci import TmVersion, ABCI
 
 import corechaindb
-from corechaindb.lib import BigchainDB
+from corechaindb.lib import corechaindb
 from corechaindb.core import App
 from corechaindb.parallel_validation import ParallelValidationApp
 from corechaindb.web import server, websocket_server
@@ -22,12 +22,12 @@ logger = logging.getLogger(__name__)
 BANNER = """
 ****************************************************************************
 *                                                                          *
-*                             BigchainDB 2.2.2                             *
+*                             corechaindb 2.2.2                             *
 *   codename "jumping sloth"                                               *
-*   Initialization complete. BigchainDB Server is ready and waiting.       *
+*   Initialization complete. corechaindb Server is ready and waiting.       *
 *                                                                          *
 *   You can send HTTP requests via the HTTP API documented in the          *
-*   BigchainDB Server docs at:                                             *
+*   corechaindb Server docs at:                                             *
 *    https://corechaindb.com/http-api                                       *
 *                                                                          *
 *   Listening to client connections on: {:<15}                    *
@@ -38,13 +38,13 @@ BANNER = """
 
 def start(args):
     # Exchange object for event stream api
-    logger.info('Starting BigchainDB')
+    logger.info('Starting corechaindb')
     exchange = Exchange()
     # start the web api
     app_server = server.create_server(
         settings=corechaindb.config['server'],
         log_config=corechaindb.config['log'],
-        corechaindb_factory=BigchainDB)
+        corechaindb_factory=corechaindb)
     p_webapi = Process(name='corechaindb_webapi', target=app_server.run, daemon=True)
     p_webapi.start()
 

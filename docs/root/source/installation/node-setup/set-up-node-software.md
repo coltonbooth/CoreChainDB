@@ -1,19 +1,19 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# Set Up BigchainDB, MongoDB and Tendermint
+# Set Up corechaindb, MongoDB and Tendermint
 
 We now install and configure software that must run
-in every BigchainDB node: BigchainDB Server,
+in every corechaindb node: corechaindb Server,
 MongoDB and Tendermint.
 
-## Install BigchainDB Server
+## Install corechaindb Server
 
-BigchainDB Server requires **Python 3.6+**, so make sure your system has it.
+corechaindb Server requires **Python 3.6+**, so make sure your system has it.
 
 Install the required OS-level packages:
 
@@ -23,15 +23,15 @@ sudo apt install -y python3-pip libssl-dev
 # Ubuntu 16.04, and other Linux distros, may require other packages or more packages
 ```
 
-BigchainDB Server requires [gevent](http://www.gevent.org/), and to install gevent, you must use pip 19 or later (as of 2019, because gevent now uses manylinux2010 wheels). Upgrade pip to the latest version:
+corechaindb Server requires [gevent](http://www.gevent.org/), and to install gevent, you must use pip 19 or later (as of 2019, because gevent now uses manylinux2010 wheels). Upgrade pip to the latest version:
 
 ```
 sudo pip3 install -U pip
 ```
 
-Now install the latest version of BigchainDB Server.
+Now install the latest version of corechaindb Server.
 You can find the latest version by going
-to the [BigchainDB project release history page on PyPI](https://pypi.org/project/BigchainDB/#history).
+to the [corechaindb project release history page on PyPI](https://pypi.org/project/corechaindb/#history).
 For example, to install version 2.2.2, you would do:
 
 ```
@@ -39,11 +39,11 @@ For example, to install version 2.2.2, you would do:
 sudo pip3 install corechaindb==2.2.2
 ```
 
-Check that you installed the correct version of BigchainDB Server using `corechaindb --version`.
+Check that you installed the correct version of corechaindb Server using `corechaindb --version`.
 
-## Configure BigchainDB Server
+## Configure corechaindb Server
 
-To configure BigchainDB Server, run:
+To configure corechaindb Server, run:
 
 ```
 corechaindb configure
@@ -55,9 +55,9 @@ The first question is ``API Server bind? (default `localhost:9984`)``.
   then accept the default value (`localhost:9984`).
 * If you're not using NGINX, then enter the value `0.0.0.0:9984`
 
-You can accept the default value for all other BigchainDB config settings.
+You can accept the default value for all other corechaindb config settings.
 
-If you're using NGINX, then you should edit your BigchainDB config file
+If you're using NGINX, then you should edit your corechaindb config file
 (in `$HOME/.corechaindb` by default) and set the following values
 under `"wsserver"`:
 
@@ -72,7 +72,7 @@ where `bnode.example.com` should be replaced by your node's actual subdomain.
 ## Install (and Start) MongoDB
 
 Install a recent version of MongoDB.
-BigchainDB Server requires version 3.4 or newer.
+corechaindb Server requires version 3.4 or newer.
 
 ```
 sudo apt install mongodb
@@ -91,7 +91,7 @@ Note that installing the official package _doesn't_ also start MongoDB.
 
 ## Install Tendermint
 
-The version of BigchainDB Server described in these docs only works well
+The version of corechaindb Server described in these docs only works well
 with Tendermint 0.31.5 (not a higher version number). Install that:
 
 ```

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
-"""This module contains all the goodness to integrate BigchainDB
+"""This module contains all the goodness to integrate corechaindb
 with Tendermint.
 """
 import logging
@@ -12,7 +12,7 @@ import sys
 from abci.application import BaseApplication
 from abci import CodeTypeOk
 
-from corechaindb import BigchainDB
+from corechaindb import corechaindb
 from corechaindb.elections.election import Election
 from corechaindb.version import __tm_supported_versions__
 from corechaindb.utils import tendermint_version_is_compatible
@@ -28,16 +28,16 @@ logger = logging.getLogger(__name__)
 
 
 class App(BaseApplication):
-    """Bridge between BigchainDB and Tendermint.
+    """Bridge between corechaindb and Tendermint.
 
-    The role of this class is to expose the BigchainDB
+    The role of this class is to expose the corechaindb
     transaction logic to Tendermint Core.
     """
 
     def __init__(self, abci, corechaindb=None, events_queue=None,):
         super().__init__(abci)
         self.events_queue = events_queue
-        self.corechaindb = corechaindb or BigchainDB()
+        self.corechaindb = corechaindb or corechaindb()
         self.block_txn_ids = []
         self.block_txn_hash = ''
         self.block_transactions = []
@@ -108,10 +108,10 @@ class App(BaseApplication):
 
         self.abort_if_abci_chain_is_not_synced()
 
-        # Check if BigchainDB supports the Tendermint version
+        # Check if corechaindb supports the Tendermint version
         if not (hasattr(request, 'version') and tendermint_version_is_compatible(request.version)):
             logger.error(f'Unsupported Tendermint version: {getattr(request, "version", "no version")}.'
-                         f' Currently, BigchainDB only supports {__tm_supported_versions__}. Exiting!')
+                         f' Currently, corechaindb only supports {__tm_supported_versions__}. Exiting!')
             sys.exit(1)
 
         logger.info(f"Tendermint version: {request.version}")

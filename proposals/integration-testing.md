@@ -1,23 +1,23 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# Integration testing tools for BigchainDB
+# Integration testing tools for corechaindb
 
 ## Problem Description
-We need a proper way to describe, code, and run integration tests. While we have unit tests to verify the correct behavior of functions and methods, we need a way to easily test a network of BigchainDB nodes.
+We need a proper way to describe, code, and run integration tests. While we have unit tests to verify the correct behavior of functions and methods, we need a way to easily test a network of corechaindb nodes.
 
 As an example, we want to make sure that if a valid transaction is pushed to the network, after some time that transaction is stored by more than 2/3 of the nodes; an invalid transaction (malformed, double spent, etc.) pushed to the network must be rejected. This must be true also in different scenarios such as not all nodes are up, or there is latency between the nodes. Note that some of those problems have already been addressed by the Tendermint team.
 
 ### Use cases
 - Verify we don't break the contract with the user.
-- Verify the behavior of the system in case of failure of its services (MongoDB fails, Tendermint fails, BigchainDB fails)
+- Verify the behavior of the system in case of failure of its services (MongoDB fails, Tendermint fails, corechaindb fails)
 - Verify that some properties of the system are implemented correctly.
 
-## Feature: add a client to manage a BigchainDB network
+## Feature: add a client to manage a corechaindb network
 We define now the characteristics of a new module: the Network Driver, `ND` henceforth. As any other project, it needs a catchy name, but I don't have one in my head now.
 
 The goal of `ND` is to give a simple framework to implement test scenarios that require:
@@ -29,7 +29,7 @@ There are other useful features we can take into consideration, like:
 - creating and pushing transactions to one or more nodes in the network
 - check the existence of a transaction in one or more nodes in the network
 
-*Transaction specific* features can be added to `ND` later. We can just use the BigchainDB Python driver for now, or raw `HTTP` requests.
+*Transaction specific* features can be added to `ND` later. We can just use the corechaindb Python driver for now, or raw `HTTP` requests.
 
 [Bitcoin functional tests](https://github.com/bitcoin/bitcoin/tree/v0.15.0/test/functional) have as similar approach (thanks @codegeschrei for the link).
 
@@ -106,7 +106,7 @@ Primary assignee(s): @vrde
 
 
 ### Targeted Release
-BigchainDB 2.0
+corechaindb 2.0
 
 
 ## Dependencies

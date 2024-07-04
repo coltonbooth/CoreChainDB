@@ -50,7 +50,7 @@ def _validate_schema(schema, body):
     # Note
     #
     # Schema validation is currently the major CPU bottleneck of
-    # BigchainDB. the `jsonschema` library validates python data structures
+    # corechaindb. the `jsonschema` library validates python data structures
     # directly and produces nice error messages, but validation takes 4+ ms
     # per transaction which is pretty slow. The rapidjson library validates
     # much faster at 1.5ms, however it produces _very_ poor error messages.

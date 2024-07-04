@@ -8,7 +8,7 @@
 # MongoDB configuration
 [ "$(stat -c %U /data/db)" = mongodb ] || chown -R mongodb /data/db
 
-# BigchainDB configuration
+# corechaindb configuration
 corechaindb-monit-config
 
 nohup mongod --bind_ip_all > "$HOME/.corechaindb-monit/logs/mongodb_log_$(date +%Y%m%d_%H%M%S)" 2>&1 &

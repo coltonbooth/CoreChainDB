@@ -1,11 +1,11 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# How to Set Up a BigchainDB Network
+# How to Set Up a corechaindb Network
 
 You can setup or connect to a network once you have a single node running.
 Until now, everything could be done by a node operator, by themselves.
@@ -16,7 +16,7 @@ There is one special Member who helps coordinate everyone: the **Coordinator**.
 
 ## Member: Share hostname, pub_key.value and node_id
 
-Each BigchainDB node is identified by its:
+Each corechaindb node is identified by its:
 
 * `hostname`, i.e. the node's DNS subdomain, such as `bnode.example.com`, or its IP address, such as `46.145.17.32`
 * Tendermint `pub_key.value`
@@ -163,9 +163,9 @@ If MongoDB isn't running, then you can start it using the command `mongod`, but 
 
 If you installed MongoDB using `sudo apt install mongodb`, then a MongoDB startup script should already be installed (so MongoDB will start automatically when the machine is restarted). Otherwise, you should install a startup script for MongoDB.
 
-## Member: Start BigchainDB and Tendermint Using Monit
+## Member: Start corechaindb and Tendermint Using Monit
 
-This section describes how to manage the BigchainDB and Tendermint processes using [Monit][monit], a small open-source utility for managing and monitoring Unix processes. BigchainDB and Tendermint are managed together, because if BigchainDB is stopped (or crashes) and is restarted, *Tendermint won't try reconnecting to it*. (That's not a bug. It's just how Tendermint works.)
+This section describes how to manage the corechaindb and Tendermint processes using [Monit][monit], a small open-source utility for managing and monitoring Unix processes. corechaindb and Tendermint are managed together, because if corechaindb is stopped (or crashes) and is restarted, *Tendermint won't try reconnecting to it*. (That's not a bug. It's just how Tendermint works.)
 
 Install Monit:
 
@@ -185,7 +185,7 @@ Run Monit as a daemon, instructing it to wake up every second to check on proces
 monit -d 1
 ```
 
-Monit will run the BigchainDB and Tendermint processes and restart them when they crash. If the root `corechaindb_` process crashes, Monit will also restart the Tendermint process.
+Monit will run the corechaindb and Tendermint processes and restart them when they crash. If the root `corechaindb_` process crashes, Monit will also restart the Tendermint process.
 
 You can check the status by running `monit status` or `monit summary`.
 
@@ -195,14 +195,14 @@ To learn more about Monit, use `monit -h` (help) or read [the Monit documentatio
 
 Check `corechaindb-monit-config -h` if you want to arrange a different folder for logs or some of the Monit internal artifacts.
 
-If you want to start and manage the BigchainDB and Tendermint processes yourself, then look inside the file [corechaindb/pkg/scripts/corechaindb-monit-config](https://github.com/corechaindb/corechaindb/blob/master/pkg/scripts/corechaindb-monit-config) to see how *it* starts BigchainDB and Tendermint.
+If you want to start and manage the corechaindb and Tendermint processes yourself, then look inside the file [corechaindb/pkg/scripts/corechaindb-monit-config](https://github.com/corechaindb/corechaindb/blob/master/pkg/scripts/corechaindb-monit-config) to see how *it* starts corechaindb and Tendermint.
 
 ## How Others Can Access Your Node
 
-If you followed the above instructions, then your node should be publicly-accessible with BigchainDB Root URL `https://hostname` or `http://hostname:9984`. That is, anyone can interact with your node using the [BigchainDB HTTP API](../api/http-client-server-api) exposed at that address. The most common way to do that is to use one of the [BigchainDB Drivers](../../drivers/index).
+If you followed the above instructions, then your node should be publicly-accessible with corechaindb Root URL `https://hostname` or `http://hostname:9984`. That is, anyone can interact with your node using the [corechaindb HTTP API](../api/http-client-server-api) exposed at that address. The most common way to do that is to use one of the [corechaindb Drivers](../../drivers/index).
 
 [bdb:software]: https://github.com/corechaindb/corechaindb/
-[bdb:pypi]: https://pypi.org/project/BigchainDB/#history
+[bdb:pypi]: https://pypi.org/project/corechaindb/#history
 [tendermint:releases]: https://github.com/tendermint/tendermint/releases
 [monit]: https://www.mmonit.com/monit
 [monit-manual]: https://mmonit.com/monit/documentation/monit.html

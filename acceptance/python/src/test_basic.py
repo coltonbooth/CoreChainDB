@@ -24,24 +24,24 @@
 import os
 
 # For this test case we import and use the Python Driver.
-from corechaindb_driver import BigchainDB
+from corechaindb_driver import corechaindb
 from corechaindb_driver.crypto import generate_keypair
 
 
 def test_basic():
-    # ## Set up a connection to BigchainDB
+    # ## Set up a connection to corechaindb
     # To use BighainDB we need a connection. Here we create one. By default we
     # connect to localhost, but you can override this value using the env variable
-    # called `BIGCHAINDB_ENDPOINT`, a valid value must include the schema:
+    # called `corechaindb_ENDPOINT`, a valid value must include the schema:
     # `https://example.com:9984`
-    bdb = BigchainDB(os.environ.get('BIGCHAINDB_ENDPOINT'))
+    bdb = corechaindb(os.environ.get('corechaindb_ENDPOINT'))
 
     # ## Create keypairs
     # This test requires the interaction between two actors with their own keypair.
     # The two keypairs will be called—drum roll—Alice and Bob.
     alice, bob = generate_keypair(), generate_keypair()
 
-    # ## Alice registers her bike in BigchainDB
+    # ## Alice registers her bike in corechaindb
     # Alice has a nice bike, and here she creates the "digital twin"
     # of her bike.
     bike = {'data': {'bicycle': {'serial_number': 420420}}}
@@ -61,11 +61,11 @@ def test_basic():
     # a variable with a short and easy name
     bike_id = fulfilled_creation_tx['id']
 
-    # Now she is ready to send it to the BigchainDB Network.
+    # Now she is ready to send it to the corechaindb Network.
     sent_transfer_tx = bdb.transactions.send_commit(fulfilled_creation_tx)
 
     # And just to be 100% sure, she also checks if she can retrieve
-    # it from the BigchainDB node.
+    # it from the corechaindb node.
     assert bdb.transactions.retrieve(bike_id), 'Cannot find transaction {}'.format(bike_id)
 
     # Alice is now the proud owner of one unspent asset.
@@ -107,11 +107,11 @@ def test_basic():
             prepared_transfer_tx,
             private_keys=alice.private_key)
 
-    # She finally sends the transaction to a BigchainDB node.
+    # She finally sends the transaction to a corechaindb node.
     sent_transfer_tx = bdb.transactions.send_commit(fulfilled_transfer_tx)
 
     # And just to be 100% sure, she also checks if she can retrieve
-    # it from the BigchainDB node.
+    # it from the corechaindb node.
     assert bdb.transactions.retrieve(fulfilled_transfer_tx['id']) == sent_transfer_tx
 
     # Now Alice has zero unspent transactions.

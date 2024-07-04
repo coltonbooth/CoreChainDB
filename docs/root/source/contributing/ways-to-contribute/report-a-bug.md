@@ -1,6 +1,6 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
@@ -18,7 +18,7 @@ To write an issue, go to the relevant GitHub repository, click on the **Issues**
 
 # Answer Questions
 
-People ask questions about BigchainDB in the following places:
+People ask questions about corechaindb in the following places:
 
 - Gitter
   - [corechaindb/corechaindb](https://gitter.im/corechaindb/corechaindb)
@@ -28,9 +28,9 @@ People ask questions about BigchainDB in the following places:
 
 Feel free to hang out and answer some questions. People will be thankful.
 
-# Write a BigchainDB Enhancement Proposal (BEP)
+# Write a corechaindb Enhancement Proposal (BEP)
 
-If you have an idea for a new feature or enhancement, and you want some feedback before you write a full BigchainDB Enhancement Proposal (BEP), then feel free to:
+If you have an idea for a new feature or enhancement, and you want some feedback before you write a full corechaindb Enhancement Proposal (BEP), then feel free to:
   - ask in the [corechaindb/corechaindb Gitter chat room](https://gitter.im/corechaindb/corechaindb) or
   - [open a new issue in the corechaindb/BEPs repo](https://github.com/corechaindb/BEPs/issues/new) and give it the label **BEP idea**.
 

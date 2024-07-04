@@ -5,7 +5,7 @@
 
 
 class BaseValidationRules():
-    """Base validation rules for BigchainDB.
+    """Base validation rules for corechaindb.
 
     A validation plugin must expose a class inheriting from this one via an entry_point.
 

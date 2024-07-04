@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -10,7 +10,7 @@ How to Set Up a Self-Signed Certificate Authority
 =================================================
 
 This page enumerates the steps *we* use to set up a self-signed certificate authority (CA).
-This is something that only needs to be done once per BigchainDB network,
+This is something that only needs to be done once per corechaindb network,
 by the organization managing the network, i.e. the CA is for the whole network.
 We use Easy-RSA.
 

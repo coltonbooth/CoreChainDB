@@ -7,6 +7,6 @@
 
 set -e -x
 
-if [[ -z ${TOXENV} ]] && [[ ${BIGCHAINDB_CI_ABCI} != 'enable' ]] && [[ ${BIGCHAINDB_ACCEPTANCE_TEST} != 'enable' ]]; then
+if [[ -z ${TOXENV} ]] && [[ ${corechaindb_CI_ABCI} != 'enable' ]] && [[ ${corechaindb_ACCEPTANCE_TEST} != 'enable' ]]; then
     codecov -v -f htmlcov/coverage.xml
 fi

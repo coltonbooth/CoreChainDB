@@ -157,96 +157,96 @@ spec:
           periodSeconds: 60
           failureThreshold: 3
           timeoutSeconds: 15
-      # BigchainDB container
+      # corechaindb container
       - name: corechaindb
         image: corechaindb/corechaindb:2.2.2
         imagePullPolicy: Always
         args:
         - start
         env:
-        - name: BIGCHAINDB_DATABASE_HOST
+        - name: corechaindb_DATABASE_HOST
           valueFrom:
             configMapKeyRef:
               name: vars
               key: mdb-instance-name
-        - name: BIGCHAINDB_DATABASE_PORT
+        - name: corechaindb_DATABASE_PORT
           valueFrom:
             configMapKeyRef:
               name: vars
               key: mongodb-backend-port
-        - name: BIGCHAINDB_DATABASE_BACKEND
+        - name: corechaindb_DATABASE_BACKEND
           value: "localmongodb"
-        - name: BIGCHAINDB_DATABASE_NAME
+        - name: corechaindb_DATABASE_NAME
           valueFrom:
             configMapKeyRef:
               name: vars
               key: corechaindb-database-name
-        - name: BIGCHAINDB_SERVER_BIND
+        - name: corechaindb_SERVER_BIND
           valueFrom:
             configMapKeyRef:
               name: vars
               key: corechaindb-server-bind
-        - name: BIGCHAINDB_WSSERVER_HOST
+        - name: corechaindb_WSSERVER_HOST
           valueFrom:
             configMapKeyRef:
               name: vars
               key: corechaindb-ws-interface
-        - name: BIGCHAINDB_WSSERVER_ADVERTISED_HOST
+        - name: corechaindb_WSSERVER_ADVERTISED_HOST
           valueFrom:
             configMapKeyRef:
               name: vars
               key: node-fqdn
-        - name: BIGCHAINDB_WSSERVER_PORT
+        - name: corechaindb_WSSERVER_PORT
           valueFrom:
             configMapKeyRef:
               name: vars
               key: corechaindb-ws-port
-        - name: BIGCHAINDB_WSSERVER_ADVERTISED_PORT
+        - name: corechaindb_WSSERVER_ADVERTISED_PORT
           valueFrom:
             configMapKeyRef:
               name: vars
               key: node-frontend-port
-        - name: BIGCHAINDB_WSSERVER_ADVERTISED_SCHEME
+        - name: corechaindb_WSSERVER_ADVERTISED_SCHEME
           valueFrom:
             configMapKeyRef:
               name: vars
               key: corechaindb-wsserver-advertised-scheme
-        - name: BIGCHAINDB_DATABASE_MAXTRIES
+        - name: corechaindb_DATABASE_MAXTRIES
           valueFrom:
             configMapKeyRef:
               name: bdb-config
               key: corechaindb-database-maxtries
-        - name: BIGCHAINDB_DATABASE_CONNECTION_TIMEOUT
+        - name: corechaindb_DATABASE_CONNECTION_TIMEOUT
           valueFrom:
             configMapKeyRef:
               name: bdb-config
               key: corechaindb-database-connection-timeout
-        - name: BIGCHAINDB_LOG_LEVEL_CONSOLE
+        - name: corechaindb_LOG_LEVEL_CONSOLE
           valueFrom:
             configMapKeyRef:
               name: bdb-config
               key: corechaindb-log-level
-        - name: BIGCHAINDB_DATABASE_SSL
+        - name: corechaindb_DATABASE_SSL
           value: "true"
-        - name: BIGCHAINDB_DATABASE_CA_CERT
+        - name: corechaindb_DATABASE_CA_CERT
           value: /etc/corechaindb/ca/ca.pem
-        - name: BIGCHAINDB_DATABASE_CRLFILE
+        - name: corechaindb_DATABASE_CRLFILE
           value: /etc/corechaindb/ca/crl.pem
-        - name: BIGCHAINDB_DATABASE_CERTFILE
+        - name: corechaindb_DATABASE_CERTFILE
           value: /etc/corechaindb/ssl/bdb-instance.pem
-        - name: BIGCHAINDB_DATABASE_KEYFILE
+        - name: corechaindb_DATABASE_KEYFILE
           value: /etc/corechaindb/ssl/bdb-instance.key
-        - name: BIGCHAINDB_DATABASE_LOGIN
+        - name: corechaindb_DATABASE_LOGIN
           valueFrom:
             configMapKeyRef:
               name: bdb-config
               key: bdb-user
-        - name: BIGCHAINDB_TENDERMINT_HOST
+        - name: corechaindb_TENDERMINT_HOST
           valueFrom:
             configMapKeyRef:
               name: vars
               key: bdb-instance-name
-        - name: BIGCHAINDB_TENDERMINT_PORT
+        - name: corechaindb_TENDERMINT_PORT
           valueFrom:
             configMapKeyRef:
               name: tendermint-config
@@ -255,11 +255,11 @@ spec:
         - bash
         - "-c"
         - |
-          curl -s --fail "http://${BIGCHAINDB_TENDERMINT_HOST}:9986/pub_key.json" > /dev/null
+          curl -s --fail "http://${corechaindb_TENDERMINT_HOST}:9986/pub_key.json" > /dev/null
           ERR=$?
           while [ "$ERR" != 0 ]; do
             sleep 30
-            curl -s --fail "http://${BIGCHAINDB_TENDERMINT_HOST}:9986/pub_key.json" > /dev/null
+            curl -s --fail "http://${corechaindb_TENDERMINT_HOST}:9986/pub_key.json" > /dev/null
             ERR=$?
             echo "Waiting for Tendermint instance."
           done

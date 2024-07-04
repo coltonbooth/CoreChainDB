@@ -1,13 +1,13 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# BigchainDB Roadmap
+# corechaindb Roadmap
 
-We moved the BigchainDB Roadmap to the corechaindb/org repository; see:
+We moved the corechaindb Roadmap to the corechaindb/org repository; see:
 
 [https://github.com/corechaindb/org/blob/master/ROADMAP.md](https://github.com/corechaindb/org/blob/master/ROADMAP.md)
 

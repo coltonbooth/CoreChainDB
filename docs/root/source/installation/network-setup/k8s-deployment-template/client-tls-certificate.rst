@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -43,14 +43,14 @@ and using:
 
 You should change the Common Name (e.g. ``bdb-instance-0``)
 to a value that reflects what the
-client certificate is being used for, e.g. ``mdb-mon-instance-3`` or ``mdb-bak-instance-4``. (The final integer is specific to your BigchainDB node in the BigchainDB network.)
+client certificate is being used for, e.g. ``mdb-mon-instance-3`` or ``mdb-bak-instance-4``. (The final integer is specific to your corechaindb node in the corechaindb network.)
 
 You will be prompted to enter the Distinguished Name (DN) information for this certificate. For each field, you can accept the default value [in brackets] by pressing Enter.
 
 .. warning::
 
    Don't accept the default value of OU (``IT``). Instead, enter the value
-   ``BigchainDB-Instance``, ``MongoDB-Mon-Instance`` or ``MongoDB-Backup-Instance``
+   ``corechaindb-Instance``, ``MongoDB-Mon-Instance`` or ``MongoDB-Backup-Instance``
    as appropriate.
 
 Aside: The ``nopass`` option means "do not encrypt the private key (default is encrypted)". You can get help with the ``easyrsa`` command (and its subcommands)
@@ -67,7 +67,7 @@ Step 3: Get the Client Certificate Signed
 The CSR file created in the previous step
 should be located in ``pki/reqs/bdb-instance-0.req``
 (or whatever Common Name you used in the ``gen-req`` command above).
-You need to send it to the organization managing the BigchainDB network
+You need to send it to the organization managing the corechaindb network
 so that they can use their CA
 to sign the request.
 (The managing organization should already have a self-signed CA.)
@@ -92,7 +92,7 @@ Step 4: Generate the Consolidated Client PEM File
 -------------------------------------------------
 
 .. note::
-    This step can be skipped for BigchainDB client certificate as BigchainDB
+    This step can be skipped for corechaindb client certificate as corechaindb
     uses the PyMongo driver, which accepts separate certificate and key files.
 
 MongoDB, MongoDB Backup Agent and MongoDB Monitoring Agent require a single,

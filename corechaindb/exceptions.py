@@ -4,9 +4,9 @@
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
 
-class BigchainDBError(Exception):
-    """Base class for BigchainDB exceptions."""
+class corechaindbError(Exception):
+    """Base class for corechaindb exceptions."""
 
 
-class CriticalDoubleSpend(BigchainDBError):
+class CriticalDoubleSpend(corechaindbError):
     """Data integrity error that requires attention"""

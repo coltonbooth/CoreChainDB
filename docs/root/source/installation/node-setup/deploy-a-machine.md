@@ -1,13 +1,13 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# Deploy a Machine for Your BigchainDB Node
+# Deploy a Machine for Your corechaindb Node
 
-The first step is to deploy a machine for your BigchainDB node.
+The first step is to deploy a machine for your corechaindb node.
 It might be a virtual machine (VM) or a real machine, for example, 
 an EC2 on AWS or a droplet on Digital Ocean.
 If you follow this simple deployment template, all your node's
@@ -20,7 +20,7 @@ It might be in Azure, AWS, your data center or a Raspberry Pi.
 
 The following instructions assume all the nodes
 in the network (including yours) have public IP addresses.
-(A BigchainDB network _can_ be run inside a private network,
+(A corechaindb network _can_ be run inside a private network,
 using private IP addresses, but we don't cover that here.)
 
 ## Operating System
@@ -35,7 +35,7 @@ or install more packages.
 ## Network Security Group
 
 If your machine is in AWS or Azure, for example, _and_
-you want users to connect to BigchainDB via HTTPS,
+you want users to connect to corechaindb via HTTPS,
 then you should configure its network security group
 to allow all incoming and outgoing traffic for:
 
@@ -45,7 +45,7 @@ to allow all incoming and outgoing traffic for:
 * Any protocol on port 26656 (Tendermint P2P)
 
 If you don't care about HTTPS, then forget about port 443,
-and replace port 80 with port 9984 (the default BigchainDB HTTP port).
+and replace port 80 with port 9984 (the default corechaindb HTTP port).
 
 ## Update Your System
 
@@ -58,7 +58,7 @@ sudo apt full-upgrade
 
 ## DNS Setup
 
-* Register a domain name for your BigchainDB node, such as `example.com`
-* Pick a subdomain of that domain for your BigchainDB node, such as `bnode.example.com`
+* Register a domain name for your corechaindb node, such as `example.com`
+* Pick a subdomain of that domain for your corechaindb node, such as `bnode.example.com`
 * Create a DNS "A Record" pointing your chosen subdomain (such as `bnode.example.com`)
   at your machine's IP address.

@@ -1,11 +1,11 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# Migrate Bigchaindb cli for Tendermint
+# Migrate corechaindb cli for Tendermint
 
 ## Problem Description
 With Tendermint integration some of the cli sub-commands have been rendered obsolete. It would be only appropriate to remove those sub-commands.
@@ -24,7 +24,7 @@ In case the backend is not configured then the default backend `localmongodb` sh
 Following sub-commands should be deprecated for `localmongodb` backend.
 
 - `corechaindb export-my-pubkey`
-  - A BigchainDB node still has a public key but that is not BigchainDB concern. It is handled by Tendermint.
+  - A corechaindb node still has a public key but that is not corechaindb concern. It is handled by Tendermint.
 - `corechaindb set-shards`
   - This was only required for `rethinkdb`.
 - `corechaindb set-replicas`
@@ -45,7 +45,7 @@ usage: corechaindb [-h] [-c CONFIG] [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL}]
                   {configure,show-config,init,drop,start}
                   ...
 
-Control your BigchainDB node.
+Control your corechaindb node.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -65,7 +65,7 @@ Commands:
     show-config         Show the current configuration
     init                Init the database
     drop                Drop the database
-    start               Start BigchainDB
+    start               Start corechaindb
 ```
 
 **corechaindb configure**
@@ -158,7 +158,7 @@ Primary assignee(s): @muawiakh
 Secondary assignee(s): @kansi, @ttmc
 
 ### Targeted Release
-BigchainDB 2.0
+corechaindb 2.0
 
 
 ## Dependencies
@@ -166,4 +166,4 @@ N/A
 
 
 ## Reference(s)
-* [Bigchaindb CLI](https://docs.corechaindb.com/projects/server/en/latest/server-reference/corechaindb-cli.html)
+* [corechaindb CLI](https://docs.corechaindb.com/projects/server/en/latest/server-reference/corechaindb-cli.html)

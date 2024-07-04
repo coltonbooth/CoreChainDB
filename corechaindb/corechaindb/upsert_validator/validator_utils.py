@@ -4,7 +4,7 @@ import codecs
 
 import corechaindb
 from abci import types_v0_22_8, types_v0_31_5, TmVersion
-from corechaindb.common.exceptions import InvalidPublicKey, BigchainDBError
+from corechaindb.common.exceptions import InvalidPublicKey, corechaindbError
 
 
 def encode_validator(v):
@@ -13,8 +13,8 @@ def encode_validator(v):
     try:
         version = TmVersion(corechaindb.config["tendermint"]["version"])
     except ValueError:
-        raise BigchainDBError('Invalid tendermint version, '
-                              'check BigchainDB configuration file')
+        raise corechaindbError('Invalid tendermint version, '
+                              'check corechaindb configuration file')
 
     validator_update_t, pubkey_t = {
         TmVersion.v0_22_8: (types_v0_22_8.Validator, types_v0_22_8.PubKey),

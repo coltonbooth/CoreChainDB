@@ -1,13 +1,13 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Command Line Interface (CLI)
 
-The command-line command to interact with BigchainDB Server is `corechaindb`.
+The command-line command to interact with corechaindb Server is `corechaindb`.
 
 
 ## corechaindb \-\-help
@@ -22,7 +22,7 @@ Show the version number. `corechaindb -v` does the same thing.
 
 ## corechaindb configure
 
-Generate a local configuration file (which can be used to set some or all [BigchainDB node configuration settings](configuration)). It will ask you for the values of some configuration settings.
+Generate a local configuration file (which can be used to set some or all [corechaindb node configuration settings](configuration)). It will ask you for the values of some configuration settings.
 If you press Enter for a value, it will use the default value.
 
 At this point, only one database backend is supported: `localmongodb`.
@@ -32,7 +32,7 @@ If you use the `-c` command-line option, it will generate the file at the specif
 corechaindb -c path/to/new_config.json configure localmongodb
 ```
 
-If you don't use the `-c` command-line option, the file will be written to `$HOME/.corechaindb` (the default location where BigchainDB looks for a config file, if one isn't specified).
+If you don't use the `-c` command-line option, the file will be written to `$HOME/.corechaindb` (the default location where corechaindb looks for a config file, if one isn't specified).
 
 If you use the `-y` command-line option, then there won't be any interactive prompts: it will use the default values for all the configuration settings.
 ```text
@@ -42,7 +42,7 @@ corechaindb -y configure localmongodb
 
 ## corechaindb show-config
 
-Show the values of the [BigchainDB node configuration settings](configuration).
+Show the values of the [corechaindb node configuration settings](configuration).
 
 
 ## corechaindb init
@@ -60,7 +60,7 @@ If you want to force-drop the database (i.e. skipping the yes/no prompt), then u
 
 ## corechaindb start
 
-Start BigchainDB. It always begins by trying a `corechaindb init` first. See the documentation for `corechaindb init`.
+Start corechaindb. It always begins by trying a `corechaindb init` first. See the documentation for `corechaindb init`.
 The database initialization step is optional and can be skipped by passing the `--no-init` flag, i.e. `corechaindb start --no-init`.
 
 ### Options
@@ -84,13 +84,13 @@ configuration file as documented under
 
 ## corechaindb election
 
-Manage elections to govern the BigchainDB network. The specifics of the election process are defined in [BEP-18](https://github.com/corechaindb/BEPs/tree/master/18).
+Manage elections to govern the corechaindb network. The specifics of the election process are defined in [BEP-18](https://github.com/corechaindb/BEPs/tree/master/18).
 
 Election management is broken into several subcommands. Below is the command line syntax for each of them.
 
 ### election new
 
-Create a new election which proposes a change to the BigchainDB network.
+Create a new election which proposes a change to the corechaindb network.
 
 If the command succeeds, it will post an election transaction and output `election_id`.
 
@@ -194,11 +194,11 @@ After a chain migration is concluded, the `show` command also outputs `chain_id`
 
 ## corechaindb tendermint-version
 
-Show the Tendermint versions supported by BigchainDB server.
+Show the Tendermint versions supported by corechaindb server.
 ```bash
 $ corechaindb tendermint-version
 {
-    "description": "BigchainDB supports the following Tendermint version(s)",
+    "description": "corechaindb supports the following Tendermint version(s)",
     "tendermint": [
         "0.22.8"
     ]

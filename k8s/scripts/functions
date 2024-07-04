@@ -11,7 +11,7 @@ function configure_root_ca(){
     echo 'set_var EASYRSA_REQ_COUNTRY "DE"' >> $1/vars
     echo 'set_var EASYRSA_REQ_PROVINCE "Berlin"' >> $1/vars
     echo 'set_var EASYRSA_REQ_CITY "Berlin"' >> $1/vars
-    echo 'set_var EASYRSA_REQ_ORG "BigchainDB GmbH"' >> $1/vars
+    echo 'set_var EASYRSA_REQ_ORG "corechaindb GmbH"' >> $1/vars
     echo 'set_var EASYRSA_REQ_OU "ROOT-CA"' >> $1/vars
     echo 'set_var EASYRSA_REQ_EMAIL "contact@ipdb.global"' >> $1//vars
 
@@ -34,7 +34,7 @@ function configure_member_cert_gen(){
     echo 'set_var EASYRSA_REQ_COUNTRY "DE"' >> $1/vars
     echo 'set_var EASYRSA_REQ_PROVINCE "Berlin"' >> $1/vars
     echo 'set_var EASYRSA_REQ_CITY "Berlin"' >> $1/vars
-    echo 'set_var EASYRSA_REQ_ORG "BigchainDB GmbH"' >> $1/vars
+    echo 'set_var EASYRSA_REQ_ORG "corechaindb GmbH"' >> $1/vars
     echo 'set_var EASYRSA_REQ_OU "MONGO-MEMBER"' >> $1/vars
     echo 'set_var EASYRSA_REQ_EMAIL "contact@ipdb.global"' >> $1/vars
     echo "set_var EASYRSA_SSL_CONF \"$1/openssl-1.0.cnf\"" >> $1/vars
@@ -53,7 +53,7 @@ function configure_client_cert_gen(){
     echo 'set_var EASYRSA_REQ_COUNTRY "DE"' >> $1/vars
     echo 'set_var EASYRSA_REQ_PROVINCE "Berlin"' >> $1/vars
     echo 'set_var EASYRSA_REQ_CITY "Berlin"' >> $1/vars
-    echo 'set_var EASYRSA_REQ_ORG "BigchainDB GmbH"' >> $1/vars
+    echo 'set_var EASYRSA_REQ_ORG "corechaindb GmbH"' >> $1/vars
     echo 'set_var EASYRSA_REQ_OU "MONGO-CLIENT"' >> $1/vars
     echo 'set_var EASYRSA_REQ_EMAIL "contact@ipdb.global"' >> $1/vars
     echo "set_var EASYRSA_SSL_CONF \"$1/openssl-1.0.cnf\"" >> $1/vars
@@ -166,7 +166,7 @@ metadata:
   namespace: default
 type: Opaque
 data:
-  # Base64-encoded BigchainDB instance certificate
+  # Base64-encoded corechaindb instance certificate
   bdb-instance.pem: "${bdb_instance_pem}"
   # Base64-encoded private key (<bdb-instance-name>.key)
   bdb-instance.key: "${bdb_instance_key}"
@@ -268,7 +268,7 @@ data:
   # ngx-instance-name is the name of the NGINX instance in this Kubernetes cluster.
   ngx-instance-name: "${ngx_instance_name}"
 
-  # bdb-instance-name is the name of the BigchainDB instance in this Kubernetes cluster.
+  # bdb-instance-name is the name of the corechaindb instance in this Kubernetes cluster.
   bdb-instance-name: "${bdb_instance_name}"
 
   # openresty-instance-name is the name of the OpenResty instance in this
@@ -279,7 +279,7 @@ data:
   # Kubernetes cluster.
   ngx-mdb-instance-name: "${mdb_instance_name}.default.svc.cluster.local"
 
-  # ngx-bdb-instance-name is the FQDN of the BigchainDB instance in this
+  # ngx-bdb-instance-name is the FQDN of the corechaindb instance in this
   # Kubernetes cluster.
   ngx-bdb-instance-name: "${bdb_instance_name}.default.svc.cluster.local"
 
@@ -297,28 +297,28 @@ data:
   # receive requests from NGINX instance.
   openresty-backend-port: "8080"
 
-  # BigchainDB configuration parameters
+  # corechaindb configuration parameters
   # Refer https://docs.corechaindb.com/projects/server/en/latest/server-reference/configuration.html
 
-  # corechaindb-api-port is the port number on which BigchainDB is listening
+  # corechaindb-api-port is the port number on which corechaindb is listening
   # for HTTP requests.
   corechaindb-api-port: "9984"
 
-  # corechaindb-server-bind is the socket where BigchainDB binds for API
+  # corechaindb-server-bind is the socket where corechaindb binds for API
   # requests.
   corechaindb-server-bind: "0.0.0.0:9984"
 
   # corechaindb-ws-port and corechaindb-ws-interface form the socket where
-  # BigchainDB binds for Websocket connections.
+  # corechaindb binds for Websocket connections.
   corechaindb-ws-port: "9985"
   corechaindb-ws-interface: "0.0.0.0"
 
-  # corechaindb-database-name is the database collection used by BigchainDB with
+  # corechaindb-database-name is the database collection used by corechaindb with
   # the MongoDB backend.
   corechaindb-database-name: "bigchain"
 
   # corechaindb-wsserver-advertised-scheme is the protocol used to access the
-  # WebSocket API in BigchainDB; can be 'ws' or 'wss' (default).
+  # WebSocket API in corechaindb; can be 'ws' or 'wss' (default).
   corechaindb-wsserver-advertised-scheme: "wss"
 
   # Optional: Optimize storage engine(wired tiger)
@@ -336,16 +336,16 @@ metadata:
   name: bdb-config
   namespace: default
 data:
-  # BigchainDB instance authentication user name
+  # corechaindb instance authentication user name
   bdb-user: "${bdb_user}"
 
-  # corechaindb-database-maxtries is the maximum number of times that BigchainDB
+  # corechaindb-database-maxtries is the maximum number of times that corechaindb
   # will try to establish a connection with the database backend.
   # If it is set to 0, then it will try forever.
   corechaindb-database-maxtries: "3"
 
   # corechaindb-database-connection-timeout is the maximum number of
-  # milliseconds that BigchainDB will wait before closing the connection while
+  # milliseconds that corechaindb will wait before closing the connection while
   # connecting to the database backend.
   corechaindb-database-connection-timeout: "5000"
 
@@ -377,7 +377,7 @@ data:
   # example: test-chain-KPI1Ud
   bdb-chain-id: "${bdb_chain_id}"
 
-  # bdb-abci-port is used by Tendermint Core for ABCI traffic. BigchainDB nodes
+  # bdb-abci-port is used by Tendermint Core for ABCI traffic. corechaindb nodes
   # use that internally.
   bdb-abci-port: "26658"
 
@@ -385,7 +385,7 @@ data:
   # other peers in the network. This port is accessible publicly.
   bdb-p2p-port: "26656"
 
-  # bdb-rpc-port is used by Tendermint Core to rpc. BigchainDB nodes
+  # bdb-rpc-port is used by Tendermint Core to rpc. corechaindb nodes
   # use this port internally.
   bdb-rpc-port: "26657"
 

@@ -38,7 +38,7 @@ from corechaindb.validation import BaseValidationRules
 logger = logging.getLogger(__name__)
 
 
-class BigchainDB(object):
+class corechaindb(object):
     """Bigchain API
 
     Create, read, sign, write transactions to the database

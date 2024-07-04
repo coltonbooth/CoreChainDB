@@ -44,31 +44,31 @@ spec:
         args:
         - start
         env:
-        - name: BIGCHAINDB_DATABASE_HOST
+        - name: corechaindb_DATABASE_HOST
           value: mdb
-        - name: BIGCHAINDB_DATABASE_PORT
+        - name: corechaindb_DATABASE_PORT
           value: "27017"
-        - name: BIGCHAINDB_DATABASE_REPLICASET
+        - name: corechaindb_DATABASE_REPLICASET
           value: bigchain-rs
-        - name: BIGCHAINDB_DATABASE_BACKEND
+        - name: corechaindb_DATABASE_BACKEND
           value: mongodb
-        - name: BIGCHAINDB_DATABASE_NAME
+        - name: corechaindb_DATABASE_NAME
           value: bigchain
-        - name: BIGCHAINDB_SERVER_BIND
+        - name: corechaindb_SERVER_BIND
           value: "0.0.0.0:9984"
-        - name: BIGCHAINDB_WSSERVER_HOST
+        - name: corechaindb_WSSERVER_HOST
           value: "0.0.0.0"
-        - name: BIGCHAINDB_WSSERVER_PORT
+        - name: corechaindb_WSSERVER_PORT
           value: "9985"
-        - name: BIGCHAINDB_KEYPAIR_PUBLIC
+        - name: corechaindb_KEYPAIR_PUBLIC
           value: "EEWUAhsk94ZUHhVw7qx9oZiXYDAWc9cRz93eMrsTG4kZ"
-        - name: BIGCHAINDB_KEYPAIR_PRIVATE
+        - name: corechaindb_KEYPAIR_PRIVATE
           value: "3CjmRhu718gT1Wkba3LfdqX5pfYuBdaMPLd7ENUga5dm"
-        - name: BIGCHAINDB_DATABASE_MAXTRIES
+        - name: corechaindb_DATABASE_MAXTRIES
           value: "3"
-        - name: BIGCHAINDB_DATABASE_CONNECTION_TIMEOUT
+        - name: corechaindb_DATABASE_CONNECTION_TIMEOUT
           value: "120"
-        - name: BIGCHAINDB_LOG_LEVEL_CONSOLE
+        - name: corechaindb_LOG_LEVEL_CONSOLE
           value: debug
         ports:
         - containerPort: 9984

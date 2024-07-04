@@ -4,4 +4,4 @@ You can find one of the installation methods with Ansible on GitHub at:
 
 [Ansible script](https://github.com/corechaindb/corechaindb-node-ansible)
 
-It allows to install BigchainDB, MongoDB, Tendermint, and python, and then connect nodes into a network. Current tested machine is Ubuntu 18.04. 
+It allows to install corechaindb, MongoDB, Tendermint, and python, and then connect nodes into a network. Current tested machine is Ubuntu 18.04. 

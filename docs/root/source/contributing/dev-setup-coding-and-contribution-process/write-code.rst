@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -12,7 +12,7 @@ Know What You Want to Write Code to Do
 
 Do you want to write code to resolve an open issue (bug)? Which one?
 
-Do you want to implement a BigchainDB Enhancement Proposal (BEP)? Which one?
+Do you want to implement a corechaindb Enhancement Proposal (BEP)? Which one?
 
 You should know why you want to write code before you go any farther.
 
@@ -54,7 +54,7 @@ Set Up Your Local Machine. Here's How.
 
      $ pip install virtualenv
 
-- Create a Python Virttual Environment (virtualenv) for doing BigchainDB Server development. There are many ways to do that. Google around and pick one.
+- Create a Python Virttual Environment (virtualenv) for doing corechaindb Server development. There are many ways to do that. Google around and pick one.
   An old-fashioned but fine way is:
   
   .. code::
@@ -92,7 +92,7 @@ Make sure `pre-commit <https://pre-commit.com/>`_ actually checks commits. Do:
 That will load the pre-commit settings in the file ``.pre-commit-config.yaml``. Now every time you do ``git commit <stuff>``, pre-commit
 will run all those checks.
 
-To install BigchainDB Server from the local code, and to keep it up to date with the latest code in there, use:
+To install corechaindb Server from the local code, and to keep it up to date with the latest code in there, use:
 
   .. code::
 

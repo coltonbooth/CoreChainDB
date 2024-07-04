@@ -1,6 +1,6 @@
 # nginx_3scale agent
 nginx_3scale agent is a module that is responsible for providing authentication,
-authorization and metering of BigchainDB API users, by communicating with 3scale.
+authorization and metering of corechaindb API users, by communicating with 3scale.
 We use the openresty for this, which is nginx bundled with lua libraries.
 More information at their [website](openresty.org/en)
 
@@ -31,7 +31,7 @@ reflect any changes made to the container.
 
 * Every request calls the `_M.access()` function. This function extracts the
   `app_id` and `app_key` from the HTTP request headers and forwards it to
-  3scale to see if a request is allowed to be forwarded to the BigchainDB
+  3scale to see if a request is allowed to be forwarded to the corechaindb
   backend. The request also contains the
   various parameters that one would like to set access policies on. If the
   `app_id` and `app_key` is successful, the access rules for the parameters

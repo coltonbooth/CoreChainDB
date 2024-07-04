@@ -5,7 +5,7 @@
 
 ## Note: data values do NOT have to be base64-encoded in this file.
 
-## vars is common environment variables for this BigchaindB node
+## vars is common environment variables for this corechaindb node
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -39,7 +39,7 @@ data:
   # Kubernetes cluster.
   openresty-instance-name: "<name of the openresty instance>"
 
-  # bdb-instance-name is the name of the BigchainDB instance in this Kubernetes cluster.
+  # bdb-instance-name is the name of the corechaindb instance in this Kubernetes cluster.
   bdb-instance-name: "<name of the bdb instance>"
 
   # mdb-mon-instance-name is the name of the MongoDB Monitoring Agent instance
@@ -54,7 +54,7 @@ data:
   # Kubernetes cluster.
   ngx-openresty-instance-name: "<name of the openresty instance>.default.svc.cluster.local"
 
-  # ngx-bdb-instance-name is the FQDN of the BigchainDB instance in this
+  # ngx-bdb-instance-name is the FQDN of the corechaindb instance in this
   # Kubernetes cluster.
   ngx-bdb-instance-name: "<name of the bdb instance>.default.svc.cluster.local"
 
@@ -69,28 +69,28 @@ data:
   # receive requests from NGINX instance.
   openresty-backend-port: "8080"
 
-  # BigchainDB configuration parameters
+  # corechaindb configuration parameters
   # Refer https://docs.corechaindb.com/projects/server/en/latest/server-reference/configuration.html
 
-  # corechaindb-api-port is the port number on which BigchainDB is listening
+  # corechaindb-api-port is the port number on which corechaindb is listening
   # for HTTP requests.
   corechaindb-api-port: "9984"
 
-  # corechaindb-server-bind is the socket where BigchainDB binds for API
+  # corechaindb-server-bind is the socket where corechaindb binds for API
   # requests.
   corechaindb-server-bind: "0.0.0.0:9984"
 
   # corechaindb-ws-port and corechaindb-ws-interface form the socket where
-  # BigchainDB binds for Websocket connections.
+  # corechaindb binds for Websocket connections.
   corechaindb-ws-port: "9985"
   corechaindb-ws-interface: "0.0.0.0"
 
-  # corechaindb-database-name is the database collection used by BigchainDB with
+  # corechaindb-database-name is the database collection used by corechaindb with
   # the MongoDB backend.
   corechaindb-database-name: "bigchain"
 
   # corechaindb-wsserver-advertised-scheme is the protocol used to access the
-  # WebSocket API in BigchainDB; can be 'ws' or 'wss' (default).
+  # WebSocket API in corechaindb; can be 'ws' or 'wss' (default).
   corechaindb-wsserver-advertised-scheme: "wss"
 
   # Optional: Optimize storage engine(wired tiger)
@@ -108,16 +108,16 @@ metadata:
   name: bdb-config
   namespace: default
 data:
-  # BigchainDB instance authentication user name
+  # corechaindb instance authentication user name
   bdb-user: "<user name>"
 
-  # corechaindb-database-maxtries is the maximum number of times that BigchainDB
+  # corechaindb-database-maxtries is the maximum number of times that corechaindb
   # will try to establish a connection with the database backend.
   # If it is set to 0, then it will try forever.
   corechaindb-database-maxtries: "3"
 
   # corechaindb-database-connection-timeout is the maximum number of
-  # milliseconds that BigchainDB will wait before closing the connection while
+  # milliseconds that corechaindb will wait before closing the connection while
   # connecting to the database backend.
   corechaindb-database-connection-timeout: "5000"
 
@@ -149,7 +149,7 @@ data:
   # example: test-chain-KPI1Ud
   bdb-chain-id: "<ID of the blockchain>"
 
-  # bdb-abci-port is used by Tendermint Core for ABCI traffic. BigchainDB nodes
+  # bdb-abci-port is used by Tendermint Core for ABCI traffic. corechaindb nodes
   # use that internally.
   bdb-abci-port: "26658"
 
@@ -157,7 +157,7 @@ data:
   # other peers in the network. This port is accessible publicly.
   bdb-p2p-port: "26656"
 
-  # bdb-rpc-port is used by Tendermint Core to rpc. BigchainDB nodes
+  # bdb-rpc-port is used by Tendermint Core to rpc. corechaindb nodes
   # use this port internally.
   bbd-rpc-port: "26657"
 

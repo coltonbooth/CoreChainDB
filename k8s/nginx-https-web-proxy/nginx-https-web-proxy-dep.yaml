@@ -65,12 +65,12 @@ spec:
             configMapKeyRef:
               name: vars
               key: node-health-check-port
-        - name: BIGCHAINDB_BACKEND_HOST
+        - name: corechaindb_BACKEND_HOST
           valueFrom:
             configMapKeyRef:
               name: vars
               key: ngx-bdb-instance-name
-        - name: BIGCHAINDB_API_PORT
+        - name: corechaindb_API_PORT
           valueFrom:
             configMapKeyRef:
               name: vars

@@ -28,7 +28,7 @@ VALID_LANGUAGES = ('danish', 'dutch', 'english', 'finnish', 'french', 'german',
 
 @singledispatch
 def create_database(connection, dbname):
-    """Create database to be used by BigchainDB.
+    """Create database to be used by corechaindb.
 
     Args:
         dbname (str): the name of the database to create.
@@ -39,7 +39,7 @@ def create_database(connection, dbname):
 
 @singledispatch
 def create_tables(connection, dbname):
-    """Create the tables to be used by BigchainDB.
+    """Create the tables to be used by corechaindb.
 
     Args:
         dbname (str): the name of the database to create tables for.
@@ -50,7 +50,7 @@ def create_tables(connection, dbname):
 
 @singledispatch
 def drop_database(connection, dbname):
-    """Drop the database used by BigchainDB.
+    """Drop the database used by corechaindb.
 
     Args:
         dbname (str): the name of the database to drop.
@@ -64,7 +64,7 @@ def drop_database(connection, dbname):
 
 
 def init_database(connection=None, dbname=None):
-    """Initialize the configured backend for use with BigchainDB.
+    """Initialize the configured backend for use with corechaindb.
 
     Creates a database with :attr:`dbname` with any required tables
     and supporting indexes.
@@ -74,7 +74,7 @@ def init_database(connection=None, dbname=None):
             existing connection to use to initialize the database.
             Creates one if not given.
         dbname (str): the name of the database to create.
-            Defaults to the database name given in the BigchainDB
+            Defaults to the database name given in the corechaindb
             configuration.
     """
 

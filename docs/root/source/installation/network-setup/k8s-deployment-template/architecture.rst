@@ -1,29 +1,29 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
-Architecture of a BigchainDB Node Running in a Kubernetes Cluster
+Architecture of a corechaindb Node Running in a Kubernetes Cluster
 =================================================================
 
 .. note::
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
    and your organization has people who know Kubernetes,
    then this Kubernetes deployment template might be helpful.
 
-If you deploy a BigchainDB node into a Kubernetes cluster
+If you deploy a corechaindb node into a Kubernetes cluster
 as described in these docs, it will include:
 
-* NGINX, OpenResty, BigchainDB, MongoDB and Tendermint
+* NGINX, OpenResty, corechaindb, MongoDB and Tendermint
   `Kubernetes Services <https://kubernetes.io/docs/concepts/services-networking/service/>`_.
-* NGINX, OpenResty, BigchainDB and MongoDB Monitoring Agent
+* NGINX, OpenResty, corechaindb and MongoDB Monitoring Agent
   `Kubernetes Deployments <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/>`_.
 * MongoDB and Tendermint `Kubernetes StatefulSets <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/>`_.
 * Third party services like `3scale <https://3scale.net>`_,
@@ -34,7 +34,7 @@ as described in these docs, it will include:
 
 .. _corechaindb-node:
 
-BigchainDB Node Diagram
+corechaindb Node Diagram
 -----------------------
 
 .. aafig::
@@ -51,7 +51,7 @@ BigchainDB Node Diagram
   |                                                           |            |                                                             |
   |                                                           |            |                                                             |
   |                                                           |            |                                                             |
-  |                                         "BigchainDB API"  |            |  "Tendermint P2P"                                           |
+  |                                         "corechaindb API"  |            |  "Tendermint P2P"                                           |
   |                                                           |            |  "Communication/"                                           |
   |                                                           |            |  "Public Key Exchange"                                      |
   |                                                           |            |                                                             |
@@ -104,13 +104,13 @@ BigchainDB Node Diagram
   |                +-----------+             +--------+               |    |                                                             |
   |                |           +-------------+        |               |    |                                                             |
   |                |                                  |               |    | "Bi+directional, communication between"                     |
-  |                |                                  |               |    | "BigchainDB(APP) and Tendermint"                            |
+  |                |                                  |               |    | "corechaindb(APP) and Tendermint"                            |
   |                |                                  |               |    | "BFT consensus Engine"                                      |
   |                |                                  |               |    |                                                             |
   |                v                                  v               |    |                                                             |
   |                                                                   |    |                                                             |
   |         +-------------+                 +--------------+          +----+------------------->  +--------------+                       |
-  |         | "OpenResty" |                 | "BigchainDB" |               |                      |  "MongoDB"   |                       |
+  |         | "OpenResty" |                 | "corechaindb" |               |                      |  "MongoDB"   |                       |
   |         | "Service"   |                 | "Service"    |               |                      |  "Service"   |                       |
   |         |             |          +----->|              |               |            +-------> |              |                       |
   |         +------+------+          |      +------+-------+               |            |         +------+-------+                       |
@@ -119,7 +119,7 @@ BigchainDB Node Diagram
   |                v                 |             v                       |            |                 v                              |
   |          +-------------+         |        +-------------+              |            |            +----------+                        |
   |          |             |         |        |             | <------------+            |            |"MongoDB" |                        |
-  |          |"OpenResty"  |         |        | "BigchainDB"|                           |            |"Stateful"|                        |
+  |          |"OpenResty"  |         |        | "corechaindb"|                           |            |"Stateful"|                        |
   |          |"Deployment" |         |        | "Deployment"|                           |            |"Set"     |                        |
   |          |             |         |        |             |                           |            +-----+----+                        |
   |          |             |         |        |             +---------------------------+                  |                             |
@@ -175,13 +175,13 @@ entrypoint for:
    (configurable) which prevents DoS attacks.
 
 #. HTTPS Termination: The HTTPS connection does not carry through all the way
-   to BigchainDB and terminates at NGINX for now.
+   to corechaindb and terminates at NGINX for now.
 
-#. Request Routing: For HTTPS connections on port 443 (or the configured BigchainDB public api port),
+#. Request Routing: For HTTPS connections on port 443 (or the configured corechaindb public api port),
    the connection is proxied to:
 
    #. OpenResty Service if it is a POST request.
-   #. BigchainDB Service if it is a GET request.
+   #. corechaindb Service if it is a GET request.
 
 
 We use an NGINX TCP proxy on port 27017 (configurable) at the cloud
@@ -209,7 +209,7 @@ and ``app_key`` with the 3scale backend.
 MongoDB: Standalone
 -------------------
 
-We use MongoDB as the backend database for BigchainDB.
+We use MongoDB as the backend database for corechaindb.
 
 We achieve security by avoiding DoS attacks at the NGINX proxy layer and by
 ensuring that MongoDB has TLS enabled for all its connections.
@@ -218,7 +218,7 @@ ensuring that MongoDB has TLS enabled for all its connections.
 Tendermint: BFT consensus engine
 --------------------------------
 
-We use Tendermint as the backend consensus engine for BFT replication of BigchainDB.
+We use Tendermint as the backend consensus engine for BFT replication of corechaindb.
 In a multi-node deployment, Tendermint nodes/peers communicate with each other via
 the public ports exposed by the NGINX gateway.
 

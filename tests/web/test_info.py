@@ -28,7 +28,7 @@ def test_api_root_endpoint(client, wsserver_base_url):
         },
         'docs': 'https://docs.corechaindb.com/projects/server/en/vtsttst/',
         'version': 'tsttst',
-        'software': 'BigchainDB',
+        'software': 'corechaindb',
     }
 
 

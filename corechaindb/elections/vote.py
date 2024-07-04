@@ -28,7 +28,7 @@ class Vote(Transaction):
         For more details refer BEP-21: https://github.com/corechaindb/BEPs/tree/master/21
 
         Args:
-            bigchain (BigchainDB): an instantiated corechaindb.lib.BigchainDB object.
+            bigchain (corechaindb): an instantiated corechaindb.lib.corechaindb object.
 
         Returns:
             Vote: a Vote object

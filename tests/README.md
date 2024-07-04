@@ -1,13 +1,13 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# BigchainDB Server Unit Tests
+# corechaindb Server Unit Tests
 
-Most of the tests in the `tests/` folder are unit tests. For info about how to write and run tests, see [the docs about contributing to BigchainDB](http://docs.corechaindb.com/projects/contributing/en/latest/index.html), especially:
+Most of the tests in the `tests/` folder are unit tests. For info about how to write and run tests, see [the docs about contributing to corechaindb](http://docs.corechaindb.com/projects/contributing/en/latest/index.html), especially:
 
 - [Write Code - Remember to Write Tests](http://docs.corechaindb.com/projects/contributing/en/latest/dev-setup-coding-and-contribution-process/write-code.html#remember-to-write-tests)
 - [Notes on Running a Local Dev Node with Docker Compose](http://docs.corechaindb.com/projects/contributing/en/latest/dev-setup-coding-and-contribution-process/run-node-with-docker-compose.html), especially `make test`

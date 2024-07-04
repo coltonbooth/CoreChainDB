@@ -1,17 +1,17 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
-Kubernetes Template: Upgrade all Software in a BigchainDB Node
+Kubernetes Template: Upgrade all Software in a corechaindb Node
 ==============================================================
 
 .. note::
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
@@ -19,9 +19,9 @@ Kubernetes Template: Upgrade all Software in a BigchainDB Node
    then this Kubernetes deployment template might be helpful.
 
 This page outlines how to upgrade all the software associated
-with a BigchainDB node running on Kubernetes,
+with a corechaindb node running on Kubernetes,
 including host operating systems, Docker, Kubernetes,
-and BigchainDB-related software.
+and corechaindb-related software.
 
 
 Upgrade Host OS, Docker and Kubernetes
@@ -83,11 +83,11 @@ To manually upgrade all Kubernetes software in your Kubernetes cluster, see
 `the Kubernetes docs <https://kubernetes.io/docs/admin/cluster-management/>`_.
 
 
-Upgrade BigchainDB-Related Software
+Upgrade corechaindb-Related Software
 -----------------------------------
 
-We use Kubernetes "Deployments" for NGINX, BigchainDB,
-and most other BigchainDB-related software.
+We use Kubernetes "Deployments" for NGINX, corechaindb,
+and most other corechaindb-related software.
 The only exception is MongoDB; we use a Kubernetes
 StatefulSet for that.
 

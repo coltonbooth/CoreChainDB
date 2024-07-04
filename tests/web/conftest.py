@@ -9,10 +9,10 @@ import pytest
 @pytest.fixture
 def app(request):
     from corechaindb.web import server
-    from corechaindb.lib import BigchainDB
+    from corechaindb.lib import corechaindb
 
     if request.config.getoption('--database-backend') == 'localmongodb':
-        app = server.create_app(debug=True, corechaindb_factory=BigchainDB)
+        app = server.create_app(debug=True, corechaindb_factory=corechaindb)
     else:
         app = server.create_app(debug=True)
 

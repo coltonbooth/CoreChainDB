@@ -2,7 +2,7 @@
 
 ## General Tips
 
-- Check the BigchainDB, Tendermint and MongoDB logs.
+- Check the corechaindb, Tendermint and MongoDB logs.
   For help with that, see the page about [Logging and Log Rotation](../appendices/log-rotation).
 - Try Googling the error message.
 
@@ -40,15 +40,15 @@ If you want to refresh your node back to a fresh empty state, then your best bet
 * reset Tendermint using `tendermint unsafe_reset_all`
 * delete the directory `$HOME/.tendermint`
 
-## Shutting Down BigchainDB
+## Shutting Down corechaindb
 
-If you want to stop/kill BigchainDB, you can do so by sending `SIGINT`, `SIGQUIT` or `SIGTERM` to the running BigchainDB
-process(es). Depending on how you started BigchainDB i.e. foreground or background. e.g. you started BigchainDB in the background as mentioned above in the guide:
+If you want to stop/kill corechaindb, you can do so by sending `SIGINT`, `SIGQUIT` or `SIGTERM` to the running corechaindb
+process(es). Depending on how you started corechaindb i.e. foreground or background. e.g. you started corechaindb in the background as mentioned above in the guide:
 
 ```bash
 $ nohup corechaindb start 2>&1 > corechaindb.log &
 
-$ # Check the PID of the main BigchainDB process
+$ # Check the PID of the main corechaindb process
 $ ps -ef | grep corechaindb
 <user>    *<pid> <ppid>   <C> <STIME> <tty>        <time> corechaindb
 <user>     <pid> <ppid>*  <C> <STIME> <tty>        <time> gunicorn: master [corechaindb_gunicorn]
@@ -80,7 +80,7 @@ $ kill -3 <corechaindb_parent_pid>
 $ pgrep corechaindb | xargs kill -9
 ```
 
-If you started BigchainDB in the foreground, a `Ctrl + C` or `Ctrl + Z` would shut down BigchainDB.
+If you started corechaindb in the foreground, a `Ctrl + C` or `Ctrl + Z` would shut down corechaindb.
 
 ## Member: Dynamically Add or Remove Validators
 

@@ -24,7 +24,7 @@ export BROWSER_PYSCRIPT
 define PRINT_HELP_PYSCRIPT
 import re, sys
 
-print("BigchainDB 2.0 developer toolbox")
+print("corechaindb 2.0 developer toolbox")
 print("--------------------------------")
 print("Usage:  make COMMAND")
 print("")
@@ -55,16 +55,16 @@ IS_DOCKER_COMPOSE_INSTALLED := $(shell command -v docker-compose 2> /dev/null)
 help: ## Show this help
 	@$(HELP) < $(MAKEFILE_LIST)
 
-run: check-deps ## Run BigchainDB from source (stop it with ctrl+c)
+run: check-deps ## Run corechaindb from source (stop it with ctrl+c)
 	# although corechaindb has tendermint and mongodb in depends_on,
 	# launch them first otherwise tendermint will get stuck upon sending yet another log
 	# due to some docker-compose issue; does not happen when containers are run as daemons
 	@$(DC) up --no-deps mongodb tendermint corechaindb
 
-start: check-deps ## Run BigchainDB from source and daemonize it (stop with `make stop`)
+start: check-deps ## Run corechaindb from source and daemonize it (stop with `make stop`)
 	@$(DC) up -d corechaindb
 
-stop: check-deps ## Stop BigchainDB
+stop: check-deps ## Stop corechaindb
 	@$(DC) stop
 
 logs: check-deps ## Attach to the logs
@@ -97,7 +97,7 @@ doc-acceptance: check-deps ## Create documentation for acceptance tests
 clean: clean-build clean-pyc clean-test ## Remove all build, test, coverage and Python artifacts
 	@$(ECHO) "Cleaning was successful."
 
-reset: check-deps ## Stop and REMOVE all containers. WARNING: you will LOSE all data stored in BigchainDB.
+reset: check-deps ## Stop and REMOVE all containers. WARNING: you will LOSE all data stored in corechaindb.
 	@$(DC) down
 
 release: dist ## package and upload a release

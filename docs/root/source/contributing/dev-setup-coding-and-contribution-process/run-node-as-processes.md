@@ -1,32 +1,32 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Notes on Running a Local Dev Node as Processes
 
-The following doc describes how to run a local node for developing BigchainDB Tendermint version.
+The following doc describes how to run a local node for developing corechaindb Tendermint version.
 
 There are two crucial dependencies required to start a local node:
 
 - MongoDB
 - Tendermint
 
-and of course you also need to install BigchainDB Sever from the local code you just developed.
+and of course you also need to install corechaindb Sever from the local code you just developed.
 
 ## Install and Run MongoDB
 
 MongoDB can be easily installed, just refer to their [installation documentation](https://docs.mongodb.com/manual/installation/) for your distro.
-We know MongoDB 3.4 and 3.6 work with BigchainDB.
+We know MongoDB 3.4 and 3.6 work with corechaindb.
 After the installation of MongoDB is complete, run MongoDB using `sudo mongod`
 
 ## Install and Run Tendermint
 
 ### Installing a Tendermint Executable
 
-The version of BigchainDB Server described in these docs only works well with Tendermint 0.31.5 (not a higher version number). Install that:
+The version of corechaindb Server described in these docs only works well with Tendermint 0.31.5 (not a higher version number). Install that:
 
 ```bash
 $ sudo apt install -y unzip
@@ -107,9 +107,9 @@ The argument `--consensus.create_empty_blocks=false` specifies that Tendermint s
 $ tendermint unsafe_reset_all
 ```
 
-## Install BigchainDB
+## Install corechaindb
 
-To install BigchainDB from source (for dev), clone the repo and execute the following command, (it is better that you create a virtual env for this)
+To install corechaindb from source (for dev), clone the repo and execute the following command, (it is better that you create a virtual env for this)
 
 ```bash
 $ git clone https://github.com/corechaindb/corechaindb.git

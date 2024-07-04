@@ -30,40 +30,40 @@ matrix:
   include:
   - python: 3.6
     env:
-    - BIGCHAINDB_DATABASE_BACKEND=localmongodb
-    - BIGCHAINDB_DATABASE_SSL=
+    - corechaindb_DATABASE_BACKEND=localmongodb
+    - corechaindb_DATABASE_SSL=
   - python: 3.6
     env:
-    - BIGCHAINDB_DATABASE_BACKEND=localmongodb
-    - BIGCHAINDB_DATABASE_SSL=
-    - BIGCHAINDB_CI_ABCI=enable
+    - corechaindb_DATABASE_BACKEND=localmongodb
+    - corechaindb_DATABASE_SSL=
+    - corechaindb_CI_ABCI=enable
   - python: 3.6
     env:
-    - BIGCHAINDB_ACCEPTANCE_TEST=enable
+    - corechaindb_ACCEPTANCE_TEST=enable
   - python: 3.7
     env:
-    - BIGCHAINDB_DATABASE_BACKEND=localmongodb
-    - BIGCHAINDB_DATABASE_SSL=
+    - corechaindb_DATABASE_BACKEND=localmongodb
+    - corechaindb_DATABASE_SSL=
   - python: 3.7
     env:
-    - BIGCHAINDB_DATABASE_BACKEND=localmongodb
-    - BIGCHAINDB_DATABASE_SSL=
-    - BIGCHAINDB_CI_ABCI=enable
+    - corechaindb_DATABASE_BACKEND=localmongodb
+    - corechaindb_DATABASE_SSL=
+    - corechaindb_CI_ABCI=enable
   - python: 3.7
     env:
-    - BIGCHAINDB_ACCEPTANCE_TEST=enable
+    - corechaindb_ACCEPTANCE_TEST=enable
   - python: 3.8
     env:
-    - BIGCHAINDB_DATABASE_BACKEND=localmongodb
-    - BIGCHAINDB_DATABASE_SSL=
+    - corechaindb_DATABASE_BACKEND=localmongodb
+    - corechaindb_DATABASE_SSL=
   - python: 3.8
     env:
-    - BIGCHAINDB_DATABASE_BACKEND=localmongodb
-    - BIGCHAINDB_DATABASE_SSL=
-    - BIGCHAINDB_CI_ABCI=enable
+    - corechaindb_DATABASE_BACKEND=localmongodb
+    - corechaindb_DATABASE_SSL=
+    - corechaindb_CI_ABCI=enable
   - python: 3.8
     env:
-    - BIGCHAINDB_ACCEPTANCE_TEST=enable
+    - corechaindb_ACCEPTANCE_TEST=enable
 
 
 before_install: sudo .ci/travis-before-install.sh

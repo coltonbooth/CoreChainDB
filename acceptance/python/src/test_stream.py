@@ -6,14 +6,14 @@
 # # Stream Acceptance Test
 # This test checks if the event stream works correctly. The basic idea of this
 # test is to generate some random **valid** transaction, send them to a
-# BigchainDB node, and expect those transactions to be returned by the valid
+# corechaindb node, and expect those transactions to be returned by the valid
 # transactions Stream API. During this test, two threads work together,
 # sharing a queue to exchange events.
 #
-# - The *main thread* first creates and sends the transactions to BigchainDB;
+# - The *main thread* first creates and sends the transactions to corechaindb;
 # then it run through all events in the shared queue to check if all
-# transactions sent have been validated by BigchainDB.
-# - The *listen thread* listens to the events coming from BigchainDB and puts
+# transactions sent have been validated by corechaindb.
+# - The *listen thread* listens to the events coming from corechaindb and puts
 # them in a queue shared with the main thread.
 
 import os
@@ -27,7 +27,7 @@ from uuid import uuid4
 # [websocket](https://github.com/websocket-client/websocket-client) module
 from websocket import create_connection
 
-from corechaindb_driver import BigchainDB
+from corechaindb_driver import corechaindb
 from corechaindb_driver.crypto import generate_keypair
 
 
@@ -35,25 +35,25 @@ def test_stream():
     # ## Set up the test
     # We use the env variable `BICHAINDB_ENDPOINT` to know where to connect.
     # Check [test_basic.py](./test_basic.html) for more information.
-    BDB_ENDPOINT = os.environ.get('BIGCHAINDB_ENDPOINT')
+    BDB_ENDPOINT = os.environ.get('corechaindb_ENDPOINT')
 
     # *That's pretty bad, but let's do like this for now.*
     WS_ENDPOINT = 'ws://{}:9985/api/v1/streams/valid_transactions'.format(BDB_ENDPOINT.rsplit(':')[0])
 
-    bdb = BigchainDB(BDB_ENDPOINT)
+    bdb = corechaindb(BDB_ENDPOINT)
 
     # Hello to Alice again, she is pretty active in those tests, good job
     # Alice!
     alice = generate_keypair()
 
     # We need few variables to keep the state, specifically we need `sent` to
-    # keep track of all transactions Alice sent to BigchainDB, while `received`
-    # are the transactions BigchainDB validated and sent back to her.
+    # keep track of all transactions Alice sent to corechaindb, while `received`
+    # are the transactions corechaindb validated and sent back to her.
     sent = []
     received = queue.Queue()
 
     # In this test we use a websocket. The websocket must be started **before**
-    # sending transactions to BigchainDB, otherwise we might lose some
+    # sending transactions to corechaindb, otherwise we might lose some
     # transactions. The `ws_ready` event is used to synchronize the main thread
     # with the listen thread.
     ws_ready = Event()
@@ -68,7 +68,7 @@ def test_stream():
         # to proceed (continue reading, it should make sense in a second.)
         ws_ready.set()
 
-        # It's time to consume all events coming from the BigchainDB stream API.
+        # It's time to consume all events coming from the corechaindb stream API.
         # Every time a new event is received, it is put in the queue shared
         # with the main thread.
         while True:
@@ -80,7 +80,7 @@ def test_stream():
     t = Thread(target=listen, daemon=True)
     t.start()
 
-    # ## Pushing the transactions to BigchainDB
+    # ## Pushing the transactions to corechaindb
     # After starting the listen thread, we wait for it to connect, and then we
     # proceed.
     ws_ready.wait()
@@ -97,7 +97,7 @@ def test_stream():
                 private_keys=alice.private_key)
         # We don't want to wait for each transaction to be in a block. By using
         # `async` mode, we make sure that the driver returns as soon as the
-        # transaction is pushed to the BigchainDB API. Remember: we expect all
+        # transaction is pushed to the corechaindb API. Remember: we expect all
         # transactions to be in the shared queue: this is a two phase test,
         # first we send a bunch of transactions, then we check if they are
         # valid (and, in this case, they should).
@@ -106,14 +106,14 @@ def test_stream():
         # The `id` of every sent transaction is then stored in a list.
         sent.append(tx['id'])
 
-    # ## Check the valid transactions coming from BigchainDB
-    # Now we are ready to check if BigchainDB did its job. A simple way to
+    # ## Check the valid transactions coming from corechaindb
+    # Now we are ready to check if corechaindb did its job. A simple way to
     # check if all sent transactions have been processed is to **remove** from
     # `sent` the transactions we get from the *listen thread*. At one point in
     # time, `sent` should be empty, and we exit the test.
     while sent:
         # To avoid waiting forever, we have an arbitrary timeout of 5
-        # seconds: it should be enough time for BigchainDB to create
+        # seconds: it should be enough time for corechaindb to create
         # blocks, in fact a new block is created every second. If we hit
         # the timeout, then game over ¯\\\_(ツ)\_/¯
         try:

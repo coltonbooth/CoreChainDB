@@ -1,14 +1,14 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 - [Documentation on ReadTheDocs](http://corechaindb.readthedocs.org/)
-- [BigchainDB Upgrade Guides](upgrade-guides/)
+- [corechaindb Upgrade Guides](upgrade-guides/)
 
-# The BigchainDB Documentation Strategy
+# The corechaindb Documentation Strategy
 
 * Include explanatory comments and docstrings in your code. Write [Google style docstrings](https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments) with a maximum line width of 119 characters.
 * For quick overview and help documents, feel free to create `README.md` or other `X.md` files, written using [GitHub-flavored Markdown](https://help.github.com/categories/writing-on-github/). Markdown files render nicely on GitHub. We might auto-convert some .md files into a format that can be included in the long-form documentation.

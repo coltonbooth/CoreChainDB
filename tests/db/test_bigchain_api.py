@@ -59,9 +59,9 @@ class TestBigchainApi(object):
         from corechaindb.models import Transaction
 
         # define the assets
-        asset1 = {'msg': 'BigchainDB 1'}
-        asset2 = {'msg': 'BigchainDB 2'}
-        asset3 = {'msg': 'BigchainDB 3'}
+        asset1 = {'msg': 'corechaindb 1'}
+        asset2 = {'msg': 'corechaindb 2'}
+        asset3 = {'msg': 'corechaindb 3'}
 
         # create the transactions
         tx1 = Transaction.create([alice.public_key], [([alice.public_key], 1)],
@@ -97,7 +97,7 @@ class TestBigchainApi(object):
     def test_write_transaction(self, b, user_sk, user_pk, alice, create_tx):
         from corechaindb.models import Transaction
 
-        asset1 = {'msg': 'BigchainDB 1'}
+        asset1 = {'msg': 'corechaindb 1'}
 
         tx = Transaction.create([alice.public_key], [([alice.public_key], 1)],
                                 asset=asset1).sign([alice.private_key])
@@ -405,7 +405,7 @@ class TestMultipleInputs(object):
             assert spent_tx == tx_transfer_signed
 
         # check if remaining transaction that was unspent is also perceived
-        # spendable by BigchainDB
+        # spendable by corechaindb
         assert b.get_spent(tx_create.to_inputs()[2].fulfills.txid, 2) is None
 
     def test_get_spent_multiple_owners(self, b, user_sk, user_pk, alice):
@@ -446,7 +446,7 @@ class TestMultipleInputs(object):
 
 def test_get_outputs_filtered_only_unspent():
     from corechaindb.common.transaction import TransactionLink
-    from corechaindb.lib import BigchainDB
+    from corechaindb.lib import corechaindb
 
     go = 'corechaindb.fastquery.FastQuery.get_outputs_by_public_key'
     with patch(go) as get_outputs:
@@ -455,14 +455,14 @@ def test_get_outputs_filtered_only_unspent():
         fs = 'corechaindb.fastquery.FastQuery.filter_spent_outputs'
         with patch(fs) as filter_spent:
             filter_spent.return_value = [TransactionLink('b', 2)]
-            out = BigchainDB().get_outputs_filtered('abc', spent=False)
+            out = corechaindb().get_outputs_filtered('abc', spent=False)
     get_outputs.assert_called_once_with('abc')
     assert out == [TransactionLink('b', 2)]
 
 
 def test_get_outputs_filtered_only_spent():
     from corechaindb.common.transaction import TransactionLink
-    from corechaindb.lib import BigchainDB
+    from corechaindb.lib import corechaindb
     go = 'corechaindb.fastquery.FastQuery.get_outputs_by_public_key'
     with patch(go) as get_outputs:
         get_outputs.return_value = [TransactionLink('a', 1),
@@ -470,7 +470,7 @@ def test_get_outputs_filtered_only_spent():
         fs = 'corechaindb.fastquery.FastQuery.filter_unspent_outputs'
         with patch(fs) as filter_spent:
             filter_spent.return_value = [TransactionLink('b', 2)]
-            out = BigchainDB().get_outputs_filtered('abc', spent=True)
+            out = corechaindb().get_outputs_filtered('abc', spent=True)
     get_outputs.assert_called_once_with('abc')
     assert out == [TransactionLink('b', 2)]
 
@@ -479,13 +479,13 @@ def test_get_outputs_filtered_only_spent():
 @patch('corechaindb.fastquery.FastQuery.filter_spent_outputs')
 def test_get_outputs_filtered(filter_spent, filter_unspent):
     from corechaindb.common.transaction import TransactionLink
-    from corechaindb.lib import BigchainDB
+    from corechaindb.lib import corechaindb
 
     go = 'corechaindb.fastquery.FastQuery.get_outputs_by_public_key'
     with patch(go) as get_outputs:
         get_outputs.return_value = [TransactionLink('a', 1),
                                     TransactionLink('b', 2)]
-        out = BigchainDB().get_outputs_filtered('abc')
+        out = corechaindb().get_outputs_filtered('abc')
     get_outputs.assert_called_once_with('abc')
     filter_spent.assert_not_called()
     filter_unspent.assert_not_called()

@@ -56,9 +56,9 @@ spec:
           value: "10.0.0.10"
         - name: OPENRESTY_FRONTEND_PORT
           value: "80"
-        - name: BIGCHAINDB_BACKEND_HOST
+        - name: corechaindb_BACKEND_HOST
           value: "bdb.default.svc.cluster.local"
-        - name: BIGCHAINDB_API_PORT
+        - name: corechaindb_API_PORT
           value: "9984"
         ports:
         - containerPort: 80

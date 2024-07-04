@@ -1,19 +1,19 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Logging and Log Rotation
 
-Each BigchainDB node runs:
+Each corechaindb node runs:
 
 - MongoDB
-- BigchainDB Server
+- corechaindb Server
 - Tendermint
 
-When running a BigchainDB node for long periods
+When running a corechaindb node for long periods
 of time, we need to consider doing log rotation, i.e. we do not want the logs taking
 up large amounts of storage and making the node unresponsive or getting it into a bad state.
 
@@ -23,16 +23,16 @@ See the MongoDB docs about
 [logging](https://docs.mongodb.com/v3.6/administration/monitoring/#monitoring-standard-loggging)
 and [log rotation](https://docs.mongodb.com/v3.6/tutorial/rotate-log-files/).
 
-## BigchainDB Server Logging and Log Rotation
+## corechaindb Server Logging and Log Rotation
 
-BigchainDB Server writes its logs to two files: normal logs and error logs. The names of those files, and their locations, are set as part of the BigchainDB configuration settings. The default names and locations are:
+corechaindb Server writes its logs to two files: normal logs and error logs. The names of those files, and their locations, are set as part of the corechaindb configuration settings. The default names and locations are:
 
 - `~/corechaindb.log`
 - `~/corechaindb-errors.log`
 
-Log rotation is baked into BigchainDB Server using Python's `logging` module. The logs for BigchainDB Server are rotated when any of the above mentioned files exceeds 209715200 bytes (i.e. approximately 209 MB).
+Log rotation is baked into corechaindb Server using Python's `logging` module. The logs for corechaindb Server are rotated when any of the above mentioned files exceeds 209715200 bytes (i.e. approximately 209 MB).
 
-For more information, see the docs about [the BigchainDB Server configuration settings related to logging](../../installation/node-setup/configuration#log).
+For more information, see the docs about [the corechaindb Server configuration settings related to logging](../../installation/node-setup/configuration#log).
 
 ## Tendermint Logging and Log Rotation
 
@@ -41,10 +41,10 @@ Tendermint writes its logs to the files:
 - `tendermint.out.log`
 - `tendermint.err.log`
 
-If you started BigchainDB Server and Tendermint using Monit, as suggested by our guide on
-[How to Set Up a BigchainDB Network](../network-setup/network-setup),
+If you started corechaindb Server and Tendermint using Monit, as suggested by our guide on
+[How to Set Up a corechaindb Network](../network-setup/network-setup),
 then the logs will be written to `$HOME/.corechaindb-monit/logs/`.
 
-Moreover, if you started BigchainDB Server and Tendermint using Monit,
+Moreover, if you started corechaindb Server and Tendermint using Monit,
 then Monit monitors the Tendermint log files.
 Tendermint logs are rotated if any of the above mentioned log files exceeds 200 MB.

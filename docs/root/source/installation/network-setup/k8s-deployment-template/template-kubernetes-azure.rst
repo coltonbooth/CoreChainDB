@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -11,14 +11,14 @@ Template: Deploy a Kubernetes Cluster on Azure
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
    and your organization has people who know Kubernetes,
    then this Kubernetes deployment template might be helpful.
 
-A BigchainDB node can be run inside a `Kubernetes <https://kubernetes.io/>`_
+A corechaindb node can be run inside a `Kubernetes <https://kubernetes.io/>`_
 cluster.
 This page describes one way to deploy a Kubernetes cluster on Azure.
 
@@ -29,7 +29,7 @@ Step 1: Get a Pay-As-You-Go Azure Subscription
 ----------------------------------------------
 
 Microsoft Azure has a Free Trial subscription (at the time of writing),
-but it's too limited to run an advanced BigchainDB node.
+but it's too limited to run an advanced corechaindb node.
 Sign up for a Pay-As-You-Go Azure subscription
 via `the Azure website <https://azure.microsoft.com>`_.
 
@@ -267,5 +267,5 @@ CAUTION: You might end up deleting resources other than the ACS cluster.
    --name <name of resource group containing the cluster>
 
 
-Next, you can :doc:`run a BigchainDB node/cluster(BFT) <node-on-kubernetes>`
+Next, you can :doc:`run a corechaindb node/cluster(BFT) <node-on-kubernetes>`
 on your new Kubernetes cluster.

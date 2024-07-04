@@ -24,7 +24,7 @@ from blns import blns
 import pytest
 
 # For this test case we import and use the Python Driver.
-from corechaindb_driver import BigchainDB
+from corechaindb_driver import corechaindb
 from corechaindb_driver.crypto import generate_keypair
 from corechaindb_driver.exceptions import BadRequest
 
@@ -33,10 +33,10 @@ naughty_strings = blns.all()
 
 # This is our base test case, but we'll reuse it to send naughty strings as both keys and values.
 def send_naughty_tx(asset, metadata):
-    # ## Set up a connection to BigchainDB
+    # ## Set up a connection to corechaindb
     # Check [test_basic.py](./test_basic.html) to get some more details
     # about the endpoint.
-    bdb = BigchainDB(os.environ.get('BIGCHAINDB_ENDPOINT'))
+    bdb = corechaindb(os.environ.get('corechaindb_ENDPOINT'))
 
     # Here's Alice.
     alice = generate_keypair()

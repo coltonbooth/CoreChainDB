@@ -5,8 +5,8 @@
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
 
-# Set up a BigchainDB node and return only when we are able to connect to both
-# the BigchainDB container *and* the Tendermint container.
+# Set up a corechaindb node and return only when we are able to connect to both
+# the corechaindb container *and* the Tendermint container.
 setup () {
 	docker-compose up -d corechaindb
 

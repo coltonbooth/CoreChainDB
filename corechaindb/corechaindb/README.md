@@ -1,19 +1,19 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
 # Overview
 
-A high-level description of the files and subdirectories of BigchainDB.
+A high-level description of the files and subdirectories of corechaindb.
 
 ## Files
 
 ### [`lib.py`](lib.py)
 
-The `BigchainDB` class is defined here.  Most node-level operations and database interactions are found in this file.  This is the place to start if you are interested in implementing a server API, since many of these class methods concern BigchainDB interacting with the outside world.
+The `corechaindb` class is defined here.  Most node-level operations and database interactions are found in this file.  This is the place to start if you are interested in implementing a server API, since many of these class methods concern corechaindb interacting with the outside world.
 
 ### [`models.py`](./models.py)
 
@@ -25,17 +25,17 @@ Base class for validation methods (verification of votes, blocks, and transactio
 
 ### [`processes.py`](./processes.py)
 
-Entry point for the BigchainDB process, after initialization.  All subprocesses are started here: processes to handle new blocks, votes, etc.
+Entry point for the corechaindb process, after initialization.  All subprocesses are started here: processes to handle new blocks, votes, etc.
 
 ### [`config_utils.py`](./config_utils.py)
 
-Methods for managing the configuration, including loading configuration files, automatically generating the configuration, and keeping the configuration consistent across BigchainDB instances.
+Methods for managing the configuration, including loading configuration files, automatically generating the configuration, and keeping the configuration consistent across corechaindb instances.
 
 ## Folders
 
 ### [`commands`](./commands)
 
-Contains code for the [CLI](https://docs.corechaindb.com/projects/server/en/latest/server-reference/corechaindb-cli.html) for BigchainDB.
+Contains code for the [CLI](https://docs.corechaindb.com/projects/server/en/latest/server-reference/corechaindb-cli.html) for corechaindb.
 
 ### [`db`](./db)
 

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
-"""This module contains basic functions to instantiate the BigchainDB API.
+"""This module contains basic functions to instantiate the corechaindb API.
 
 The application is implemented in Flask and runs using Gunicorn.
 """
@@ -16,7 +16,7 @@ from flask_cors import CORS
 import gunicorn.app.base
 
 from corechaindb import utils
-from corechaindb import BigchainDB
+from corechaindb import corechaindb
 from corechaindb.web.routes import add_routes
 from corechaindb.web.strip_content_type_middleware import StripContentTypeMiddleware
 
@@ -72,7 +72,7 @@ def create_app(*, debug=False, threads=1, corechaindb_factory=None):
     """
 
     if not corechaindb_factory:
-        corechaindb_factory = BigchainDB
+        corechaindb_factory = corechaindb
 
     app = Flask(__name__)
     app.wsgi_app = StripContentTypeMiddleware(app.wsgi_app)

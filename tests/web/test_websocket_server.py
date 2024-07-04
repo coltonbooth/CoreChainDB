@@ -184,7 +184,7 @@ def test_integration_from_webapi_to_websocket(monkeypatch, client, loop):
     from corechaindb import processes
     from corechaindb.models import Transaction
 
-    # Start BigchainDB
+    # Start corechaindb
     processes.start()
 
     loop = asyncio.get_event_loop()
@@ -203,7 +203,7 @@ def test_integration_from_webapi_to_websocket(monkeypatch, client, loop):
     asset = {'random': random.random()}
     tx = Transaction.create([user_pub], [([user_pub], 1)], asset=asset)
     tx = tx.sign([user_priv])
-    # Post the transaction to the BigchainDB Web API
+    # Post the transaction to the corechaindb Web API
     client.post('/api/v1/transactions/', data=json.dumps(tx.to_dict()))
 
     result = loop.run_until_complete(ws.receive())

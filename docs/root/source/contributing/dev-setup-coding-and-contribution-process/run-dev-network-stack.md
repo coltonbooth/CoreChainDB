@@ -1,16 +1,16 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
 
-# Run a BigchainDB network
+# Run a corechaindb network
 
 **NOT for Production Use**
 
 You can use the following instructions to deploy a single or multi node
-BigchainDB network for dev/test using the extensible `stack` script(s). 
+corechaindb network for dev/test using the extensible `stack` script(s). 
 
 Currently, this workflow is only supported for the following Operating systems:
 - Ubuntu >= 16.04
@@ -19,12 +19,12 @@ Currently, this workflow is only supported for the following Operating systems:
 - MacOSX
 
 ## Machine Minimum Requirements
-Minimum resource requirements for a single node BigchainDB dev setup. **The more the better**:
+Minimum resource requirements for a single node corechaindb dev setup. **The more the better**:
 - Memory >= 512MB
 - VCPUs >= 1
 
 ## Download the scripts
-> **Note**: If you're working on BigchainDB Server code, on a branch based on
+> **Note**: If you're working on corechaindb Server code, on a branch based on
 > recent code, then you already have local recent versions of *stack.sh* and 
 > *unstack.sh* in your corechaindb/pkg/scripts/ directory. Otherwise you can 
 > get them using: 
@@ -39,7 +39,7 @@ $ curl -fOL https://raw.githubusercontent.com/corechaindb/corechaindb/${GIT_BRAN
 
 ## Quick Start
 If you run `stack.sh` out of the box i.e. without any configuration changes, you will be able to deploy a 4 node
-BigchainDB network with Docker containers, created from `master` branch of `corechaindb/corechaindb` repo and Tendermint version `0.22.8`.
+corechaindb network with Docker containers, created from `master` branch of `corechaindb/corechaindb` repo and Tendermint version `0.22.8`.
 
 **Note**: Run `stack.sh` with either root or non-root user with sudo enabled.
 
@@ -51,7 +51,7 @@ $ bash stack.sh
 Finished stacking!
 ```
 
-## Configure the BigchainDB network
+## Configure the corechaindb network
 
 The `stack.sh` script has multiple deployment methods and parameters and they can be explored using: `bash stack.sh -h`
 
@@ -60,7 +60,7 @@ $ bash stack.sh -h
 
     Usage: $ bash stack.sh [-h]
 
-    Deploys the BigchainDB network.
+    Deploys the corechaindb network.
 
     ENV[STACK_SIZE]
         Set STACK_SIZE environment variable to the size of the network you desire.
@@ -120,7 +120,7 @@ $ bash stack.sh -h
 
     ENV[AZURE_REGION]
         (Optional) Only applicable, when STACK_TYPE="cloud" and STACK_TYPE_PROVIDER="azure".
-        Azure region for the BigchainDB instance. Get list of regions using Azure CLI.
+        Azure region for the corechaindb instance. Get list of regions using Azure CLI.
         e.g. az account list-locations. (default: westeurope)
 
     ENV[AZURE_IMAGE_URN]
@@ -155,13 +155,13 @@ $ bash stack.sh -h
 
 
 The parameter that differentiates between the deployment type is `STACK_TYPE` which currently, supports
-an opinionated deployment of BigchainDB on `docker`, `local` and `cloud`. 
+an opinionated deployment of corechaindb on `docker`, `local` and `cloud`. 
 
 ### STACK_TYPE: docker
-This configuration deploys a docker based BigchainDB network on the dev/test machine that you are running `stack.sh` on. This is also the default `STACK_TYPE` config for `stack.sh`.
+This configuration deploys a docker based corechaindb network on the dev/test machine that you are running `stack.sh` on. This is also the default `STACK_TYPE` config for `stack.sh`.
 
 #### Example: docker
-Deploy a 4 node docker based BigchainDB network on your host.
+Deploy a 4 node docker based corechaindb network on your host.
 
 ```text
 #Optional, since 4 is the default size.
@@ -192,7 +192,7 @@ $ bash stack.sh
 `docker version --format '{{.Server.APIVersion}}'`
 
 ### STACK_TYPE: local
-This configuration deploys a VM based BigchainDB network on your host/dev. All the services are running as processes on the VMs. For `local` deployments the following dependencies must be installed i.e.
+This configuration deploys a VM based corechaindb network on your host/dev. All the services are running as processes on the VMs. For `local` deployments the following dependencies must be installed i.e.
 
 - Vagrant
   - Vagrant plugins.
@@ -204,7 +204,7 @@ This configuration deploys a VM based BigchainDB network on your host/dev. All t
 - [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
 #### Example: VM
-Deploy a 4 node VM based BigchainDB network.
+Deploy a 4 node VM based corechaindb network.
 
 ```text
 $ export STACK_TYPE=local
@@ -240,7 +240,7 @@ $ bash stack.sh
 
 ### STACK_TYPE: cloud
 
-This configuration deploys a docker based BigchainDB network on a cloud instance. Currently, only Azure is supported.
+This configuration deploys a docker based corechaindb network on a cloud instance. Currently, only Azure is supported.
 For `cloud` deployments the following dependencies must be installed i.e.
 
 - Vagrant
@@ -252,7 +252,7 @@ For `cloud` deployments the following dependencies must be installed i.e.
       - `vagrant plugin install vagrant-cachier vagrant-vbguest vagrant-hosts vagrant-azure`
 
 #### Example: stack
-Deploy a 4 node docker based BigchainDB network on an Azure instance.
+Deploy a 4 node docker based corechaindb network on an Azure instance.
 
 - [Create an Azure Active Directory(AAD) Application](https://github.com/Azure/vagrant-azure#create-an-azure-active-directory-aad-application)
 
@@ -307,10 +307,10 @@ $ export AZURE_VM_SIZE=Standard_D2_v2
 $ bash stack.sh
 ```
 
-## Delete/Unstack a BigchainDB network
+## Delete/Unstack a corechaindb network
 
 Export all the variables exported for the corresponding `stack.sh` script and
-run `unstack.sh` to delete/remove/unstack the BigchainDB network/stack.
+run `unstack.sh` to delete/remove/unstack the corechaindb network/stack.
 
 ```text
 $ bash unstack.sh

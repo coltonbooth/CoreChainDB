@@ -5,5 +5,5 @@
 .gitignore
 .ropeproject/
 .travis.yml
-BigchainDB.egg-info/
+corechaindb.egg-info/
 dist/

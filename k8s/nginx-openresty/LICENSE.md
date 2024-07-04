@@ -1,6 +1,6 @@
 # Licenses on the Stuff in this Directory
 
-All _code_ in this directory is copyright BigchainDB GmbH,
+All _code_ in this directory is copyright corechaindb GmbH,
 except for the configuration files obtained from 3scale (NGINX configuration
 file and NGINX Lua script).
 
@@ -25,7 +25,7 @@ The documentation in this directory is licensed under a Creative Commons Attribu
 
 The MIT License
 
-Copyright (c) 2016-2017 BigchainDB GmbH.
+Copyright (c) 2016-2017 corechaindb GmbH.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

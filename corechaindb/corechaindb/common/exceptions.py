@@ -5,32 +5,32 @@
 
 """Custom exceptions used in the `corechaindb` package.
 """
-from corechaindb.exceptions import BigchainDBError
+from corechaindb.exceptions import corechaindbError
 
 
-class ConfigurationError(BigchainDBError):
+class ConfigurationError(corechaindbError):
     """Raised when there is a problem with server configuration"""
 
 
-class DatabaseDoesNotExist(BigchainDBError):
+class DatabaseDoesNotExist(corechaindbError):
     """Raised when trying to delete the database but the db is not there"""
 
 
-class StartupError(BigchainDBError):
+class StartupError(corechaindbError):
     """Raised when there is an error starting up the system"""
 
 
-class CyclicBlockchainError(BigchainDBError):
+class CyclicBlockchainError(corechaindbError):
     """Raised when there is a cycle in the blockchain"""
 
 
-class KeypairMismatchException(BigchainDBError):
+class KeypairMismatchException(corechaindbError):
     """Raised if the private key(s) provided for signing don't match any of the
     current owner(s)
     """
 
 
-class OperationError(BigchainDBError):
+class OperationError(corechaindbError):
     """Raised when an operation cannot go through"""
 
 
@@ -43,7 +43,7 @@ class OperationError(BigchainDBError):
 # especially for the purposes of testing.
 
 
-class ValidationError(BigchainDBError):
+class ValidationError(corechaindbError):
     """Raised if there was an error in validation"""
 
 

@@ -8,7 +8,7 @@
 # $_ITEM -- stack size position identifier
 # $STACK_SIZE -- self explanatory
 # $TM_DOCKER_NAME -- used to identify tendermint containers in the network
-# $BIGCHAINDB_DOCKER_NAME -- self explanatory
+# $corechaindb_DOCKER_NAME -- self explanatory
 # $TM_P2P_PORT -- self explanatory
 
 # Copy confguration files from mounted config volume
@@ -31,6 +31,6 @@ echo $peers
 tendermint node \
            --p2p.persistent_peers="$peers" \
            --p2p.laddr "tcp://"$TM_DOCKER_NAME$_ITEM":26656" \
-           --proxy_app="tcp://"$BIGCHAINDB_DOCKER_NAME$_ITEM":26658" \
+           --proxy_app="tcp://"$corechaindb_DOCKER_NAME$_ITEM":26658" \
            --consensus.create_empty_blocks=false \
            --p2p.pex=false

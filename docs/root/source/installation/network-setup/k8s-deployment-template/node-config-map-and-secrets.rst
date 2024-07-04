@@ -1,19 +1,19 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
 .. _how-to-configure-a-corechaindb-node:
 
-How to Configure a BigchainDB Node
+How to Configure a corechaindb Node
 ==================================
 
 .. note::
 
    A highly-available Kubernetes cluster requires at least five virtual machines
    (three for the master and two for your app's containers).
-   Therefore we don't recommend using Kubernetes to run a BigchainDB node
+   Therefore we don't recommend using Kubernetes to run a corechaindb node
    if that's the only thing the Kubernetes cluster will be running.
    Instead, see our `Node Setup <../../node_setup>`_.
    If your organization already *has* a big Kubernetes cluster running many containers,
@@ -21,7 +21,7 @@ How to Configure a BigchainDB Node
    then this Kubernetes deployment template might be helpful.
 
 This page outlines the steps to set a bunch of configuration settings
-in your BigchainDB node.
+in your corechaindb node.
 They are pushed to the Kubernetes cluster in two files,
 named ``config-map.yaml`` (a set of ConfigMaps)
 and ``secret.yaml`` (a set of Secrets).
@@ -43,15 +43,15 @@ remarks on some of the values below.
 
 vars.NODE_FQDN
 ~~~~~~~~~~~~~~~
-FQDN for your BigchainDB node. This is the domain name
-used to query and access your BigchainDB node. More information can be
+FQDN for your corechaindb node. This is the domain name
+used to query and access your corechaindb node. More information can be
 found in our :ref:`Kubernetes template overview guide <kubernetes-template-overview>`.
 
 
 vars.SECRET_TOKEN
 ~~~~~~~~~~~~~~~~~
-This parameter is specific to your BigchainDB node and is used for
-authentication and authorization of requests to your BigchainDB node.
+This parameter is specific to your corechaindb node and is used for
+authentication and authorization of requests to your corechaindb node.
 More information can be found in our :ref:`Kubernetes template overview guide <kubernetes-template-overview>`.
 
 
@@ -75,7 +75,7 @@ This user is created on the *admin* database with the authorization to create ot
 
 vars.BDB_PERSISTENT_PEERS, BDB_VALIDATORS, BDB_VALIDATORS_POWERS, BDB_GENESIS_TIME and BDB_CHAIN_ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-These parameters are shared across the BigchainDB network. More information about the generation
+These parameters are shared across the corechaindb network. More information about the generation
 of these parameters can be found at :ref:`generate-the-blockchain-id-and-genesis-time`.
 
 
@@ -96,7 +96,7 @@ to resolve the hostnames of all the services running in the Kubernetes cluster.
 Generate configuration
 ~~~~~~~~~~~~~~~~~~~~~~
 After populating the ``k8s/scripts/vars`` file, we need to generate
-all the configuration required for the BigchainDB node, for that purpose
+all the configuration required for the corechaindb node, for that purpose
 we need to execute ``k8s/scripts/generate_configs.sh`` script.
 
 .. code::

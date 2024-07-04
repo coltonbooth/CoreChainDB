@@ -51,7 +51,7 @@ function usage() {
 
     Usage: $ bash ${0##*/} [-h]
 
-    Deploys the BigchainDB network.
+    Deploys the corechaindb network.
 
     ENV[STACK_SIZE]
         Set STACK_SIZE environment variable to the size of the network you desire.
@@ -111,7 +111,7 @@ function usage() {
 
     ENV[AZURE_REGION]
         (Optional) Only applicable, when STACK_TYPE="cloud" and STACK_TYPE_PROVIDER="azure".
-        Azure region for the BigchainDB instance. Get list of regions using Azure CLI.
+        Azure region for the corechaindb instance. Get list of regions using Azure CLI.
         e.g. az account list-locations. (default: ${azure_region})
 
     ENV[AZURE_IMAGE_URN]

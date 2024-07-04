@@ -3,10 +3,10 @@
 # SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
-from corechaindb.exceptions import BigchainDBError
+from corechaindb.exceptions import corechaindbError
 
 
-class BackendError(BigchainDBError):
+class BackendError(corechaindbError):
     """Top level exception for any backend exception."""
 
 

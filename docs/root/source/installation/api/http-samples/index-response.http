@@ -15,6 +15,6 @@ Content-Type: application/json
     }
   },
   "docs": "https://docs.corechaindb.com/projects/server/en/v2.2.2/",
-  "software": "BigchainDB",
+  "software": "corechaindb",
   "version": "2.2.2"
 }

@@ -29,10 +29,10 @@ mongo_backend_port=`printenv MONGODB_BACKEND_PORT`
 openresty_backend_host=`printenv OPENRESTY_BACKEND_HOST`
 openresty_backend_port=`printenv OPENRESTY_BACKEND_PORT`
 
-# BigchainDB vars
-bdb_backend_host=`printenv BIGCHAINDB_BACKEND_HOST`
-bdb_api_port=`printenv BIGCHAINDB_API_PORT`
-bdb_ws_port=`printenv BIGCHAINDB_WS_PORT`
+# corechaindb vars
+bdb_backend_host=`printenv corechaindb_BACKEND_HOST`
+bdb_api_port=`printenv corechaindb_API_PORT`
+bdb_ws_port=`printenv corechaindb_WS_PORT`
 
 # Tendermint vars
 tm_pub_key_access_port=`printenv TM_PUB_KEY_ACCESS_PORT`
@@ -45,9 +45,9 @@ if [[ -z "${node_frontend_port:?NODE_FRONTEND_PORT not specified. Exiting!}" || 
       -z "${mongo_backend_port:?MONGODB_BACKEND_PORT not specified. Exiting!}" || \
       -z "${openresty_backend_port:?OPENRESTY_BACKEND_PORT not specified. Exiting!}" || \
       -z "${openresty_backend_host:?OPENRESTY_BACKEND_HOST not specified. Exiting!}" || \
-      -z "${bdb_backend_host:?BIGCHAINDB_BACKEND_HOST not specified. Exiting!}" || \
-      -z "${bdb_api_port:?BIGCHAINDB_API_PORT not specified. Exiting!}" || \
-      -z "${bdb_ws_port:?BIGCHAINDB_WS_PORT not specified. Exiting!}" || \
+      -z "${bdb_backend_host:?corechaindb_BACKEND_HOST not specified. Exiting!}" || \
+      -z "${bdb_api_port:?corechaindb_API_PORT not specified. Exiting!}" || \
+      -z "${bdb_ws_port:?corechaindb_WS_PORT not specified. Exiting!}" || \
       -z "${dns_server:?DNS_SERVER not specified. Exiting!}" || \
       -z "${health_check_port:?HEALTH_CHECK_PORT not specified. Exiting!}" || \
       -z "${node_fqdn:?NODE_FQDN not specified. Exiting!}" || \
@@ -64,9 +64,9 @@ else
   echo MONGODB_BACKEND_PORT="$mongo_backend_port"
   echo OPENRESTY_BACKEND_HOST="$openresty_backend_host"
   echo OPENRESTY_BACKEND_PORT="$openresty_backend_port"
-  echo BIGCHAINDB_BACKEND_HOST="$bdb_backend_host"
-  echo BIGCHAINDB_API_PORT="$bdb_api_port"
-  echo BIGCHAINDB_WS_PORT="$bdb_ws_port"
+  echo corechaindb_BACKEND_HOST="$bdb_backend_host"
+  echo corechaindb_API_PORT="$bdb_api_port"
+  echo corechaindb_WS_PORT="$bdb_ws_port"
   echo TM_PUB_KEY_ACCESS_PORT="$tm_pub_key_access_port"
   echo TM_P2P_PORT="$tm_p2p_port"
 fi
@@ -89,9 +89,9 @@ sed -i "s|NODE_FQDN|${node_fqdn}|g" ${NGINX_CONF_FILE}
 sed -i "s|NODE_FRONTEND_PORT|${node_frontend_port}|g" ${NGINX_CONF_FILE}
 sed -i "s|MONGODB_BACKEND_HOST|${mongo_backend_host}|g" ${NGINX_CONF_FILE}
 sed -i "s|MONGODB_BACKEND_PORT|${mongo_backend_port}|g" ${NGINX_CONF_FILE}
-sed -i "s|BIGCHAINDB_BACKEND_HOST|${bdb_backend_host}|g" ${NGINX_CONF_FILE}
-sed -i "s|BIGCHAINDB_API_PORT|${bdb_api_port}|g" ${NGINX_CONF_FILE}
-sed -i "s|BIGCHAINDB_WS_PORT|${bdb_ws_port}|g" ${NGINX_CONF_FILE}
+sed -i "s|corechaindb_BACKEND_HOST|${bdb_backend_host}|g" ${NGINX_CONF_FILE}
+sed -i "s|corechaindb_API_PORT|${bdb_api_port}|g" ${NGINX_CONF_FILE}
+sed -i "s|corechaindb_WS_PORT|${bdb_ws_port}|g" ${NGINX_CONF_FILE}
 sed -i "s|DNS_SERVER|${dns_server}|g" ${NGINX_CONF_FILE}
 sed -i "s|HEALTH_CHECK_PORT|${health_check_port}|g" ${NGINX_CONF_FILE}
 sed -i "s|TM_PUB_KEY_ACCESS_PORT|${tm_pub_key_access_port}|g" ${NGINX_CONF_FILE}

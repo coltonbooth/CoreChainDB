@@ -102,7 +102,7 @@ class Election(Transaction):
           allocated according to the voting power of each validator node.
 
         Args:
-            :param bigchain: (BigchainDB) an instantiated corechaindb.lib.BigchainDB object.
+            :param bigchain: (corechaindb) an instantiated corechaindb.lib.corechaindb object.
             :param current_transactions: (list) A list of transactions to be validated along with the election
 
         Returns:

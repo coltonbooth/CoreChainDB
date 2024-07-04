@@ -1,6 +1,6 @@
 <!---
 Copyright © 2020 Interplanetary Database Association e.V.,
-BigchainDB and IPDB software contributors.
+corechaindb and IPDB software contributors.
 SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 Code is Apache-2.0 and docs are CC-BY-4.0
 --->
@@ -24,7 +24,7 @@ generic functions](https://www.python.org/dev/peps/pep-0443/). Single-dispatch i
 because it allows Python, rather than something we design ourselves, to manage the dispatching of
 generic functions based on certain conditions being met (e.g. the database backend to use).
 
-To see what this looks like in BigchainDB, first note that our backend interfaces have been
+To see what this looks like in corechaindb, first note that our backend interfaces have been
 configured to dispatch based on a backend's **connection type**.
 
 Call `corechaindb.backend.connect()` to create an instance of a `Connection`:
@@ -45,7 +45,7 @@ Notice that we don't need to care about which backend implementation to use or h
 Code can simply call the base interface function with a `Connection` instance, and single-dispatch
 will handle routing the call to the actual implementation.
 
-BigchainDB will load and register the configured backend's implementation automatically (see
+corechaindb will load and register the configured backend's implementation automatically (see
 `corechaindb.backend.connect()`), so you should always just be able to call an interface function if
 you have a `Connection` instance. A few helper utilities (see [`backend/utils.py`](./utils.py)) are
 also provided to make registering new backend implementations easier.

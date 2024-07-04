@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -39,12 +39,12 @@ This issue is resolved in
 It means that NGINX could not find the appropriate backed to forward the
 requests to. This typically happens when:
 
-#. MongoDB goes down (as described above) and BigchainDB, after trying for
-   ``BIGCHAINDB_DATABASE_MAXTRIES`` times, gives up. The Kubernetes BigchainDB
-   Deployment then restarts the BigchainDB pod.
+#. MongoDB goes down (as described above) and corechaindb, after trying for
+   ``corechaindb_DATABASE_MAXTRIES`` times, gives up. The Kubernetes corechaindb
+   Deployment then restarts the corechaindb pod.
 
-#. BigchainDB crashes for some reason. We have seen this happen when updating
-   BigchainDB from one version to the next. This usually means the older
+#. corechaindb crashes for some reason. We have seen this happen when updating
+   corechaindb from one version to the next. This usually means the older
    connections to the service gets disconnected; retrying the request one more
    time, forwards the connection to the new instance and succeed.
 

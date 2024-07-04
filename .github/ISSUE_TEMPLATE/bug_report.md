@@ -21,7 +21,7 @@ If applicable, add add textual content to help explain your problem.
 
 **Desktop (please complete the following information):**
  - Distribution: [e.g. Ubuntu 18.04]
- - Bigchaindb version:
+ - corechaindb version:
  - Tendermint version:
  - Mongodb version:
 - Python full version: [e.g. Python 3.6.6]

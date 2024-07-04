@@ -60,11 +60,11 @@ spec:
           value: "mdb.default.svc.cluster.local"
         - name: MONGODB_BACKEND_PORT
           value: "27017"
-        - name: BIGCHAINDB_BACKEND_HOST
+        - name: corechaindb_BACKEND_HOST
           value: "bdb.default.svc.cluster.local"
-        - name: BIGCHAINDB_API_PORT
+        - name: corechaindb_API_PORT
           value: "9984"
-        - name: BIGCHAINDB_WS_PORT
+        - name: corechaindb_WS_PORT
           value: "9985"
         ports:
         - containerPort: 27017

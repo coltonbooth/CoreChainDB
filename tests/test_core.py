@@ -35,10 +35,10 @@ def config(request, monkeypatch):
 
 
 def test_bigchain_class_default_initialization(config):
-    from corechaindb import BigchainDB
+    from corechaindb import corechaindb
     from corechaindb.validation import BaseValidationRules
     from corechaindb.backend.connection import Connection
-    bigchain = BigchainDB()
+    bigchain = corechaindb()
     assert isinstance(bigchain.connection, Connection)
     assert bigchain.connection.host == config['database']['host']
     assert bigchain.connection.port == config['database']['port']
@@ -47,7 +47,7 @@ def test_bigchain_class_default_initialization(config):
 
 
 def test_bigchain_class_initialization_with_parameters():
-    from corechaindb import BigchainDB
+    from corechaindb import corechaindb
     from corechaindb.backend import connect
     from corechaindb.validation import BaseValidationRules
     init_db_kwargs = {
@@ -57,7 +57,7 @@ def test_bigchain_class_initialization_with_parameters():
         'name': 'this_is_the_db_name',
     }
     connection = connect(**init_db_kwargs)
-    bigchain = BigchainDB(connection=connection)
+    bigchain = corechaindb(connection=connection)
     assert bigchain.connection == connection
     assert bigchain.connection.host == init_db_kwargs['host']
     assert bigchain.connection.port == init_db_kwargs['port']

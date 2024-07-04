@@ -191,11 +191,11 @@ def load_node_key(path):
 
 def tendermint_version_is_compatible(running_tm_ver):
     """
-    Check Tendermint compatability with BigchainDB server
+    Check Tendermint compatability with corechaindb server
 
     :param running_tm_ver: Version number of the connected Tendermint instance
     :type running_tm_ver: str
-    :return: True/False depending on the compatability with BigchainDB server
+    :return: True/False depending on the compatability with corechaindb server
     :rtype: bool
     """
 

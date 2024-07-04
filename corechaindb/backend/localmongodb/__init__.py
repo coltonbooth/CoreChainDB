@@ -8,14 +8,14 @@
 Contains a MongoDB-specific implementation of the
 :mod:`~corechaindb.backend.schema` and :mod:`~corechaindb.backend.query` interfaces.
 
-You can specify BigchainDB to use MongoDB as its database backend by either
+You can specify corechaindb to use MongoDB as its database backend by either
 setting ``database.backend`` to ``'localmongodb'`` in your configuration file, or
-setting the ``BIGCHAINDB_DATABASE_BACKEND`` environment variable to
+setting the ``corechaindb_DATABASE_BACKEND`` environment variable to
 ``'localmongodb'``.
 
-MongoDB is the default database backend for BigchainDB.
+MongoDB is the default database backend for corechaindb.
 
-If configured to use MongoDB, BigchainDB will automatically return instances
+If configured to use MongoDB, corechaindb will automatically return instances
 of :class:`~corechaindb.backend.localmongodb.LocalMongoDBConnection` for
 :func:`~corechaindb.backend.connection.connect` and dispatch calls of the
 generic backend interfaces to the implementations in this module.

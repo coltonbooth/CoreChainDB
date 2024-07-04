@@ -244,7 +244,7 @@ def text_search(conn, search, *, language='english', case_sensitive=False,
     """
 
     raise OperationError('This query is only supported when running '
-                         'BigchainDB with MongoDB as the backend.')
+                         'corechaindb with MongoDB as the backend.')
 
 
 @singledispatch

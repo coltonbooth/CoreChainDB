@@ -1,6 +1,6 @@
 
 .. Copyright © 2020 Interplanetary Database Association e.V.,
-   BigchainDB and IPDB software contributors.
+   corechaindb and IPDB software contributors.
    SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
    Code is Apache-2.0 and docs are CC-BY-4.0
 
@@ -47,7 +47,7 @@ Configure MongoDB Cloud Manager for Monitoring Step by Step
     
   * If you have authentication enabled, select the option to enable
     authentication and specify the authentication mechanism as per your
-    deployment. The default BigchainDB Kubernetes deployment template currently
+    deployment. The default corechaindb Kubernetes deployment template currently
     supports ``X.509 Client Certificate`` as the authentication mechanism.
     
   * If you have TLS enabled, select the option to enable TLS/SSL for MongoDB
