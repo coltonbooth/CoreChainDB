@@ -17,7 +17,7 @@ two kinds: CREATE transactions and TRANSFER transactions.
 
 You can view the transaction specifications in Github, which describe transaction components and the conditions they have to fulfill in order to be valid. 
 
-[BigchainDB Transactions Specs](https://github.com/bigchaindb/BEPs/tree/master/13/)
+[BigchainDB Transactions Specs](https://github.com/corechaindb/BEPs/tree/master/13/)
 
 ### CREATE Transactions
 
@@ -44,7 +44,7 @@ BigchainDB supports a variety of conditions.
 For details, see
 the section titled **Transaction Components: Conditions**
 in the relevant
-[BigchainDB Transactions Spec](https://github.com/bigchaindb/BEPs/tree/master/13/).
+[BigchainDB Transactions Spec](https://github.com/corechaindb/BEPs/tree/master/13/).
 
 ![Example BigchainDB CREATE transaction](./_static/CREATE_example.png)
 
@@ -58,7 +58,7 @@ Loosely speaking, that list might be interpreted as the list of "owners."
 A more accurate word might be fulfillers, signers, controllers,
 or transfer-enablers.
 See the section titled **A Note about Owners**
-in the relevant [BigchainDB Transactions Spec](https://github.com/bigchaindb/BEPs/tree/master/13/).
+in the relevant [BigchainDB Transactions Spec](https://github.com/corechaindb/BEPs/tree/master/13/).
 
 A CREATE transaction must be signed by all the owners.
 (If you're looking for that signature,
@@ -120,7 +120,7 @@ of the outgoing paperclips (100).
 
 When a node is asked to check if a transaction is valid, it checks several
 things. We documented those things in a post on *The BigchainDB Blog*:
-["What is a Valid Transaction in BigchainDB?"](https://blog.bigchaindb.com/what-is-a-valid-transaction-in-bigchaindb-9a1a075a9598)
+["What is a Valid Transaction in BigchainDB?"](https://blog.corechaindb.com/what-is-a-valid-transaction-in-corechaindb-9a1a075a9598)
 (Note: That post was about BigchainDB Server v1.0.0.)
 
 ### Example Transactions

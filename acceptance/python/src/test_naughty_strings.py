@@ -24,9 +24,9 @@ from blns import blns
 import pytest
 
 # For this test case we import and use the Python Driver.
-from bigchaindb_driver import BigchainDB
-from bigchaindb_driver.crypto import generate_keypair
-from bigchaindb_driver.exceptions import BadRequest
+from corechaindb_driver import BigchainDB
+from corechaindb_driver.crypto import generate_keypair
+from corechaindb_driver.exceptions import BadRequest
 
 naughty_strings = blns.all()
 

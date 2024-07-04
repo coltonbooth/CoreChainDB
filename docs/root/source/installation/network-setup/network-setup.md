@@ -173,10 +173,10 @@ Install Monit:
 sudo apt install monit
 ```
 
-If you installed the `bigchaindb` Python package as above, you should have the `bigchaindb-monit-config` script in your `PATH` now. Run the script to build a configuration file for Monit:
+If you installed the `corechaindb` Python package as above, you should have the `corechaindb-monit-config` script in your `PATH` now. Run the script to build a configuration file for Monit:
 
 ```
-bigchaindb-monit-config
+corechaindb-monit-config
 ```
 
 Run Monit as a daemon, instructing it to wake up every second to check on processes:
@@ -185,23 +185,23 @@ Run Monit as a daemon, instructing it to wake up every second to check on proces
 monit -d 1
 ```
 
-Monit will run the BigchainDB and Tendermint processes and restart them when they crash. If the root `bigchaindb_` process crashes, Monit will also restart the Tendermint process.
+Monit will run the BigchainDB and Tendermint processes and restart them when they crash. If the root `corechaindb_` process crashes, Monit will also restart the Tendermint process.
 
 You can check the status by running `monit status` or `monit summary`.
 
-By default, it will collect program logs into the `~/.bigchaindb-monit/logs` folder.
+By default, it will collect program logs into the `~/.corechaindb-monit/logs` folder.
 
 To learn more about Monit, use `monit -h` (help) or read [the Monit documentation][monit-manual].
 
-Check `bigchaindb-monit-config -h` if you want to arrange a different folder for logs or some of the Monit internal artifacts.
+Check `corechaindb-monit-config -h` if you want to arrange a different folder for logs or some of the Monit internal artifacts.
 
-If you want to start and manage the BigchainDB and Tendermint processes yourself, then look inside the file [bigchaindb/pkg/scripts/bigchaindb-monit-config](https://github.com/bigchaindb/bigchaindb/blob/master/pkg/scripts/bigchaindb-monit-config) to see how *it* starts BigchainDB and Tendermint.
+If you want to start and manage the BigchainDB and Tendermint processes yourself, then look inside the file [corechaindb/pkg/scripts/corechaindb-monit-config](https://github.com/corechaindb/corechaindb/blob/master/pkg/scripts/corechaindb-monit-config) to see how *it* starts BigchainDB and Tendermint.
 
 ## How Others Can Access Your Node
 
 If you followed the above instructions, then your node should be publicly-accessible with BigchainDB Root URL `https://hostname` or `http://hostname:9984`. That is, anyone can interact with your node using the [BigchainDB HTTP API](../api/http-client-server-api) exposed at that address. The most common way to do that is to use one of the [BigchainDB Drivers](../../drivers/index).
 
-[bdb:software]: https://github.com/bigchaindb/bigchaindb/
+[bdb:software]: https://github.com/corechaindb/corechaindb/
 [bdb:pypi]: https://pypi.org/project/BigchainDB/#history
 [tendermint:releases]: https://github.com/tendermint/tendermint/releases
 [monit]: https://www.mmonit.com/monit

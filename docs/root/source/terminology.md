@@ -11,7 +11,7 @@ There is some specialized terminology associated with BigchainDB. To get started
 
 ### BigchainDB Node
 
-A **BigchainDB node** is a machine (or logical machine) running [BigchainDB Server](https://docs.bigchaindb.com/projects/server/en/latest/introduction.html) and related software. Each node is controlled by one person or organization.
+A **BigchainDB node** is a machine (or logical machine) running [BigchainDB Server](https://docs.corechaindb.com/projects/server/en/latest/introduction.html) and related software. Each node is controlled by one person or organization.
 
 ### BigchainDB Network
 
@@ -27,7 +27,7 @@ A BigchaindB network is just a bunch of connected nodes. A consortium is an orga
 
 ### Transactions
 
-Are described in detail in `BigchainDB Transactions Spec <https://github.com/bigchaindb/BEPs/tree/master/tx-specs/>`_ .
+Are described in detail in `BigchainDB Transactions Spec <https://github.com/corechaindb/BEPs/tree/master/tx-specs/>`_ .
 
 ## Permissions in BigchainDB
 
@@ -76,6 +76,6 @@ You could do more elaborate things too. As one example, each time someone writes
 
 ### Role-Based Access Control (RBAC)
 
-In September 2017, we published a [blog post about how one can define an RBAC sub-system on top of BigchainDB](https://blog.bigchaindb.com/role-based-access-control-for-bigchaindb-assets-b7cada491997).
+In September 2017, we published a [blog post about how one can define an RBAC sub-system on top of BigchainDB](https://blog.corechaindb.com/role-based-access-control-for-corechaindb-assets-b7cada491997).
 At the time of writing (January 2018), doing so required the use of a plugin, so it's not possible using standard BigchainDB (which is what's available on the [IPDB Testnet](https://test.ipdb.io/>). That may change in the future.
 If you're interested, `contact IPDB <contact@ipdb.global>`_.

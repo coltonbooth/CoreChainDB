@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: web-proxy
-        image: bigchaindb/nginx-https-web-proxy:0.10
+        image: corechaindb/nginx-https-web-proxy:0.10
         imagePullPolicy: Always
         env:
         - name: PROXY_FQDN
@@ -74,7 +74,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: vars
-              key: bigchaindb-api-port
+              key: corechaindb-api-port
         ports:
         - containerPort: <port where the proxy is listening for requests>
           protocol: TCP

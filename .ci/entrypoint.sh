@@ -10,5 +10,5 @@ set -e -x
 if [[ ${BIGCHAINDB_CI_ABCI} == 'enable' ]]; then
     sleep 3600
 else
-    bigchaindb -l DEBUG start
+    corechaindb -l DEBUG start
 fi

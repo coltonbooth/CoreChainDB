@@ -17,7 +17,7 @@ We wrote a blog post in The BigchainDB Blog to show
 how to use some MongoDB tools to query a BigchainDB node's MongoDB database.
 It includes some specific example queries for data
 about custom cars and their ownership histories.
-`Check it out <https://blog.bigchaindb.com/using-mongodb-to-query-bigchaindb-data-3fc651e0861b>`_.
+`Check it out <https://blog.corechaindb.com/using-mongodb-to-query-corechaindb-data-3fc651e0861b>`_.
 
 How to Connect to MongoDB
 -------------------------
@@ -174,7 +174,7 @@ What a Node Operator Can Expose to External Users
 Each node operator can decide how they let external users get information from their local MongoDB database. They could expose:
 
 - their local MonogoDB database itself to queries from external users, maybe as a MongoDB user with a role that has limited privileges, e.g. read-only.
-- a limited HTTP API, allowing a restricted set of predefined queries, such as `the HTTP API provided by BigchainDB Server <http://bigchaindb.com/http-api>`_, or a custom HTTP API implemented using Django, Express, Ruby on Rails, or ASP.NET.
+- a limited HTTP API, allowing a restricted set of predefined queries, such as `the HTTP API provided by BigchainDB Server <http://corechaindb.com/http-api>`_, or a custom HTTP API implemented using Django, Express, Ruby on Rails, or ASP.NET.
 - some other API, such as a GraphQL API. They could do that using custom code or code from a third party.
 
 Each node operator can expose a different level or type of access to their local MongoDB database.
@@ -224,6 +224,6 @@ of the MongoDB drivers, such as `the MongoDB Node.js driver
 Here are some links to example JavaScript code that queries a
 BigchainDB node's MongoDB database:
 
-- `The BigchainDB JavaScript/Node.js driver source code <https://github.com/bigchaindb/js-bigchaindb-driver>`_
-- `Example code by @manolodewiner <https://github.com/manolodewiner/query-mongodb-bigchaindb/blob/master/queryMongo.js>`_
-- `More example code by @manolodewiner <https://github.com/bigchaindb/bigchaindb/issues/2315#issuecomment-392724279>`_
+- `The BigchainDB JavaScript/Node.js driver source code <https://github.com/corechaindb/js-corechaindb-driver>`_
+- `Example code by @manolodewiner <https://github.com/manolodewiner/query-mongodb-corechaindb/blob/master/queryMongo.js>`_
+- `More example code by @manolodewiner <https://github.com/corechaindb/corechaindb/issues/2315#issuecomment-392724279>`_

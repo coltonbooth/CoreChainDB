@@ -145,7 +145,7 @@ then you will run a script which reads that file to generate some Kubernetes con
 you will send those config files to your Kubernetes cluster,
 and then you will deploy all the stuff that you need to have a BigchainDB node.
 
-⟶ Proceed to :ref:`deploy your BigchainDB node <kubernetes-template-deploy-a-single-bigchaindb-node>`.
+⟶ Proceed to :ref:`deploy your BigchainDB node <kubernetes-template-deploy-a-single-corechaindb-node>`.
 
 .. raw:: html
 

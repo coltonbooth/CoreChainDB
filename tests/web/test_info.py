@@ -6,11 +6,11 @@
 from unittest import mock
 
 
-@mock.patch('bigchaindb.version.__short_version__', 'tst')
-@mock.patch('bigchaindb.version.__version__', 'tsttst')
+@mock.patch('corechaindb.version.__short_version__', 'tst')
+@mock.patch('corechaindb.version.__version__', 'tsttst')
 def test_api_root_endpoint(client, wsserver_base_url):
     res = client.get('/')
-    docs_url = ['https://docs.bigchaindb.com/projects/server/en/vtsttst',
+    docs_url = ['https://docs.corechaindb.com/projects/server/en/vtsttst',
                 '/http-client-server-api.html']
     assert res.json == {
         'api': {
@@ -26,16 +26,16 @@ def test_api_root_endpoint(client, wsserver_base_url):
                 'validators': '/api/v1/validators',
             }
         },
-        'docs': 'https://docs.bigchaindb.com/projects/server/en/vtsttst/',
+        'docs': 'https://docs.corechaindb.com/projects/server/en/vtsttst/',
         'version': 'tsttst',
         'software': 'BigchainDB',
     }
 
 
-@mock.patch('bigchaindb.version.__short_version__', 'tst')
-@mock.patch('bigchaindb.version.__version__', 'tsttst')
+@mock.patch('corechaindb.version.__short_version__', 'tst')
+@mock.patch('corechaindb.version.__version__', 'tsttst')
 def test_api_v1_endpoint(client, wsserver_base_url):
-    docs_url = ['https://docs.bigchaindb.com/projects/server/en/vtsttst',
+    docs_url = ['https://docs.corechaindb.com/projects/server/en/vtsttst',
                 '/http-client-server-api.html']
     api_v1_info = {
         'docs': ''.join(docs_url),

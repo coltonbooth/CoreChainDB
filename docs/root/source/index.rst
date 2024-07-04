@@ -21,7 +21,7 @@ More About BigchainDB
    :maxdepth: 1
 
    BigchainDB Docs Home <self>
-   about-bigchaindb
+   about-corechaindb
    terminology
    properties
    basic-usage

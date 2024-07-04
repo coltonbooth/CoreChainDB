@@ -11,7 +11,7 @@ BigchainDB와 관련돈 몇 가지 전문화된 용어가 있습니다. 시작�
 
 ## BigchainDB 노드
 
-**BigchainDB 노드**는 [BigchainDB 서버](https://docs.bigchaindb.com/projects/server/en/latest/introduction.html) 및 관련된 소프트웨어를 실행하는 시스템(또는 논리적인 시스템)입니다. 각각의 노드는 한 개인이나 조직에 의해 제어될 수 있습니다.
+**BigchainDB 노드**는 [BigchainDB 서버](https://docs.corechaindb.com/projects/server/en/latest/introduction.html) 및 관련된 소프트웨어를 실행하는 시스템(또는 논리적인 시스템)입니다. 각각의 노드는 한 개인이나 조직에 의해 제어될 수 있습니다.
 
 ## BigchainDB 네트워크
 

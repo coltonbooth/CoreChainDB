@@ -17,7 +17,7 @@
 # of a given transaction.
 #
 # This integration test is a rip-off of our
-# [tutorial](https://docs.bigchaindb.com/projects/py-driver/en/latest/usage.html).
+# [tutorial](https://docs.corechaindb.com/projects/py-driver/en/latest/usage.html).
 
 # ## Imports
 # We need some utils from the `os` package, we will interact with
@@ -25,8 +25,8 @@
 import os
 
 # For this test case we import and use the Python Driver.
-from bigchaindb_driver import BigchainDB
-from bigchaindb_driver.crypto import generate_keypair
+from corechaindb_driver import BigchainDB
+from corechaindb_driver.crypto import generate_keypair
 
 
 def test_multiple_owners():

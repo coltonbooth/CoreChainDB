@@ -20,7 +20,7 @@ in the BigchainDB Server code, based on Python docstrings in the code itself.
    :maxdepth: 1
 
    commands
-   the-bigchaindb-class
+   the-corechaindb-class
    backend
    
    

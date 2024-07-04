@@ -27,8 +27,8 @@ from uuid import uuid4
 # [websocket](https://github.com/websocket-client/websocket-client) module
 from websocket import create_connection
 
-from bigchaindb_driver import BigchainDB
-from bigchaindb_driver.crypto import generate_keypair
+from corechaindb_driver import BigchainDB
+from corechaindb_driver.crypto import generate_keypair
 
 
 def test_stream():

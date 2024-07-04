@@ -7,7 +7,7 @@ Code is Apache-2.0 and docs are CC-BY-4.0
 
 # BigchainDB Networks
 
-A **BigchainDB network** is a set of connected **BigchainDB nodes**, managed by a **BigchainDB consortium** (i.e. an organization). Those terms are defined in the [BigchainDB Terminology page](https://docs.bigchaindb.com/en/latest/terminology.html).
+A **BigchainDB network** is a set of connected **BigchainDB nodes**, managed by a **BigchainDB consortium** (i.e. an organization). Those terms are defined in the [BigchainDB Terminology page](https://docs.corechaindb.com/en/latest/terminology.html).
 
 ## Consortium Structure & Governance
 
@@ -17,7 +17,7 @@ A governance process is required to make those decisions, and therefore one of t
 This documentation doesn't explain how to create a consortium, nor does it outline the possible governance processes.
 
 It's worth noting that the decentralization of a BigchainDB network depends,
-to some extent, on the decentralization of the associated consortium. See the pages about [decentralization](https://docs.bigchaindb.com/en/latest/decentralized.html) and [node diversity](https://docs.bigchaindb.com/en/latest/diversity.html).
+to some extent, on the decentralization of the associated consortium. See the pages about [decentralization](https://docs.corechaindb.com/en/latest/decentralized.html) and [node diversity](https://docs.corechaindb.com/en/latest/diversity.html).
 
 ## DNS Records and SSL Certificates
 

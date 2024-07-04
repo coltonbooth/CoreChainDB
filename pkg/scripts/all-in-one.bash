@@ -9,9 +9,9 @@
 [ "$(stat -c %U /data/db)" = mongodb ] || chown -R mongodb /data/db
 
 # BigchainDB configuration
-bigchaindb-monit-config
+corechaindb-monit-config
 
-nohup mongod --bind_ip_all > "$HOME/.bigchaindb-monit/logs/mongodb_log_$(date +%Y%m%d_%H%M%S)" 2>&1 &
+nohup mongod --bind_ip_all > "$HOME/.corechaindb-monit/logs/mongodb_log_$(date +%Y%m%d_%H%M%S)" 2>&1 &
 
 # Tendermint configuration
 tendermint init

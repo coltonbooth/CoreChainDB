@@ -8,17 +8,17 @@
 Command Line Interface
 ######################
 
-.. automodule:: bigchaindb.commands
+.. automodule:: corechaindb.commands
     :special-members: __init__
 
 
-:mod:`bigchaindb.commands.bigchaindb`
+:mod:`corechaindb.commands.corechaindb`
 -------------------------------------
 
-.. automodule:: bigchaindb.commands.bigchaindb
+.. automodule:: corechaindb.commands.corechaindb
 
 
-:mod:`bigchaindb.commands.utils`
+:mod:`corechaindb.commands.utils`
 --------------------------------
 
-.. automodule:: bigchaindb.commands.utils
+.. automodule:: corechaindb.commands.utils

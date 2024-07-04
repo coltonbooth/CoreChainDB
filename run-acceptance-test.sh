@@ -8,7 +8,7 @@
 # Set up a BigchainDB node and return only when we are able to connect to both
 # the BigchainDB container *and* the Tendermint container.
 setup () {
-	docker-compose up -d bigchaindb
+	docker-compose up -d corechaindb
 
 	# Try to connect to the containers for maximum three times, and wait
 	# one second between tries.

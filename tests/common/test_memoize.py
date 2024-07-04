@@ -6,9 +6,9 @@
 import pytest
 from copy import deepcopy
 
-from bigchaindb.models import Transaction
-from bigchaindb.common.crypto import generate_key_pair
-from bigchaindb.common.memoize import to_dict, from_dict
+from corechaindb.models import Transaction
+from corechaindb.common.crypto import generate_key_pair
+from corechaindb.common.memoize import to_dict, from_dict
 
 
 pytestmark = pytest.mark.bdb

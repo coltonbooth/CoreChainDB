@@ -27,4 +27,4 @@ ENV BIGCHAINDB_WSSERVER_ADVERTISED_SCHEME ws
 
 ENV BIGCHAINDB_TENDERMINT_PORT 26657
 ARG backend
-RUN bigchaindb -y configure "$backend"
+RUN corechaindb -y configure "$backend"

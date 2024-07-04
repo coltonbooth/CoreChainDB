@@ -33,7 +33,7 @@ from recommonmark.parser import CommonMarkParser
 
 # get version
 _version = {}
-with open('../../../bigchaindb/version.py') as fp:
+with open('../../../corechaindb/version.py') as fp:
     exec(fp.read(), _version)
 
 
@@ -79,13 +79,13 @@ def get_old_new(url, old, new):
     filename = wget.download(url)
     rename(old, new)
 
-get_old_new('https://raw.githubusercontent.com/bigchaindb/bigchaindb/master/CODE_OF_CONDUCT.md',
+get_old_new('https://raw.githubusercontent.com/corechaindb/corechaindb/master/CODE_OF_CONDUCT.md',
             'CODE_OF_CONDUCT.md', 'contributing/cross-project-policies/code-of-conduct.md')
 
-get_old_new('https://raw.githubusercontent.com/bigchaindb/bigchaindb/master/RELEASE_PROCESS.md',
+get_old_new('https://raw.githubusercontent.com/corechaindb/corechaindb/master/RELEASE_PROCESS.md',
             'RELEASE_PROCESS.md', 'contributing/cross-project-policies/release-process.md')
 
-get_old_new('https://raw.githubusercontent.com/bigchaindb/bigchaindb/master/PYTHON_STYLE_GUIDE.md',
+get_old_new('https://raw.githubusercontent.com/corechaindb/corechaindb/master/PYTHON_STYLE_GUIDE.md',
             'PYTHON_STYLE_GUIDE.md', 'contributing/cross-project-policies/python-style-guide.md')
 
 suppress_warnings = ['misc.highlighting_failure']
@@ -372,7 +372,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bigchaindb', 'BigchainDB Documentation',
+    (master_doc, 'corechaindb', 'BigchainDB Documentation',
      [author], 1)
 ]
 

@@ -21,24 +21,24 @@ To write an issue, go to the relevant GitHub repository, click on the **Issues**
 People ask questions about BigchainDB in the following places:
 
 - Gitter
-  - [bigchaindb/bigchaindb](https://gitter.im/bigchaindb/bigchaindb)
-  - [bigchaindb/js-bigchaindb-driver](https://gitter.im/bigchaindb/js-bigchaindb-driver)
-- [Twitter](https://twitter.com/bigchaindb)
-- [Stack Overflow "bigchaindb"](https://stackoverflow.com/search?q=bigchaindb)
+  - [corechaindb/corechaindb](https://gitter.im/corechaindb/corechaindb)
+  - [corechaindb/js-corechaindb-driver](https://gitter.im/corechaindb/js-corechaindb-driver)
+- [Twitter](https://twitter.com/corechaindb)
+- [Stack Overflow "corechaindb"](https://stackoverflow.com/search?q=corechaindb)
 
 Feel free to hang out and answer some questions. People will be thankful.
 
 # Write a BigchainDB Enhancement Proposal (BEP)
 
 If you have an idea for a new feature or enhancement, and you want some feedback before you write a full BigchainDB Enhancement Proposal (BEP), then feel free to:
-  - ask in the [bigchaindb/bigchaindb Gitter chat room](https://gitter.im/bigchaindb/bigchaindb) or
-  - [open a new issue in the bigchaindb/BEPs repo](https://github.com/bigchaindb/BEPs/issues/new) and give it the label **BEP idea**.
+  - ask in the [corechaindb/corechaindb Gitter chat room](https://gitter.im/corechaindb/corechaindb) or
+  - [open a new issue in the corechaindb/BEPs repo](https://github.com/corechaindb/BEPs/issues/new) and give it the label **BEP idea**.
 
-If you want to discuss an existing BEP, then [open a new issue in the bigchaindb/BEPs repo](https://github.com/bigchaindb/BEPs/issues/new) and give it the label **discuss existing BEP**.
+If you want to discuss an existing BEP, then [open a new issue in the corechaindb/BEPs repo](https://github.com/corechaindb/BEPs/issues/new) and give it the label **discuss existing BEP**.
 
 ## Steps to Write a New BEP
 
-1. Look at the structure of existing BEPs in the [bigchaindb/BEPs repo](https://github.com/bigchaindb/BEPs). Note the section headings. [BEP-2](https://github.com/bigchaindb/BEPs/tree/master/2) (our variant of the consensus-oriented specification system [COSS]) says more about the expected structure and process.
+1. Look at the structure of existing BEPs in the [corechaindb/BEPs repo](https://github.com/corechaindb/BEPs). Note the section headings. [BEP-2](https://github.com/corechaindb/BEPs/tree/master/2) (our variant of the consensus-oriented specification system [COSS]) says more about the expected structure and process.
 1. Write a first draft of your BEP. It doesn't have to be long or perfect.
-1. Push your BEP draft to the [bigchaindb/BEPs repo](https://github.com/bigchaindb/BEPs) and make a pull request. [BEP-1](https://github.com/bigchaindb/BEPs/tree/master/1) (our variant of C4) outlines the process we use to handle all pull requests. In particular, we try to merge all pull requests quickly.
+1. Push your BEP draft to the [corechaindb/BEPs repo](https://github.com/corechaindb/BEPs) and make a pull request. [BEP-1](https://github.com/corechaindb/BEPs/tree/master/1) (our variant of C4) outlines the process we use to handle all pull requests. In particular, we try to merge all pull requests quickly.
 1. Your BEP can be revised by pushing more pull requests.

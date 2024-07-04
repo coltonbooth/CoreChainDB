@@ -21,13 +21,13 @@ The value of each setting is determined according to the following rules:
 * Otherwise, if it's set in a local config file, then use that value
 * Otherwise, use the default value
 
-The local config file is `$HOME/.bigchaindb` by default (a file which might not even exist), but you can tell BigchainDB to use a different file by using the `-c` command-line option, e.g. `bigchaindb -c path/to/config_file.json start`
-or using the `BIGCHAINDB_CONFIG_PATH` environment variable, e.g. `BIGHAINDB_CONFIG_PATH=.my_bigchaindb_config bigchaindb start`.
+The local config file is `$HOME/.corechaindb` by default (a file which might not even exist), but you can tell BigchainDB to use a different file by using the `-c` command-line option, e.g. `corechaindb -c path/to/config_file.json start`
+or using the `BIGCHAINDB_CONFIG_PATH` environment variable, e.g. `BIGHAINDB_CONFIG_PATH=.my_corechaindb_config corechaindb start`.
 Note that the `-c` command line option will always take precedence if both the `BIGCHAINDB_CONFIG_PATH` and the `-c` command line option are used.
 
-You can read the current default values in the file [bigchaindb/\_\_init\_\_.py](https://github.com/bigchaindb/bigchaindb/blob/master/bigchaindb/__init__.py). (The link is to the latest version.)
+You can read the current default values in the file [corechaindb/\_\_init\_\_.py](https://github.com/corechaindb/corechaindb/blob/master/corechaindb/__init__.py). (The link is to the latest version.)
 
-Running `bigchaindb -y configure localmongodb` will generate a local config file in `$HOME/.bigchaindb` with all the default values.
+Running `corechaindb -y configure localmongodb` will generate a local config file in `$HOME/.corechaindb` with all the default values.
 
 ## database.*
 
@@ -84,7 +84,7 @@ export BIGCHAINDB_DATABASE_MAX_TRIES=3
 
 **Default values**
 
-If (no environment variables were set and there's no local config file), or you used `bigchaindb -y configure localmongodb` to create a default local config file for a `localmongodb` backend, then the defaults will be:
+If (no environment variables were set and there's no local config file), or you used `corechaindb -y configure localmongodb` to create a default local config file for a `localmongodb` backend, then the defaults will be:
 
 ```js
 "database": {
@@ -213,7 +213,7 @@ different from where BigchainDB is running.
 
 ```text
 export BIGCHAINDB_WSSERVER_ADVERTISED_SCHEME=wss
-export BIGCHAINDB_WSSERVER_ADVERTISED_HOST=mybigchaindb.com
+export BIGCHAINDB_WSSERVER_ADVERTISED_HOST=mycorechaindb.com
 export BIGCHAINDB_WSSERVER_ADVERTISED_PORT=443
 ```
 
@@ -222,7 +222,7 @@ export BIGCHAINDB_WSSERVER_ADVERTISED_PORT=443
 ```js
 "wsserver": {
     "advertised_scheme": "wss",
-    "advertised_host": "mybigchaindb.com",
+    "advertised_host": "mycorechaindb.com",
     "advertised_port": 443
 }
 ```
@@ -246,8 +246,8 @@ The `log.*` settings are to configure logging.
 ```js
 {
     "log": {
-        "file": "/var/log/bigchaindb.log",
-        "error_file": "/var/log/bigchaindb-errors.log",
+        "file": "/var/log/corechaindb.log",
+        "error_file": "/var/log/corechaindb-errors.log",
         "level_console": "info",
         "level_logfile": "info",
         "datefmt_console": "%Y-%m-%d %H:%M:%S",
@@ -263,8 +263,8 @@ The `log.*` settings are to configure logging.
 ```js
 {
     "log": {
-        "file": "~/bigchaindb.log",
-        "error_file": "~/bigchaindb-errors.log",
+        "file": "~/corechaindb.log",
+        "error_file": "~/corechaindb-errors.log",
         "level_console": "info",
         "level_logfile": "info",
         "datefmt_console": "%Y-%m-%d %H:%M:%S",
@@ -278,7 +278,7 @@ The `log.*` settings are to configure logging.
 ### log.file
 
 The full path to the file where logs should be written.
-The user running `bigchaindb` must have write access to the
+The user running `corechaindb` must have write access to the
 specified path.
 
 **Log rotation:** Log files have a size limit of about 200 MB
