@@ -1,14 +1,14 @@
 #!/bin/zsh
 
-# Replace 'corechaindb' with 'corechaindb' in file contents, excluding .git directory
-find . -type f ! -path "./.git/*" -exec perl -i -pe 's/corechaindb/corechaindb/g' {} +
+# Replace 'corechaindb' with 'corechaindb' in file contents
+find . -type f ! -path './.git/*' -exec perl -i -pe 's/corechaindb/corechaindb/g' {} +
 
-# Rename directories, excluding .git directory
-find . -depth -type d ! -path "./.git/*" -name '*corechaindb*' | while IFS= read -r dir; do
+# Rename directories
+find . -depth -type d -name '*corechaindb*' ! -path './.git/*' | while IFS= read -r dir; do
     mv "$dir" "$(dirname "$dir")/$(basename "$dir" | sed 's/corechaindb/corechaindb/')"
 done
 
-# Rename files, excluding .git directory
-find . -depth -type f ! -path "./.git/*" -name '*corechaindb*' | while IFS= read -r file; do
+# Rename files
+find . -depth -type f -name '*corechaindb*' ! -path './.git/*' | while IFS= read -r file; do
     mv "$file" "$(dirname "$file")/$(basename "$file" | sed 's/corechaindb/corechaindb/')"
 done
