@@ -70,28 +70,28 @@ data:
   openresty-backend-port: "8080"
 
   # BigchainDB configuration parameters
-  # Refer https://docs.bigchaindb.com/projects/server/en/latest/server-reference/configuration.html
+  # Refer https://docs.corechaindb.com/projects/server/en/latest/server-reference/configuration.html
 
-  # bigchaindb-api-port is the port number on which BigchainDB is listening
+  # corechaindb-api-port is the port number on which BigchainDB is listening
   # for HTTP requests.
-  bigchaindb-api-port: "9984"
+  corechaindb-api-port: "9984"
 
-  # bigchaindb-server-bind is the socket where BigchainDB binds for API
+  # corechaindb-server-bind is the socket where BigchainDB binds for API
   # requests.
-  bigchaindb-server-bind: "0.0.0.0:9984"
+  corechaindb-server-bind: "0.0.0.0:9984"
 
-  # bigchaindb-ws-port and bigchaindb-ws-interface form the socket where
+  # corechaindb-ws-port and corechaindb-ws-interface form the socket where
   # BigchainDB binds for Websocket connections.
-  bigchaindb-ws-port: "9985"
-  bigchaindb-ws-interface: "0.0.0.0"
+  corechaindb-ws-port: "9985"
+  corechaindb-ws-interface: "0.0.0.0"
 
-  # bigchaindb-database-name is the database collection used by BigchainDB with
+  # corechaindb-database-name is the database collection used by BigchainDB with
   # the MongoDB backend.
-  bigchaindb-database-name: "bigchain"
+  corechaindb-database-name: "bigchain"
 
-  # bigchaindb-wsserver-advertised-scheme is the protocol used to access the
+  # corechaindb-wsserver-advertised-scheme is the protocol used to access the
   # WebSocket API in BigchainDB; can be 'ws' or 'wss' (default).
-  bigchaindb-wsserver-advertised-scheme: "wss"
+  corechaindb-wsserver-advertised-scheme: "wss"
 
   # Optional: Optimize storage engine(wired tiger)
   # cache size. e.g. (2048MB, 2GB, 1TB), otherwise
@@ -111,18 +111,18 @@ data:
   # BigchainDB instance authentication user name
   bdb-user: "<user name>"
 
-  # bigchaindb-database-maxtries is the maximum number of times that BigchainDB
+  # corechaindb-database-maxtries is the maximum number of times that BigchainDB
   # will try to establish a connection with the database backend.
   # If it is set to 0, then it will try forever.
-  bigchaindb-database-maxtries: "3"
+  corechaindb-database-maxtries: "3"
 
-  # bigchaindb-database-connection-timeout is the maximum number of
+  # corechaindb-database-connection-timeout is the maximum number of
   # milliseconds that BigchainDB will wait before closing the connection while
   # connecting to the database backend.
-  bigchaindb-database-connection-timeout: "5000"
+  corechaindb-database-connection-timeout: "5000"
 
-  # bigchaindb-log-level is the log level used to log to the console.
-  bigchaindb-log-level: "debug"
+  # corechaindb-log-level is the log level used to log to the console.
+  corechaindb-log-level: "debug"
 
 ---
 apiVersion: v1

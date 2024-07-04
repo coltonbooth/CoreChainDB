@@ -17,30 +17,30 @@ With Tendermint integration some of the cli sub-commands have been rendered obso
 ## Proposed Change
 Following sub-commands should be updated/removed:
 
-- `bigchaindb --help`: list the relevant sub-commands for `localmongodb` backend.
+- `corechaindb --help`: list the relevant sub-commands for `localmongodb` backend.
 `mongodb` and `rethinkdb` will be deprecated.
 In case the backend is not configured then the default backend `localmongodb` should be assumed.
 
 Following sub-commands should be deprecated for `localmongodb` backend.
 
-- `bigchaindb export-my-pubkey`
+- `corechaindb export-my-pubkey`
   - A BigchainDB node still has a public key but that is not BigchainDB concern. It is handled by Tendermint.
-- `bigchaindb set-shards`
+- `corechaindb set-shards`
   - This was only required for `rethinkdb`.
-- `bigchaindb set-replicas`
+- `corechaindb set-replicas`
   - This was only required for `rethinkdb`.
-- `bigchaindb add-replicas`
+- `corechaindb add-replicas`
   - This was only required for `mongodb` backend to add nodes to the MongoDB Replica Set, which is not required anymore,
     because we are using standalone MongoDB instances i.e. `localmongodb`.
-- `bigchaindb remove-replicas`
+- `corechaindb remove-replicas`
   - This was only required for backend to remove nodes from the MongoDB Replica Set, which is not required anymore.
 
 ### Usage example
-**bigchaindb**
+**corechaindb**
 
 ```
-$ bigchaindb --help
-usage: bigchaindb [-h] [-c CONFIG] [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL}]
+$ corechaindb --help
+usage: corechaindb [-h] [-c CONFIG] [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL}]
                   [-y] [-v]
                   {configure,show-config,init,drop,start}
                   ...
@@ -68,11 +68,11 @@ Commands:
     start               Start BigchainDB
 ```
 
-**bigchaindb configure**
+**corechaindb configure**
 
 ```
-$ bigchaindb configure --help
-usage: bigchaindb configure [-h] {localmongodb}
+$ corechaindb configure --help
+usage: corechaindb configure [-h] {localmongodb}
 
 positional arguments:
   {localmongodb}  The backend to use. It can be only be `localmongodb`.
@@ -81,41 +81,41 @@ optional arguments:
   -h, --help           show this help message and exit
 ```
 
-**bigchaindb show-config**
+**corechaindb show-config**
 
 ```
-$ bigchaindb show-config --help
-usage: bigchaindb show-config [-h]
+$ corechaindb show-config --help
+usage: corechaindb show-config [-h]
 
 optional arguments:
   -h, --help  show this help message and exit
 ```
 
-**bigchaindb init**
+**corechaindb init**
 
 ```
-$ bigchaindb init --help
-usage: bigchaindb init [-h]
+$ corechaindb init --help
+usage: corechaindb init [-h]
 
 optional arguments:
   -h, --help  show this help message and exit
 ```
 
-**bigchaindb drop**
+**corechaindb drop**
 
 ```
-$ bigchaindb drop --help
-usage: bigchaindb drop [-h]
+$ corechaindb drop --help
+usage: corechaindb drop [-h]
 
 optional arguments:
   -h, --help  show this help message and exit
 ```
 
-**bigchaindb start**
+**corechaindb start**
 
 ```
-$ bigchaindb start --help
-usage: bigchaindb start [-h]
+$ corechaindb start --help
+usage: corechaindb start [-h]
 optional arguments:
   -h, --help            show this help message and exit
 ```
@@ -146,7 +146,7 @@ Document the commands and sub-commands along with usage.
 Following test cases should be added
 - Set a backend other than `localmongodb` and see of it results in a valid unsupported
   result.
-- Set `localmongodb` as backend and execute `bigchaindb --help` and validate that only the above
+- Set `localmongodb` as backend and execute `corechaindb --help` and validate that only the above
   mentioned sub-commands are displayed.
 
 
@@ -166,4 +166,4 @@ N/A
 
 
 ## Reference(s)
-* [Bigchaindb CLI](https://docs.bigchaindb.com/projects/server/en/latest/server-reference/bigchaindb-cli.html)
+* [Bigchaindb CLI](https://docs.corechaindb.com/projects/server/en/latest/server-reference/corechaindb-cli.html)

@@ -5,8 +5,8 @@
 
 import pytest
 
-from bigchaindb.models import Transaction
-from bigchaindb.lib import Block
+from corechaindb.models import Transaction
+from corechaindb.lib import Block
 
 BLOCKS_ENDPOINT = '/api/v1/blocks/'
 

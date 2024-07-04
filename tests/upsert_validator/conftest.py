@@ -6,8 +6,8 @@ from unittest.mock import patch
 
 import pytest
 
-from bigchaindb.backend.localmongodb import query
-from bigchaindb.upsert_validator import ValidatorElection
+from corechaindb.backend.localmongodb import query
+from corechaindb.upsert_validator import ValidatorElection
 
 
 @pytest.fixture
@@ -19,7 +19,7 @@ def valid_upsert_validator_election_b(b, node_key, new_validator):
 
 
 @pytest.fixture
-@patch('bigchaindb.elections.election.uuid4', lambda: 'mock_uuid4')
+@patch('corechaindb.elections.election.uuid4', lambda: 'mock_uuid4')
 def fixed_seed_election(b_mock, node_key, new_validator):
     voters = ValidatorElection.recipients(b_mock)
     return ValidatorElection.generate([node_key.public_key],

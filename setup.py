@@ -6,7 +6,7 @@
 """
 BigchainDB: The Blockchain Database
 
-For full docs visit https://docs.bigchaindb.com
+For full docs visit https://docs.corechaindb.com
 
 """
 
@@ -18,7 +18,7 @@ if sys.version_info < (3, 6):
 
 # get the version
 version = {}
-with open('bigchaindb/version.py') as fp:
+with open('corechaindb/version.py') as fp:
     exec(fp.read(), version)
 
 def check_setuptools_features():
@@ -74,7 +74,7 @@ tests_require = [
 install_requires = [
     'chardet==3.0.4',
     'aiohttp==3.7.4',
-    'bigchaindb-abci==1.0.7',
+    'corechaindb-abci==1.0.7',
     'cryptoconditions==0.8.1',
     'flask-cors==3.0.10',
     'flask-restful==0.3.9',
@@ -109,7 +109,7 @@ setup(
         "built-in asset support, BigchainDB is like a database with blockchain "
         "characteristics."
         ),
-    url='https://github.com/BigchainDB/bigchaindb/',
+    url='https://github.com/BigchainDB/corechaindb/',
     author='BigchainDB Contributors',
     author_email='contact@ipdb.global',
     license='Apache Software License 2.0',
@@ -133,11 +133,11 @@ setup(
 
     packages=find_packages(exclude=['tests*']),
 
-    scripts=['pkg/scripts/bigchaindb-monit-config'],
+    scripts=['pkg/scripts/corechaindb-monit-config'],
 
     entry_points={
         'console_scripts': [
-            'bigchaindb=bigchaindb.commands.bigchaindb:main'
+            'corechaindb=corechaindb.commands.corechaindb:main'
         ],
     },
     install_requires=install_requires,
@@ -148,5 +148,5 @@ setup(
         'dev': dev_require + tests_require + docs_require,
         'docs': docs_require,
     },
-    package_data={'bigchaindb.common.schema': ['*.yaml']},
+    package_data={'corechaindb.common.schema': ['*.yaml']},
 )

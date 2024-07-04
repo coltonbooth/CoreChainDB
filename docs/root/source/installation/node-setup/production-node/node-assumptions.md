@@ -9,7 +9,7 @@ Code is Apache-2.0 and docs are CC-BY-4.0
 
 Be sure you know the key BigchainDB terminology:
 
-* [BigchainDB node, BigchainDB network and BigchainDB consortium](https://docs.bigchaindb.com/en/latest/terminology.html)
+* [BigchainDB node, BigchainDB network and BigchainDB consortium](https://docs.corechaindb.com/en/latest/terminology.html)
 
 Note that there are a few kinds of nodes:
 

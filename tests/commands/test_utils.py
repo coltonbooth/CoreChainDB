@@ -13,13 +13,13 @@ from unittest.mock import patch
 
 
 @pytest.fixture
-def reset_bigchaindb_config(monkeypatch):
-    import bigchaindb
-    monkeypatch.setattr('bigchaindb.config', bigchaindb._config)
+def reset_corechaindb_config(monkeypatch):
+    import corechaindb
+    monkeypatch.setattr('corechaindb.config', corechaindb._config)
 
 
 def test_input_on_stderr():
-    from bigchaindb.commands.utils import input_on_stderr, _convert
+    from corechaindb.commands.utils import input_on_stderr, _convert
 
     with patch('builtins.input', return_value='I love cats'):
         assert input_on_stderr() == 'I love cats'
@@ -45,13 +45,13 @@ def test_input_on_stderr():
         assert _convert('ಠ_ಠ', convert=int)
 
 
-@pytest.mark.usefixtures('ignore_local_config_file', 'reset_bigchaindb_config')
-def test_configure_bigchaindb_configures_bigchaindb():
-    from bigchaindb.commands.utils import configure_bigchaindb
-    from bigchaindb.config_utils import is_configured
+@pytest.mark.usefixtures('ignore_local_config_file', 'reset_corechaindb_config')
+def test_configure_corechaindb_configures_corechaindb():
+    from corechaindb.commands.utils import configure_corechaindb
+    from corechaindb.config_utils import is_configured
     assert not is_configured()
 
-    @configure_bigchaindb
+    @configure_corechaindb
     def test_configure(args):
         assert is_configured()
 
@@ -60,7 +60,7 @@ def test_configure_bigchaindb_configures_bigchaindb():
 
 
 @pytest.mark.usefixtures('ignore_local_config_file',
-                         'reset_bigchaindb_config',
+                         'reset_corechaindb_config',
                          'reset_logging_config')
 @pytest.mark.parametrize('log_level', tuple(map(
     logging.getLevelName,
@@ -70,29 +70,29 @@ def test_configure_bigchaindb_configures_bigchaindb():
      logging.ERROR,
      logging.CRITICAL)
 )))
-def test_configure_bigchaindb_logging(log_level):
+def test_configure_corechaindb_logging(log_level):
     # TODO: See following comment:
     # This is a dirty test. If a test *preceding* this test makes use of the logger, and then another test *after* this
     # test also makes use of the logger, somehow we get logger.disabled == True, and the later test fails. We need to
     # either engineer this somehow to leave the test env in the same state as it finds it, or make an assessment
     # whether or not we even need this test, and potentially just remove it.
 
-    from bigchaindb.commands.utils import configure_bigchaindb
+    from corechaindb.commands.utils import configure_corechaindb
 
-    @configure_bigchaindb
+    @configure_corechaindb
     def test_configure_logger(args):
         pass
 
     args = Namespace(config=None, log_level=log_level)
     test_configure_logger(args)
-    from bigchaindb import config
+    from corechaindb import config
     assert config['log']['level_console'] == log_level
     assert config['log']['level_logfile'] == log_level
 
 
 def test_start_raises_if_command_not_implemented():
-    from bigchaindb.commands import utils
-    from bigchaindb.commands.bigchaindb import create_parser
+    from corechaindb.commands import utils
+    from corechaindb.commands.corechaindb import create_parser
 
     parser = create_parser()
 
@@ -103,8 +103,8 @@ def test_start_raises_if_command_not_implemented():
 
 
 def test_start_raises_if_no_arguments_given():
-    from bigchaindb.commands import utils
-    from bigchaindb.commands.bigchaindb import create_parser
+    from corechaindb.commands import utils
+    from corechaindb.commands.corechaindb import create_parser
 
     parser = create_parser()
 
@@ -114,7 +114,7 @@ def test_start_raises_if_no_arguments_given():
 
 @patch('multiprocessing.cpu_count', return_value=42)
 def test_start_sets_multiprocess_var_based_on_cli_args(mock_cpu_count):
-    from bigchaindb.commands import utils
+    from corechaindb.commands import utils
 
     def run_mp_arg_test(args):
         return args

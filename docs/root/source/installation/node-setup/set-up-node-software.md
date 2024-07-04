@@ -36,17 +36,17 @@ For example, to install version 2.2.2, you would do:
 
 ```
 # Change 2.0.0 to the latest version as explained above:
-sudo pip3 install bigchaindb==2.2.2
+sudo pip3 install corechaindb==2.2.2
 ```
 
-Check that you installed the correct version of BigchainDB Server using `bigchaindb --version`.
+Check that you installed the correct version of BigchainDB Server using `corechaindb --version`.
 
 ## Configure BigchainDB Server
 
 To configure BigchainDB Server, run:
 
 ```
-bigchaindb configure
+corechaindb configure
 ```
 
 The first question is ``API Server bind? (default `localhost:9984`)``.
@@ -58,7 +58,7 @@ The first question is ``API Server bind? (default `localhost:9984`)``.
 You can accept the default value for all other BigchainDB config settings.
 
 If you're using NGINX, then you should edit your BigchainDB config file
-(in `$HOME/.bigchaindb` by default) and set the following values
+(in `$HOME/.corechaindb` by default) and set the following values
 under `"wsserver"`:
 
 ```

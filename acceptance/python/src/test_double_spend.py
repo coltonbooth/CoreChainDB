@@ -11,9 +11,9 @@ from uuid import uuid4
 from threading import Thread
 import queue
 
-import bigchaindb_driver.exceptions
-from bigchaindb_driver import BigchainDB
-from bigchaindb_driver.crypto import generate_keypair
+import corechaindb_driver.exceptions
+from corechaindb_driver import BigchainDB
+from corechaindb_driver.crypto import generate_keypair
 
 
 def test_double_create():
@@ -33,7 +33,7 @@ def test_double_create():
         try:
             bdb.transactions.send_commit(tx)
             results.put('OK')
-        except bigchaindb_driver.exceptions.TransportError as e:
+        except corechaindb_driver.exceptions.TransportError as e:
             results.put('FAIL')
 
     t1 = Thread(target=send_and_queue, args=(tx, ))

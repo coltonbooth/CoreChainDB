@@ -10,13 +10,13 @@ Contributing to BigchainDB
 There are many ways you can contribute to BigchainDB.
 It includes several sub-projects.
 
-- `BigchainDB Server <https://github.com/bigchaindb/bigchaindb>`_
-- `BigchainDB Python Driver <https://github.com/bigchaindb/bigchaindb-driver>`_
-- `BigchainDB JavaScript Driver <https://github.com/bigchaindb/js-bigchaindb-driver>`_
-- `BigchainDB Java Driver <https://github.com/bigchaindb/java-bigchaindb-driver>`_
-- `cryptoconditions <https://github.com/bigchaindb/cryptoconditions>`_ (a Python package by us)
+- `BigchainDB Server <https://github.com/corechaindb/corechaindb>`_
+- `BigchainDB Python Driver <https://github.com/corechaindb/corechaindb-driver>`_
+- `BigchainDB JavaScript Driver <https://github.com/corechaindb/js-corechaindb-driver>`_
+- `BigchainDB Java Driver <https://github.com/corechaindb/java-corechaindb-driver>`_
+- `cryptoconditions <https://github.com/corechaindb/cryptoconditions>`_ (a Python package by us)
 - `py-abci <https://github.com/davebryson/py-abci>`_ (a Python package we use)
-- `BigchainDB Enhancement Proposals (BEPs) <https://github.com/bigchaindb/BEPs>`_
+- `BigchainDB Enhancement Proposals (BEPs) <https://github.com/corechaindb/BEPs>`_
 
 Contents
 --------

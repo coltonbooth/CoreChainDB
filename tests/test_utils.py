@@ -33,7 +33,7 @@ def mock_queue(monkeypatch):
 
 
 def test_empty_pool_is_populated_with_instances(mock_queue):
-    from bigchaindb import utils
+    from corechaindb import utils
 
     pool = utils.pool(lambda: 'hello', 4)
 
@@ -61,7 +61,7 @@ def test_empty_pool_is_populated_with_instances(mock_queue):
 
 
 def test_pool_blocks_if_no_instances_available(mock_queue):
-    from bigchaindb import utils
+    from corechaindb import utils
 
     pool = utils.pool(lambda: 'hello', 4)
 
@@ -99,7 +99,7 @@ def test_pool_blocks_if_no_instances_available(mock_queue):
 
 
 def test_pool_raises_empty_exception_when_timeout(mock_queue):
-    from bigchaindb import utils
+    from corechaindb import utils
 
     pool = utils.pool(lambda: 'hello', 1, timeout=1)
 
@@ -119,7 +119,7 @@ def test_pool_raises_empty_exception_when_timeout(mock_queue):
 
 @patch('multiprocessing.Process')
 def test_process_group_instantiates_and_start_processes(mock_process):
-    from bigchaindb.utils import ProcessGroup
+    from corechaindb.utils import ProcessGroup
 
     def noop():
         pass
@@ -139,7 +139,7 @@ def test_process_group_instantiates_and_start_processes(mock_process):
 
 
 def test_lazy_execution():
-    from bigchaindb.utils import Lazy
+    from corechaindb.utils import Lazy
 
     lz = Lazy()
     lz.split(',')[1].split(' ').pop(1).strip()
@@ -162,7 +162,7 @@ def test_process_set_title():
     from uuid import uuid4
     from multiprocessing import Queue
     from setproctitle import getproctitle
-    from bigchaindb.utils import Process
+    from corechaindb.utils import Process
 
     queue = Queue()
     uuid = str(uuid4())

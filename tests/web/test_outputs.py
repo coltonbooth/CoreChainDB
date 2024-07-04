@@ -16,7 +16,7 @@ def test_get_outputs_endpoint(client, user_pk):
     m = MagicMock()
     m.txid = 'a'
     m.output = 0
-    with patch('bigchaindb.BigchainDB.get_outputs_filtered') as gof:
+    with patch('corechaindb.BigchainDB.get_outputs_filtered') as gof:
         gof.return_value = [m, m]
         res = client.get(OUTPUTS_ENDPOINT + '?public_key={}'.format(user_pk))
         assert res.json == [
@@ -31,7 +31,7 @@ def test_get_outputs_endpoint_unspent(client, user_pk):
     m = MagicMock()
     m.txid = 'a'
     m.output = 0
-    with patch('bigchaindb.BigchainDB.get_outputs_filtered') as gof:
+    with patch('corechaindb.BigchainDB.get_outputs_filtered') as gof:
         gof.return_value = [m]
         params = '?spent=False&public_key={}'.format(user_pk)
         res = client.get(OUTPUTS_ENDPOINT + params)
@@ -46,7 +46,7 @@ def test_get_outputs_endpoint_spent(client, user_pk):
     m = MagicMock()
     m.txid = 'a'
     m.output = 0
-    with patch('bigchaindb.BigchainDB.get_outputs_filtered') as gof:
+    with patch('corechaindb.BigchainDB.get_outputs_filtered') as gof:
         gof.return_value = [m]
         params = '?spent=true&public_key={}'.format(user_pk)
         res = client.get(OUTPUTS_ENDPOINT + params)
@@ -83,8 +83,8 @@ def test_get_outputs_endpoint_with_invalid_spent(client, user_pk):
 
 @pytest.mark.abci
 def test_get_divisble_transactions_returns_500(b, client):
-    from bigchaindb.models import Transaction
-    from bigchaindb.common import crypto
+    from corechaindb.models import Transaction
+    from corechaindb.common import crypto
     import json
 
     TX_ENDPOINT = '/api/v1/transactions'

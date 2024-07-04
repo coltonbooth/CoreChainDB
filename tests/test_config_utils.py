@@ -8,40 +8,40 @@ from unittest.mock import mock_open, patch
 
 import pytest
 
-import bigchaindb
+import corechaindb
 
 
-ORIGINAL_CONFIG = copy.deepcopy(bigchaindb._config)
+ORIGINAL_CONFIG = copy.deepcopy(corechaindb._config)
 
 
 @pytest.fixture(scope='function', autouse=True)
 def clean_config(monkeypatch, request):
     original_config = copy.deepcopy(ORIGINAL_CONFIG)
     backend = request.config.getoption('--database-backend')
-    original_config['database'] = bigchaindb._database_map[backend]
-    monkeypatch.setattr('bigchaindb.config', original_config)
+    original_config['database'] = corechaindb._database_map[backend]
+    monkeypatch.setattr('corechaindb.config', original_config)
 
 
 def test_bigchain_instance_is_initialized_when_conf_provided():
-    import bigchaindb
-    from bigchaindb import config_utils
-    assert 'CONFIGURED' not in bigchaindb.config
+    import corechaindb
+    from corechaindb import config_utils
+    assert 'CONFIGURED' not in corechaindb.config
 
     config_utils.set_config({'database': {'backend': 'a'}})
 
-    assert bigchaindb.config['CONFIGURED'] is True
+    assert corechaindb.config['CONFIGURED'] is True
 
 
 def test_load_validation_plugin_loads_default_rules_without_name():
-    from bigchaindb import config_utils
-    from bigchaindb.validation import BaseValidationRules
+    from corechaindb import config_utils
+    from corechaindb.validation import BaseValidationRules
 
     assert config_utils.load_validation_plugin() == BaseValidationRules
 
 
 def test_load_validation_plugin_raises_with_unknown_name():
     from pkg_resources import ResolutionError
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
 
     with pytest.raises(ResolutionError):
         config_utils.load_validation_plugin('bogus')
@@ -50,7 +50,7 @@ def test_load_validation_plugin_raises_with_unknown_name():
 def test_load_validation_plugin_raises_with_invalid_subclass(monkeypatch):
     # Monkeypatch entry_point.load to return something other than a
     # ValidationRules instance
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
     import time
     monkeypatch.setattr(config_utils,
                         'iter_entry_points',
@@ -63,7 +63,7 @@ def test_load_validation_plugin_raises_with_invalid_subclass(monkeypatch):
 
 
 def test_load_events_plugins(monkeypatch):
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
     monkeypatch.setattr(config_utils,
                         'iter_entry_points',
                         lambda *args: [type('entry_point', (object, ), {'load': lambda: object})])
@@ -73,7 +73,7 @@ def test_load_events_plugins(monkeypatch):
 
 
 def test_map_leafs_iterator():
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
 
     mapping = {
         'a': {'b': {'c': 1},
@@ -100,7 +100,7 @@ def test_map_leafs_iterator():
 
 
 def test_update_types():
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
 
     raw = {
         'a_string': 'test',
@@ -124,7 +124,7 @@ def test_env_config(monkeypatch):
     monkeypatch.setattr('os.environ', {'BIGCHAINDB_DATABASE_HOST': 'test-host',
                                        'BIGCHAINDB_DATABASE_PORT': 'test-port'})
 
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
 
     result = config_utils.env_config({'database': {'host': None, 'port': None}})
     expected = {'database': {'host': 'test-host', 'port': 'test-port'}}
@@ -156,7 +156,7 @@ def test_autoconfigure_read_both_from_file_and_env(monkeypatch, request):
         },
     }
 
-    monkeypatch.setattr('bigchaindb.config_utils.file_config',
+    monkeypatch.setattr('corechaindb.config_utils.file_config',
                         lambda *args, **kwargs: file_config)
 
     monkeypatch.setattr('os.environ', {
@@ -179,9 +179,9 @@ def test_autoconfigure_read_both_from_file_and_env(monkeypatch, request):
         'BIGCHAINDB_DATABASE_KEYFILE_PASSPHRASE': 'passphrase',
     })
 
-    import bigchaindb
-    from bigchaindb import config_utils
-    from bigchaindb.log import DEFAULT_LOGGING_CONFIG as log_config
+    import corechaindb
+    from corechaindb import config_utils
+    from corechaindb.log import DEFAULT_LOGGING_CONFIG as log_config
     config_utils.autoconfigure()
 
     database_mongodb = {
@@ -202,7 +202,7 @@ def test_autoconfigure_read_both_from_file_and_env(monkeypatch, request):
         'crlfile': 'crlfile',
     }
 
-    assert bigchaindb.config == {
+    assert corechaindb.config == {
         'CONFIGURED': True,
         'server': {
             'bind': SERVER_BIND,
@@ -240,56 +240,56 @@ def test_autoconfigure_read_both_from_file_and_env(monkeypatch, request):
 
 def test_autoconfigure_env_precedence(monkeypatch):
     file_config = {
-        'database': {'host': 'test-host', 'name': 'bigchaindb', 'port': 28015}
+        'database': {'host': 'test-host', 'name': 'corechaindb', 'port': 28015}
     }
-    monkeypatch.setattr('bigchaindb.config_utils.file_config', lambda *args, **kwargs: file_config)
+    monkeypatch.setattr('corechaindb.config_utils.file_config', lambda *args, **kwargs: file_config)
     monkeypatch.setattr('os.environ', {'BIGCHAINDB_DATABASE_NAME': 'test-dbname',
                                        'BIGCHAINDB_DATABASE_PORT': '4242',
                                        'BIGCHAINDB_SERVER_BIND': 'localhost:9985'})
 
-    import bigchaindb
-    from bigchaindb import config_utils
+    import corechaindb
+    from corechaindb import config_utils
     config_utils.autoconfigure()
 
-    assert bigchaindb.config['CONFIGURED']
-    assert bigchaindb.config['database']['host'] == 'test-host'
-    assert bigchaindb.config['database']['name'] == 'test-dbname'
-    assert bigchaindb.config['database']['port'] == 4242
-    assert bigchaindb.config['server']['bind'] == 'localhost:9985'
+    assert corechaindb.config['CONFIGURED']
+    assert corechaindb.config['database']['host'] == 'test-host'
+    assert corechaindb.config['database']['name'] == 'test-dbname'
+    assert corechaindb.config['database']['port'] == 4242
+    assert corechaindb.config['server']['bind'] == 'localhost:9985'
 
 
 def test_autoconfigure_explicit_file(monkeypatch):
-    from bigchaindb import config_utils
+    from corechaindb import config_utils
 
     def file_config(*args, **kwargs):
         raise FileNotFoundError()
 
-    monkeypatch.setattr('bigchaindb.config_utils.file_config', file_config)
+    monkeypatch.setattr('corechaindb.config_utils.file_config', file_config)
 
     with pytest.raises(FileNotFoundError):
         config_utils.autoconfigure(filename='autoexec.bat')
 
 
 def test_update_config(monkeypatch):
-    import bigchaindb
-    from bigchaindb import config_utils
+    import corechaindb
+    from corechaindb import config_utils
 
     file_config = {
-        'database': {'host': 'test-host', 'name': 'bigchaindb', 'port': 28015}
+        'database': {'host': 'test-host', 'name': 'corechaindb', 'port': 28015}
     }
-    monkeypatch.setattr('bigchaindb.config_utils.file_config', lambda *args, **kwargs: file_config)
+    monkeypatch.setattr('corechaindb.config_utils.file_config', lambda *args, **kwargs: file_config)
     config_utils.autoconfigure(config=file_config)
 
     # update configuration, retaining previous changes
-    config_utils.update_config({'database': {'port': 28016, 'name': 'bigchaindb_other'}})
+    config_utils.update_config({'database': {'port': 28016, 'name': 'corechaindb_other'}})
 
-    assert bigchaindb.config['database']['host'] == 'test-host'
-    assert bigchaindb.config['database']['name'] == 'bigchaindb_other'
-    assert bigchaindb.config['database']['port'] == 28016
+    assert corechaindb.config['database']['host'] == 'test-host'
+    assert corechaindb.config['database']['name'] == 'corechaindb_other'
+    assert corechaindb.config['database']['port'] == 28016
 
 
 def test_file_config():
-    from bigchaindb.config_utils import file_config, CONFIG_DEFAULT_PATH
+    from corechaindb.config_utils import file_config, CONFIG_DEFAULT_PATH
     with patch('builtins.open', mock_open(read_data='{}')) as m:
         config = file_config()
     m.assert_called_once_with(CONFIG_DEFAULT_PATH)
@@ -297,15 +297,15 @@ def test_file_config():
 
 
 def test_invalid_file_config():
-    from bigchaindb.config_utils import file_config
-    from bigchaindb.common import exceptions
+    from corechaindb.config_utils import file_config
+    from corechaindb.common import exceptions
     with patch('builtins.open', mock_open(read_data='{_INVALID_JSON_}')):
         with pytest.raises(exceptions.ConfigurationError):
             file_config()
 
 
 def test_write_config():
-    from bigchaindb.config_utils import write_config, CONFIG_DEFAULT_PATH
+    from corechaindb.config_utils import write_config, CONFIG_DEFAULT_PATH
     m = mock_open()
     with patch('builtins.open', m):
         write_config({})
@@ -321,12 +321,12 @@ def test_write_config():
     ('BIGCHAINDB_DATABASE_NAME', 'test-db', 'name'),
 ))
 def test_database_envs(env_name, env_value, config_key, monkeypatch):
-    import bigchaindb
+    import corechaindb
 
     monkeypatch.setattr('os.environ', {env_name: env_value})
-    bigchaindb.config_utils.autoconfigure()
+    corechaindb.config_utils.autoconfigure()
 
-    expected_config = copy.deepcopy(bigchaindb.config)
+    expected_config = copy.deepcopy(corechaindb.config)
     expected_config['database'][config_key] = env_value
 
-    assert bigchaindb.config == expected_config
+    assert corechaindb.config == expected_config

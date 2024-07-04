@@ -25,7 +25,7 @@ Minimum resource requirements for a single node BigchainDB dev setup. **The more
 
 ## Clone the BigchainDB repository
 ```text
-$ git clone https://github.com/bigchaindb/bigchaindb.git
+$ git clone https://github.com/corechaindb/corechaindb.git
 ```
 
 ## Install dependencies
@@ -33,28 +33,28 @@ $ git clone https://github.com/bigchaindb/bigchaindb.git
 
 You can also install `ansible` and other dependencies, if any, using the `boostrap.sh` script
 inside the BigchainDB repository.
-Navigate to `bigchaindb/pkg/scripts` and run the `bootstrap.sh` script to install the dependencies
+Navigate to `corechaindb/pkg/scripts` and run the `bootstrap.sh` script to install the dependencies
 for your OS. The script also checks if the OS you are running is compatible with the
 supported versions.
 
 **Note**: `bootstrap.sh` only supports Ubuntu >= 16.04, CentOS >= 7 and Fedora >=24 and MacOSX.
 
 ```text
-$ cd bigchaindb/pkg/scripts/
+$ cd corechaindb/pkg/scripts/
 $ bash bootstrap.sh --operation install
 ```
 
 ### BigchainDB Setup Configuration(s)
 #### Local Setup
-You can run the Ansible playbook `bigchaindb-start.yml` on your local dev machine and set up the BigchainDB node where
+You can run the Ansible playbook `corechaindb-start.yml` on your local dev machine and set up the BigchainDB node where
 BigchainDB can be run as a process or inside a Docker container(s) depending on your configuration.
 
 Before, running the playbook locally, you need to update the `hosts` and `stack-config.yml` configuration, which will notify Ansible that we need to run the play locally.
 
 ##### Update Hosts
-Navigate to `bigchaindb/pkg/configuration/hosts` inside the BigchainDB repository.
+Navigate to `corechaindb/pkg/configuration/hosts` inside the BigchainDB repository.
 ```text
-$ cd bigchaindb/pkg/configuration/hosts
+$ cd corechaindb/pkg/configuration/hosts
 ```
 
 Edit `all` configuration file:
@@ -64,9 +64,9 @@ Edit `all` configuration file:
 <HOSTNAME> ansible_connection=local
 ```
 ##### Update Configuration
-Navigate to `bigchaindb/pkg/configuration/vars` inside the BigchainDB repository.
+Navigate to `corechaindb/pkg/configuration/vars` inside the BigchainDB repository.
 ```text
-$ cd bigchaindb/pkg/configuration/vars/stack-config.yml
+$ cd corechaindb/pkg/configuration/vars/stack-config.yml
 ```
 
 Edit `bdb-config.yml` configuration file as per your requirements, sample configuration file(s):
@@ -84,30 +84,30 @@ stack_type: "1"
 ```
 
 ### BigchainDB Setup
-Now, You can safely run the `bigchaindb-start.yml` playbook and everything will be taken care of by `Ansible`. To run the playbook please navigate to the `bigchaindb/pkg/configuration` directory inside the BigchainDB repository and run the `bigchaindb-start.yml` playbook.
+Now, You can safely run the `corechaindb-start.yml` playbook and everything will be taken care of by `Ansible`. To run the playbook please navigate to the `corechaindb/pkg/configuration` directory inside the BigchainDB repository and run the `corechaindb-start.yml` playbook.
 
 ```text
-$ cd bigchaindb/pkg/configuration/
+$ cd corechaindb/pkg/configuration/
 
-$ ansible-playbook bigchaindb-start.yml -i hosts/all --extra-vars "operation=start home_path=$(pwd)"
+$ ansible-playbook corechaindb-start.yml -i hosts/all --extra-vars "operation=start home_path=$(pwd)"
 ```
 
 After successful execution of the playbook, you can verify that BigchainDB docker(s)/process(es) is(are) running.
 
 Verify BigchainDB process(es):
 ```text
-$ ps -ef | grep bigchaindb
+$ ps -ef | grep corechaindb
 ```
 
 OR
 
 Verify BigchainDB Docker(s):
 ```text
-$ docker ps | grep bigchaindb
+$ docker ps | grep corechaindb
 ```
 
 You can now send transactions and verify the functionality of your BigchainDB node.
-See the [BigchainDB Python Driver documentation](https://docs.bigchaindb.com/projects/py-driver/en/latest/index.html)
+See the [BigchainDB Python Driver documentation](https://docs.corechaindb.com/projects/py-driver/en/latest/index.html)
 for details on how to use it.
 
 **Note**: The `bdb_root_url` can be be one of the following:
@@ -121,19 +121,19 @@ OR
 bdb_root_url = http://<HOST-IP>:<DOCKER-PUBLISHED-PORT>
 ```
 
-**Note**: BigchainDB has [other drivers as well](http://docs.bigchaindb.com/projects/server/en/latest/drivers-clients/index.html).
+**Note**: BigchainDB has [other drivers as well](http://docs.corechaindb.com/projects/server/en/latest/drivers-clients/index.html).
 
 ### Experimental: Running Ansible a Remote Dev/Host
 #### Remote Setup
-You can also run the Ansible playbook `bigchaindb-start.yml` on remote machine(s) and set up the BigchainDB node where
+You can also run the Ansible playbook `corechaindb-start.yml` on remote machine(s) and set up the BigchainDB node where
 BigchainDB can run as a process or inside a Docker container(s) depending on your configuration.
 
 Before, running the playbook on a remote host, you need to update the `hosts` and `stack-config.yml` configuration, which will notify Ansible that we need to run the play on a remote host.
 
 ##### Update Remote Hosts
-Navigate to `bigchaindb/pkg/configuration/hosts` inside the BigchainDB repository.
+Navigate to `corechaindb/pkg/configuration/hosts` inside the BigchainDB repository.
 ```text
-$ cd bigchaindb/pkg/configuration/hosts
+$ cd corechaindb/pkg/configuration/hosts
 ```
 
 Edit `all` configuration file:
@@ -148,9 +148,9 @@ Edit `all` configuration file:
 please consult [Ansible Documentation](http://docs.ansible.com/ansible/latest/intro_getting_started.html).
 
 ##### Update Remote Configuration
-Navigate to `bigchaindb/pkg/configuration/vars` inside the BigchainDB repository.
+Navigate to `corechaindb/pkg/configuration/vars` inside the BigchainDB repository.
 ```text
-$ cd bigchaindb/pkg/configuration/vars/stack-config.yml
+$ cd corechaindb/pkg/configuration/vars/stack-config.yml
 ```
 
 Edit `stack-config.yml` configuration file as per your requirements, sample configuration file(s):
@@ -167,4 +167,4 @@ stack_type: "local"
 stack_type: "1"
 ```
 
-After, the configuration of remote hosts, [run the Ansible playbook and verify your deployment](#bigchaindb-setup-ansible).
+After, the configuration of remote hosts, [run the Ansible playbook and verify your deployment](#corechaindb-setup-ansible).

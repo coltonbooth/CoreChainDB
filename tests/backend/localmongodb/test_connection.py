@@ -31,15 +31,15 @@ def mock_config_opts():
 
 @pytest.fixture
 def mongodb_connection():
-    import bigchaindb
-    return MongoClient(host=bigchaindb.config['database']['host'],
-                       port=bigchaindb.config['database']['port'])
+    import corechaindb
+    return MongoClient(host=corechaindb.config['database']['host'],
+                       port=corechaindb.config['database']['port'])
 
 
 def test_get_connection_returns_the_correct_instance(db_host, db_port):
-    from bigchaindb.backend import connect
-    from bigchaindb.backend.connection import Connection
-    from bigchaindb.backend.localmongodb.connection import LocalMongoDBConnection
+    from corechaindb.backend import connect
+    from corechaindb.backend.connection import Connection
+    from corechaindb.backend.localmongodb.connection import LocalMongoDBConnection
 
     config = {
         'backend': 'localmongodb',
@@ -57,8 +57,8 @@ def test_get_connection_returns_the_correct_instance(db_host, db_port):
 
 @mock.patch('pymongo.MongoClient.__init__')
 def test_connection_error(mock_client):
-    from bigchaindb.backend import connect
-    from bigchaindb.backend.exceptions import ConnectionError
+    from corechaindb.backend import connect
+    from corechaindb.backend.exceptions import ConnectionError
 
     # force the driver to throw ConnectionFailure
     # the mock on time.sleep is to prevent the actual sleep when running
@@ -73,8 +73,8 @@ def test_connection_error(mock_client):
 
 
 def test_connection_run_errors():
-    from bigchaindb.backend import connect
-    from bigchaindb.backend.exceptions import (DuplicateKeyError,
+    from corechaindb.backend import connect
+    from corechaindb.backend.exceptions import (DuplicateKeyError,
                                                OperationError,
                                                ConnectionError)
 
@@ -101,10 +101,10 @@ def test_connection_run_errors():
 
 @mock.patch('pymongo.database.Database.authenticate')
 def test_connection_with_credentials(mock_authenticate):
-    import bigchaindb
-    from bigchaindb.backend.localmongodb.connection import LocalMongoDBConnection
-    conn = LocalMongoDBConnection(host=bigchaindb.config['database']['host'],
-                                  port=bigchaindb.config['database']['port'],
+    import corechaindb
+    from corechaindb.backend.localmongodb.connection import LocalMongoDBConnection
+    conn = LocalMongoDBConnection(host=corechaindb.config['database']['host'],
+                                  port=corechaindb.config['database']['port'],
                                   login='theplague',
                                   password='secret')
     conn.connect()

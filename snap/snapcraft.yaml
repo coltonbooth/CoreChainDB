@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: (Apache-2.0 AND CC-BY-4.0)
 # Code is Apache-2.0 and docs are CC-BY-4.0
 
-name: bigchaindb
+name: corechaindb
 version: git
 summary: The blockchain database
 description: |
@@ -18,12 +18,12 @@ grade: devel
 confinement: devmode
 
 apps:
-  bigchaindb:
-    command: bigchaindb
+  corechaindb:
+    command: corechaindb
     plugs: [network, network-bind]
 
 parts:
-  bigchaindb:
+  corechaindb:
     source: .
     plugin: python
     build-packages: [g++, libffi-dev]

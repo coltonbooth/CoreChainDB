@@ -16,18 +16,18 @@ except ImportError:
 import pytest
 from pymongo import MongoClient
 
-from bigchaindb import backend
-from bigchaindb.common.transaction_mode_types import (BROADCAST_TX_COMMIT,
+from corechaindb import backend
+from corechaindb.common.transaction_mode_types import (BROADCAST_TX_COMMIT,
                                                       BROADCAST_TX_ASYNC,
                                                       BROADCAST_TX_SYNC)
-from bigchaindb.lib import Block
+from corechaindb.lib import Block
 
 
 @pytest.mark.bdb
 def test_asset_is_separated_from_transaciton(b):
     import copy
-    from bigchaindb.models import Transaction
-    from bigchaindb.common.crypto import generate_key_pair
+    from corechaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
 
     alice = generate_key_pair()
     bob = generate_key_pair()
@@ -61,7 +61,7 @@ def test_asset_is_separated_from_transaciton(b):
 
 @pytest.mark.bdb
 def test_get_latest_block(b):
-    from bigchaindb.lib import Block
+    from corechaindb.lib import Block
 
     for i in range(10):
         app_hash = os.urandom(16).hex()
@@ -75,15 +75,15 @@ def test_get_latest_block(b):
 
 
 @pytest.mark.bdb
-@patch('bigchaindb.backend.query.get_block', return_value=None)
-@patch('bigchaindb.BigchainDB.get_latest_block', return_value={'height': 10})
+@patch('corechaindb.backend.query.get_block', return_value=None)
+@patch('corechaindb.BigchainDB.get_latest_block', return_value={'height': 10})
 def test_get_empty_block(_0, _1, b):
     assert b.get_block(5) == {'height': 5, 'transactions': []}
 
 
 def test_validation_error(b):
-    from bigchaindb.models import Transaction
-    from bigchaindb.common.crypto import generate_key_pair
+    from corechaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
 
     alice = generate_key_pair()
     tx = Transaction.create([alice.public_key],
@@ -97,9 +97,9 @@ def test_validation_error(b):
 
 @patch('requests.post')
 def test_write_and_post_transaction(mock_post, b):
-    from bigchaindb.models import Transaction
-    from bigchaindb.common.crypto import generate_key_pair
-    from bigchaindb.tendermint_utils import encode_transaction
+    from corechaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
+    from corechaindb.tendermint_utils import encode_transaction
 
     alice = generate_key_pair()
     tx = Transaction.create([alice.public_key],
@@ -124,8 +124,8 @@ def test_write_and_post_transaction(mock_post, b):
     BROADCAST_TX_COMMIT
 ])
 def test_post_transaction_valid_modes(mock_post, b, mode):
-    from bigchaindb.models import Transaction
-    from bigchaindb.common.crypto import generate_key_pair
+    from corechaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
     alice = generate_key_pair()
     tx = Transaction.create([alice.public_key],
                             [([alice.public_key], 1)],
@@ -139,9 +139,9 @@ def test_post_transaction_valid_modes(mock_post, b, mode):
 
 
 def test_post_transaction_invalid_mode(b):
-    from bigchaindb.models import Transaction
-    from bigchaindb.common.crypto import generate_key_pair
-    from bigchaindb.common.exceptions import ValidationError
+    from corechaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
+    from corechaindb.common.exceptions import ValidationError
     alice = generate_key_pair()
     tx = Transaction.create([alice.public_key],
                             [([alice.public_key], 1)],
@@ -171,11 +171,11 @@ def test_update_utxoset(b, signed_create_tx, signed_transfer_tx, db_context):
 @pytest.mark.bdb
 def test_store_transaction(mocker, b, signed_create_tx,
                            signed_transfer_tx, db_context):
-    mocked_store_asset = mocker.patch('bigchaindb.backend.query.store_assets')
+    mocked_store_asset = mocker.patch('corechaindb.backend.query.store_assets')
     mocked_store_metadata = mocker.patch(
-        'bigchaindb.backend.query.store_metadatas')
+        'corechaindb.backend.query.store_metadatas')
     mocked_store_transaction = mocker.patch(
-        'bigchaindb.backend.query.store_transactions')
+        'corechaindb.backend.query.store_transactions')
     b.store_bulk_transactions([signed_create_tx])
     # mongo_client = MongoClient(host=db_context.host, port=db_context.port)
     # utxoset = mongo_client[db_context.name]['utxos']
@@ -221,11 +221,11 @@ def test_store_transaction(mocker, b, signed_create_tx,
 def test_store_bulk_transaction(mocker, b, signed_create_tx,
                                 signed_transfer_tx, db_context):
     mocked_store_assets = mocker.patch(
-        'bigchaindb.backend.query.store_assets')
+        'corechaindb.backend.query.store_assets')
     mocked_store_metadata = mocker.patch(
-        'bigchaindb.backend.query.store_metadatas')
+        'corechaindb.backend.query.store_metadatas')
     mocked_store_transactions = mocker.patch(
-        'bigchaindb.backend.query.store_transactions')
+        'corechaindb.backend.query.store_transactions')
     b.store_bulk_transactions((signed_create_tx,))
     # mongo_client = MongoClient(host=db_context.host, port=db_context.port)
     # utxoset = mongo_client[db_context.name]['utxos']
@@ -355,9 +355,9 @@ def test_get_utxoset_merkle_root(b, utxoset):
 
 @pytest.mark.bdb
 def test_get_spent_transaction_critical_double_spend(b, alice, bob, carol):
-    from bigchaindb.models import Transaction
-    from bigchaindb.exceptions import CriticalDoubleSpend
-    from bigchaindb.common.exceptions import DoubleSpend
+    from corechaindb.models import Transaction
+    from corechaindb.exceptions import CriticalDoubleSpend
+    from corechaindb.common.exceptions import DoubleSpend
 
     asset = {'test': 'asset'}
 
@@ -404,8 +404,8 @@ def test_get_spent_transaction_critical_double_spend(b, alice, bob, carol):
 
 
 def test_validation_with_transaction_buffer(b):
-    from bigchaindb.common.crypto import generate_key_pair
-    from bigchaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
+    from corechaindb.models import Transaction
 
     priv_key, pub_key = generate_key_pair()
 
@@ -459,10 +459,10 @@ def test_migrate_abci_chain_generates_new_chains(b, chain, block_height,
 
 @pytest.mark.bdb
 def test_get_spent_key_order(b, user_pk, user_sk, user2_pk, user2_sk):
-    from bigchaindb import backend
-    from bigchaindb.models import Transaction
-    from bigchaindb.common.crypto import generate_key_pair
-    from bigchaindb.common.exceptions import DoubleSpend
+    from corechaindb import backend
+    from corechaindb.models import Transaction
+    from corechaindb.common.crypto import generate_key_pair
+    from corechaindb.common.exceptions import DoubleSpend
 
     alice = generate_key_pair()
     bob = generate_key_pair()

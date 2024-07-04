@@ -8,46 +8,46 @@
 Database Backend Interfaces
 ###########################
 
-.. automodule:: bigchaindb.backend
+.. automodule:: corechaindb.backend
     :special-members: __init__
 
 
 Generic Interfaces
 ==================
 
-:mod:`bigchaindb.backend.connection`
+:mod:`corechaindb.backend.connection`
 ------------------------------------
 
-.. automodule:: bigchaindb.backend.connection
+.. automodule:: corechaindb.backend.connection
     :special-members: __init__
 
-:mod:`bigchaindb.backend.query`
+:mod:`corechaindb.backend.query`
 -------------------------------
-.. automodule:: bigchaindb.backend.query
+.. automodule:: corechaindb.backend.query
 
-:mod:`bigchaindb.backend.schema`
+:mod:`corechaindb.backend.schema`
 --------------------------------
-.. automodule:: bigchaindb.backend.schema
+.. automodule:: corechaindb.backend.schema
 
-:mod:`bigchaindb.backend.utils`
+:mod:`corechaindb.backend.utils`
 -------------------------------
-.. automodule:: bigchaindb.backend.utils
+.. automodule:: corechaindb.backend.utils
 
 
 MongoDB Backend
 ===============
 
-.. automodule:: bigchaindb.backend.localmongodb
+.. automodule:: corechaindb.backend.localmongodb
     :special-members: __init__
 
-:mod:`bigchaindb.backend.localmongodb.connection`
+:mod:`corechaindb.backend.localmongodb.connection`
 -------------------------------------------------
-.. automodule:: bigchaindb.backend.localmongodb.connection
+.. automodule:: corechaindb.backend.localmongodb.connection
 
-:mod:`bigchaindb.backend.localmongodb.query`
+:mod:`corechaindb.backend.localmongodb.query`
 --------------------------------------------
-.. automodule:: bigchaindb.backend.localmongodb.query
+.. automodule:: corechaindb.backend.localmongodb.query
 
-:mod:`bigchaindb.backend.localmongodb.schema`
+:mod:`corechaindb.backend.localmongodb.schema`
 ---------------------------------------------
-.. automodule:: bigchaindb.backend.localmongodb.schema
+.. automodule:: corechaindb.backend.localmongodb.schema
